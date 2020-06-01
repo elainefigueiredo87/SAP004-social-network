@@ -1,16 +1,3 @@
-//const functions = require('firebase-functions');
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
-// The Firebase Admin SDK to access the Firebase Realtime Database.
-//const admin = require('firebase-admin');
-//admin.initializeApp();
-
 export const toggleSignIn = () => {
     if (firebase.auth().currentUser) {
         // [START signout]
@@ -40,10 +27,10 @@ export const toggleSignIn = () => {
                 alert(errorMessage);
             }
             console.log(error);
-            document.getElementById('quickstart-sign-in').disabled = false;
+            document.getElementById('btnLogin').disabled = false;
             // [END_EXCLUDE]
         });
         // [END authwithemail]
     }
-    document.getElementById('quickstart-sign-in').disabled = true;
+    document.getElementById('btnLogin').disabled = true;
 }
