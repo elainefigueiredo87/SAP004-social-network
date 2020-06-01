@@ -16,6 +16,23 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDMdcPv8t1JuOb-k_Gap8URh_CLeqbD8WI",
+            authDomain: "sap004-social-network.firebaseapp.com",
+            databaseURL: "https://sap004-social-network.firebaseio.com",
+            projectId: "sap004-social-network",
+            storageBucket: "sap004-social-network.appspot.com",
+            messagingSenderId: "286742364571",
+            appId: "1:286742364571:web:9ca56c8522a17cc6e9613e",
+            measurementId: "G-B6B6JMEYZY"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
     <header>
         <nav>
             <ul>
@@ -23,12 +40,12 @@
                     <a href="/#login">Login</a>
                 </li>
                 <li>
-                    <a href="/#cadastro">Cadastro</a></li>
+                    <a href="/#register">Cadastro</a></li>
                 <li>
                     <a href="/#">Home</a>
                 </li>
                 <li>
-                    <a href="/#perfil">Perfil</a>
+                    <a href="/#profile">Perfil</a>
                 </li>
             </ul>
         </nav>
