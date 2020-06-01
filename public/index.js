@@ -3,6 +3,7 @@
 import { home } from './pages/home/main.js';
 import { appStart } from './pages/login/main.js';
 import { register } from './pages/register/main.js';
+import { profile } from './pages/profile/main.js';
 //import { profile } from '.pages/profile/main.js';
 //import toggleSignIn from './functions/index.js';
 
@@ -22,6 +23,9 @@ const first = () => {
                 break;
             case "#home":
                 main.appendChild(home());
+                break;
+            case "#profile":
+                main.appendChild(profile());
                 break;
             default:
                 main.appendChild(appStart());
