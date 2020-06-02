@@ -1,10 +1,10 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-//import { greeting } from './data.js';
+// import { greeting } from './data.js';
 
-//const greeting = name => `Oi ${name}! Que bom ver você aqui!`;
+// const greeting = name => `Oi ${name}! Que bom ver você aqui!`;
 
 export const home = () => {
-  const container= document.createElement('div');
+  const container = document.createElement('div');
 
   const templateFeed = `
   <div class="feed-wrapper">
@@ -47,30 +47,16 @@ export const home = () => {
 
   `;
 
-  container.innerHTML = templateFeed
+  container.innerHTML = templateFeed;
 
   return container;
 };
 
+// const name = container.querySelector('#name');
+// const sendBtn = templatePost.querySelector('#sendBtn');
+// const greetingMessage = container.querySelector('#greeting-message');
 
-
-
-
-
-
-
-
-
-
-
-
-  //const name = container.querySelector('#name');
-  // const sendBtn = templatePost.querySelector('#sendBtn');
-  //const greetingMessage = container.querySelector('#greeting-message');
-
-  //sendBtn.addEventListener('click', (event) => {
-  //event.preventDefault();
-  //greetingMessage.innerHTML = greeting(name.value);
-  //});
-
-
+// sendBtn.addEventListener('click', (event) => {
+// event.preventDefault();
+// greetingMessage.innerHTML = greeting(name.value);
+// });
