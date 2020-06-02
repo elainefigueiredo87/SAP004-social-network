@@ -1,7 +1,9 @@
 export const profile = () => {
   const container = document.createElement('div');
 
-  const templateProfile = ` <div class="feed-wrapper">
+  container.className = ('profile-wrapper');
+
+  const templateProfile = `
     <div class="profile-box">
       <div class="profile-img">
         <img src="https://placekitten.com/100/100">
@@ -40,7 +42,7 @@ export const profile = () => {
         <button id="comment-btn" class="btn-style">Comentar</button>    
       </div>
     </div>  
-  </div>
+
 
   `;
   container.innerHTML = templateProfile;
