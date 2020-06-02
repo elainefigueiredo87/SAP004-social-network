@@ -27,10 +27,10 @@ export const toggleSignIn = () => {
         alert(errorMessage);
       }
       console.log(error);
-      document.getElementById('btnLogin').disabled = false;
+      document.getElementById('btn-login').disabled = false;
       // [END_EXCLUDE]
     });
     // [END authwithemail]
   }
-  document.getElementById('btnLogin').disabled = true;
+  document.getElementById('btn-login').disabled = true;
 };
