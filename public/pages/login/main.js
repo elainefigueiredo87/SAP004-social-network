@@ -1,10 +1,9 @@
 import { toggleSignIn } from './data.js';
 
 export const appStart = () => {
+  const menuLogin = document.createElement('div');
 
-    const menuLogin = document.createElement('div');
-
-    menuLogin.innerHTML = `<input type= 'email' name= 'email' id= 'email' placeholder= 'Email' required></input>
+  menuLogin.innerHTML = `<input type= 'email' name= 'email' id= 'email' placeholder= 'Email' required></input>
     <br>
     <input type='password' name='password' id='password' placeholder= 'Senha' required></input>
     <br>
@@ -15,14 +14,14 @@ export const appStart = () => {
     <a href='/#register'>Criar uma conta</a>
     `;
 
-    // const email = menuLogin.querySelector('#email');
-    // const password = menuLogin.querySelector('#password');
-    const btnLogin = menuLogin.querySelector('#btnLogin');
+  // const email = menuLogin.querySelector('#email');
+  // const password = menuLogin.querySelector('#password');
+  const btnLogin = menuLogin.querySelector('#btnLogin');
 
-    btnLogin.addEventListener('click', (event) => {
-        event.preventDefault();
-        toggleSignIn();
-    });
+  btnLogin.addEventListener('click', (event) => {
+    event.preventDefault();
+    toggleSignIn();
+  });
 
-    return menuLogin;
-}
+  return menuLogin;
+};

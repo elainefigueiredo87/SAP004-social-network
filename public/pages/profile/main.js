@@ -1,7 +1,7 @@
 export const profile = () => {
-    const container = document.createElement('div');
+  const container = document.createElement('div');
 
-    const templateProfile = ` <div class="feed-wrapper">
+  const templateProfile = ` <div class="feed-wrapper">
     <div class="profile-box">
       <div class="profile-img">
         <img src="https://placekitten.com/100/100">
@@ -43,7 +43,7 @@ export const profile = () => {
   </div>
 
   `;
-    container.innerHTML = templateProfile
+  container.innerHTML = templateProfile;
 
-    return container;
+  return container;
 };
