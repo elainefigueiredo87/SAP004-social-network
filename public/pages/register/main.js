@@ -1,10 +1,9 @@
 import { handleSignUp } from './data.js';
 
 export const register = () => {
+  const signUp = document.createElement('div');
 
-    const signUp = document.createElement('div');
-
-    signUp.innerHTML = `<input type= "text" name= "name" id= "name" placeholder= "Nome Completo" required></input>
+  signUp.innerHTML = `<input type= "text" name= "name" id= "name" placeholder= "Nome Completo" required></input>
     <br>
     <input type= "email" name= "email" id= "email" placeholder= "Email" required></input>
     <br>
@@ -15,12 +14,12 @@ export const register = () => {
     <button type="submit" id="btnRegister">Cadastrar</button>
     `;
 
-    const btnRegister = signUp.querySelector('#btnRegister');
+  const btnRegister = signUp.querySelector('#btnRegister');
 
-    btnRegister.addEventListener('click', (event) => {
-        event.preventDefault();
-        handleSignUp();
-    });
+  btnRegister.addEventListener('click', (event) => {
+    event.preventDefault();
+    handleSignUp();
+  });
 
-    return signUp;
-}
+  return signUp;
+};
