@@ -6,8 +6,9 @@
 export const home = () => {
   const container = document.createElement('div');
 
+  container.className = ('feed-wrapper');
+
   const templateFeed = `
-  <div class='feed-wrapper'>
     <div class='profile-box'>
       <div class='profile-img'>
         <img src='https://placekitten.com/100/100'>
@@ -42,9 +43,8 @@ export const home = () => {
         <button id='like-btn' class='btn-style'>Curtir</button>
         <button id='comment-btn' class='btn-style'>Comentar</button>    
       </div>
-    </div>  
-  </div>
-
+    </div> 
+    
   `;
 
   container.innerHTML = templateFeed;
