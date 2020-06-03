@@ -1,4 +1,5 @@
-.login-wrapper {
+.login-wrapper,
+.signup-wrapper {
     display: flex;
     flex-direction: column;
     text-align: center;
