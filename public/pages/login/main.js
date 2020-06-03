@@ -9,24 +9,25 @@ export const appStart = () => {
     <div class='logo'> 
       <img src='./images/wecanlogo.png' alt='logo'>
     </div>
-    <div class='welcome'>Bem vinda Dev!</div>
-    <div>
+    <div class='welcome sign-box'>Bem vinda Dev!</div>
+    <div class='sign-box'>
       <input class='sign-login' type= 'email' name= 'email' id= 'email' placeholder= 'Email' required></input>
     </div>
-    <div>
+    <div class='sign-box'>
       <input class='sign-login' type='password' name='password' id='password' placeholder= 'Senha' required></input>
     </div>
     <div class='message-error' id='message-error'></div>
-    <div>
+    <div class='sign-box'>
       <button class='btn-login' type='submit' name='btn-login' id='btn-login'>Entrar</button>
     </div>
-    <div class='sign-google'>Ou entre com...</div>
-   <div class='icon-google'>
+    <div class='sign-google sign-box'>Ou entre com...</div>
+    <div class='icon-google sign-box'>
       <img src='./images/logo-google.png'>
-   </div>
-    <div class='create-account'>
+    </div>
+    <div class='create-account sign-box'>
       Quer entrar para a rede? <a href='/#register'>Cadastre-se</a>
     </div>
+
     `;
 
   const btnLogin = menuLogin.querySelector('#btn-login');
