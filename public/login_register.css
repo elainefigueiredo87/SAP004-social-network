@@ -81,11 +81,11 @@
         width: 10rem;
         height: 10rem;
     }
-    /*.sign-box {
+    .sign-box {
         background-color: turquoise;
-        position: relative;
+        position: absolute;
         width: 50%;
         height: 100%;
-        right: 10px;
-    }*/
+        left: 50%;
+    }
 }
