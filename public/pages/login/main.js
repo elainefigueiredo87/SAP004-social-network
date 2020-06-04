@@ -10,7 +10,7 @@ export const appStart = () => {
       <img src='./images/wecanlogo.png' alt='logo'>
     </div>
     <div class='sign-box'> 
-    <div class='welcome>Bem vinda Dev!</div>
+    <div class='welcome'>Bem vinda Dev!</div>
     <div>
       <input class='sign-login' type= 'email' name= 'email' id= 'email' placeholder= 'Email' required></input>
     </div>
@@ -27,7 +27,6 @@ export const appStart = () => {
     </div>
     <div class='create-account'>
       Quer entrar para a rede? <a href='/#register'>Cadastre-se</a>
-    </div>
     </div>
     `;
 
