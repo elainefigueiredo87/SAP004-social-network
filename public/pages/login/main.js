@@ -36,10 +36,18 @@ export const appStart = () => {
     const email = menuLogin.querySelector('#email').value;
     const password = menuLogin.querySelector('#password').value;
     const loginAuth = login.signIn(email, password);
-    login.signIn(loginAuth);
-    const messageError = menuLogin.querySelector('#message-error');
-    messageError.innerHTML = login.cath(error);
-    login.cath(messageError);
+    loginAuth
+      .then(() => {})
+      .catch((error) => {
+        let errorMessage = error.message;
+        if (error.code === 'auth/wrong-password') {
+          errorMessage = 'Credenciais inválidas';
+        } else if (error.code === 'auth/invalid-email') {
+          errorMessage = 'Formato do email inválido';
+        }
+        const errorElement = menuLogin.querySelector('#message-error');
+        errorElement.innerHTML = errorMessage;
+      });
   });
 
   return menuLogin;
