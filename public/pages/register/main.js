@@ -1,4 +1,4 @@
-import { handleSignUp } from './data.js';
+import { createAccount } from './data.js';
 
 export const register = () => {
   const signUp = document.createElement('div');
@@ -29,9 +29,22 @@ export const register = () => {
 
   const btnRegister = signUp.querySelector('#btnRegister');
 
-  btnRegister.addEventListener('click', (event) => {
-    event.preventDefault();
-    handleSignUp();
+  btnRegister.addEventListener('click', () => {
+    const email = signUp.querySelector('#email').value;
+    const password = signUp.querySelector('#password').value;
+    const registerAuth = createAccount.signRegister(email, password);
+    registerAuth
+      .then(() => {})
+      .catch((error) => {
+        let errorMessage = error.message;
+        if (error.code === 'auth/wrong-password') {
+          errorMessage = 'Credenciais inválidas';
+        } else if (error.code === 'auth/invalid-email') {
+          errorMessage = 'Formato de e-mail inválido';
+        }
+        const errorEle = signUp.querySelector('#message-error');
+        errorEle.innerHTML = errorMessage;
+      });
   });
 
   return signUp;
