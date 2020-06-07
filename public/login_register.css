@@ -89,3 +89,80 @@
         left: 50%;
     }
 }
+
+@media (min-width: 1024px) and (min-height: 747px) {
+    .login-wrapper {
+        display: flex;
+        padding: 0px;
+        /* padding: 1rem; */
+        line-height: 4rem;
+        height: 747px;
+        width: 1000px;
+    }
+    .logo {
+        background-color: yellow;
+        align-items: center;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        /* right: 200px; */
+    }
+    .logo img {
+        margin: auto;
+        width: 25rem;
+        height: 20rem;
+    }
+    .sign-box {
+        display: flex;
+        /* align-content: center; */
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+        background-color: turquoise;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 50%;
+    }
+    .welcome {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+    .sign-login {
+        height: 2.5rem;
+        width: 18rem;
+        border: 2px solid #701741;
+        border-radius: 6px;
+    }
+    .message-error {
+        color: red;
+        font-size: 1rem;
+        text-decoration: underline;
+    }
+    .btn-login {
+        background-color: #701741;
+        color: white;
+        font-size: 1.5rem;
+        height: 3rem;
+        width: 7rem;
+        padding: 4px 4px 4px 4px;
+        align-items: center;
+        border-radius: 6px;
+    }
+    .sign-google {
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    .create-account {
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    .icon-google img {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .icon-google img {
+        width: 3rem;
+    }
+}
