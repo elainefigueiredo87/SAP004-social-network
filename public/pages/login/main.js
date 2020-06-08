@@ -37,7 +37,9 @@ export const appStart = () => {
     const password = menuLogin.querySelector('#password').value;
     const loginAuth = login.signIn(email, password);
     loginAuth
-      .then(() => {})
+      .then(() => {
+        window.location.href = '#home';
+      })
       .catch((error) => {
         let errorMessage = error.message;
         if (error.code === 'auth/wrong-password') {
