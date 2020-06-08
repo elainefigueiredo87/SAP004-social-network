@@ -18,7 +18,7 @@ export const appStart = () => {
       <input class='sign-login' type='password' name='password' id='password' placeholder= 'Senha' required></input>
     </div>
     <div class='message-error' id='message-error'></div>
-    <div>
+    <div class='btn-box'>
       <button class='btn-login' type='submit' name='btn-login' id='btn-login'>Entrar</button>
     </div>
     <div class='sign-google'>Ou entre com...</div>
