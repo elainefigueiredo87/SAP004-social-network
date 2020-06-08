@@ -34,11 +34,13 @@ export const register = () => {
     const password = signUp.querySelector('#password').value;
     const registerAuth = createAccount.signRegister(email, password);
     registerAuth
-      .then(() => {})
+      .then(() => {
+        window.location.href = '#login';
+      })
       .catch((error) => {
         let errorMessage = error.message;
-        if (error.code === 'auth/wrong-password') {
-          errorMessage = 'Credenciais inválidas';
+        if (error.code === 'auth/weak-password') {
+          errorMessage = 'Senha deve ter no mínimo 6 caracteres';
         } else if (error.code === 'auth/invalid-email') {
           errorMessage = 'Formato de e-mail inválido';
         }
