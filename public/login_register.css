@@ -62,45 +62,89 @@
     width: 2rem;
 }
 
+
+/* css para tablet em pé */
+
 @media (min-width: 768px) and (min-height: 1024px) {
-    .login-wrapper {
+    .login-wrapper,
+    .signup-wrapper {
         display: flex;
+        flex-direction: column;
+        text-align: center;
         padding: 1rem;
         line-height: 3rem;
         height: 1024px;
         width: 768px;
+        background-image: url(images/primeiro\ fundo.png);
+        background-size: cover;
     }
     .logo {
-        background-color: yellow;
-        position: relative;
-        width: 50%;
-        height: 100%;
-        right: 200px;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
     }
     .logo img {
-        width: 10rem;
-        height: 10rem;
+        width: 20rem;
+        height: auto;
     }
-    .sign-box {
-        background-color: turquoise;
-        position: absolute;
-        width: 50%;
-        height: 100%;
-        left: 50%;
+    .welcome {
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .sign-login {
+        height: 3rem;
+        width: 25rem;
+        margin: 15px;
+        padding: 15px;
+        border: 2px solid #701741;
+        border-radius: 6px;
+        font-size: 20px;
+    }
+    .message-error {
+        font-size: 1.5rem;
+    }
+    .btn-login {
+        margin-top: 20px;
+        font-size: 1.5rem;
+        height: 3rem;
+        width: 10rem;
+        padding: 4px;
+        border-radius: 6px;
+        align-items: center;
+    }
+    .btn-box {
+        margin-bottom: 8rem;
+    }
+    .sign-google,
+    .create-account {
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    .icon-google img {
+        width: 3rem;
     }
 }
 
-@media (min-width: 1024px) and (min-height: 747px) {
-    .login-wrapper {
+
+/* css para tablet deitado */
+
+@media (min-width: 1024px) and (min-height: 768px) {
+    .login-wrapper,
+    .signup-wrapper {
         display: flex;
         padding: 0px;
-        /* padding: 1rem; */
         line-height: 4rem;
         height: 747px;
         width: 1000px;
+        /* background-image: url(images/icones-medios.png); */
+        /* background-image: url(images/icones-pequenos-menor-quantidade.png); */
+        /* background-image: url(images/icones-pequenos-maior-quantidade.png);*/
+        background-image: url(images/primeiro\ fundo.png);
+        background-size: cover;
     }
     .logo {
-        background-color: yellow;
         align-items: center;
         position: absolute;
         width: 50%;
@@ -108,17 +152,16 @@
         /* right: 200px; */
     }
     .logo img {
-        margin: auto;
-        width: 25rem;
-        height: 20rem;
+        margin: 5rem 5rem 10rem 3rem;
+        width: 30rem;
+        height: auto;
     }
     .sign-box {
         display: flex;
-        /* align-content: center; */
         flex-direction: column;
         justify-content: center;
         flex: 1;
-        background-color: turquoise;
+        background-color: rgba(255, 255, 255, 40%);
         position: absolute;
         width: 50%;
         height: 100%;
@@ -135,13 +178,9 @@
         border-radius: 6px;
     }
     .message-error {
-        color: red;
-        font-size: 1rem;
-        text-decoration: underline;
+        font-size: 1.5rem;
     }
     .btn-login {
-        background-color: #701741;
-        color: white;
         font-size: 1.5rem;
         height: 3rem;
         width: 7rem;
@@ -149,10 +188,7 @@
         align-items: center;
         border-radius: 6px;
     }
-    .sign-google {
-        font-size: 1.5rem;
-        font-weight: 400;
-    }
+    .sign-google,
     .create-account {
         font-size: 1.5rem;
         font-weight: 400;
@@ -161,8 +197,47 @@
         display: flex;
         margin-left: auto;
         margin-right: auto;
-    }
-    .icon-google img {
         width: 3rem;
     }
 }
+
+
+/* css para ipad pro*/
+
+@media (min-width: 1024px) and (min-height: 1366px) {
+    .login-wrapper,
+    .signup-wrapper {
+        line-height: 5rem;
+        height: 1366px;
+        width: 1024px;
+    }
+    .logo img {
+        margin: 2rem 5rem 22rem 5rem;
+        width: 25rem;
+        height: auto;
+    }
+    .welcome {
+        font-size: 2rem;
+    }
+    .sign-login {
+        height: 3.5rem;
+        width: 20rem;
+    }
+    .btn-login {
+        font-size: 2rem;
+        height: 3.5rem;
+        width: 8.5rem;
+    }
+    .sign-google,
+    .create-account {
+        font-size: 1.6rem;
+    }
+    .icon-google img {
+        width: 4rem;
+    }
+}
+
+
+/* css para desktop */
+
+@media (min-width: 1366px) and (min-height: 768px) {}

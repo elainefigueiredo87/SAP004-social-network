@@ -10,23 +10,24 @@ export const appStart = () => {
       <img src='./images/wecanlogo.png' alt='logo'>
     </div>
     <div class='sign-box'> 
-    <div class='welcome'>Bem vinda Dev!</div>
-    <div>
-      <input class='sign-login' type= 'email' name= 'email' id= 'email' placeholder= 'Email' required></input>
-    </div>
-    <div>
-      <input class='sign-login' type='password' name='password' id='password' placeholder= 'Senha' required></input>
-    </div>
-    <div class='message-error' id='message-error'></div>
-    <div>
-      <button class='btn-login' type='submit' name='btn-login' id='btn-login'>Entrar</button>
-    </div>
-    <div class='sign-google'>Ou entre com...</div>
-    <div class='icon-google'>
-      <img src='./images/logo-google.png'>
-    </div>
-    <div class='create-account'>
-      Quer entrar para a rede? <a href='/#register'>Cadastre-se</a>
+      <div class='welcome'>Bem vinda Dev!</div>
+      <div>
+       <input class='sign-login' type= 'email' name= 'email' id= 'email' placeholder= 'Email' required></input>
+      </div>
+      <div>
+        <input class='sign-login' type='password' name='password' id='password' placeholder= 'Senha' required></input>
+      </div>
+      <div class='message-error' id='message-error'></div>
+      <div class='btn-box'>
+        <button class='btn-login' type='submit' name='btn-login' id='btn-login'>Entrar</button>
+      </div>
+      <div class='sign-google'>Ou entre com...</div>
+      <div class='icon-google'>
+        <img src='./images/logo-google.png'>
+      </div>
+      <div class='create-account'>
+        Quer entrar para a rede? <a href='/#register'>Cadastre-se</a>
+      </div>
     </div>
     `;
 
@@ -37,7 +38,9 @@ export const appStart = () => {
     const password = menuLogin.querySelector('#password').value;
     const loginAuth = login.signIn(email, password);
     loginAuth
-      .then(() => {})
+      .then(() => {
+        window.location.href = '#home';
+      })
       .catch((error) => {
         let errorMessage = error.message;
         if (error.code === 'auth/wrong-password') {
