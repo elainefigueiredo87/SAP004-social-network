@@ -24,7 +24,7 @@ export const register = () => {
     </div>
     <div class='message-error' id='message-error'></div>
     <div> 
-      <button class='btn-login' type="submit" id="btnRegister">Cadastrar</button>
+      <button class='btn-register' type="submit" id="btnRegister">Cadastrar</button>
     </div>  
   </div>
   `;
