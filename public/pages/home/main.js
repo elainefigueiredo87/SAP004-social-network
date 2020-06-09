@@ -24,7 +24,7 @@ export const home = () => {
         <textarea id='post' class='post-text' placeholder='Compartilhe aqui o seu conhecimento' type='text' required></textarea>
         <div class='all-buttons'>
           <button id='send-photo' class='btn-style'>Foto</button>
-          <button id='send-btn' class='btn-style'>Compartilhar</button>
+          <button id='send-btn' class='btn-style'>Publicar</button>
         </div>
       </form>
     </div>

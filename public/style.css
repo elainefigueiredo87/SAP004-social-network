@@ -42,7 +42,7 @@
     justify-content: center;
     margin: 1rem;
     padding: 1rem;
-    border: 2px solid #A6A6A6;
+    border: 2px solid #701741;
     border-radius: 5px;
 }
 
@@ -57,7 +57,7 @@
     padding: 5px;
     margin: 2px;
     resize: none;
-    background-color: yellow;
+    background-color: #DBA1BC;
     justify-content: center;
     align-items: center;
 }
@@ -68,14 +68,17 @@
 }
 
 .btn-style {
-    margin: 2px;
+    background-color: #701741;
+    color: white;
+    font-size: 1rem;
+    height: 2rem;
+    width: 6rem;
     padding: 5px;
-    border: 1px solid #A6A6A6;
     border-radius: 4px;
 }
 
 .posted-box {
-    border: 2px solid #A6A6A6;
+    border: 2px solid #701741;
     margin: 16px 16px 20px 16px;
     padding: 20px;
     justify-content: center;
@@ -87,7 +90,7 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    background-color: yellow;
+    background-color: #DBA1BC;
 }
 
 .posted-text {
