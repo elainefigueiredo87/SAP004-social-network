@@ -26,6 +26,9 @@ export const register = () => {
     <div> 
       <button class='btn-register' type="submit" id="btnRegister">Cadastrar</button>
     </div>  
+    <div class='return-login'>
+        Já tem uma conta? <a href='/#login'>Faça login.</a>
+      </div>
   </div>
   `;
 
