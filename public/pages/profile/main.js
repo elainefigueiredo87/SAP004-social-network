@@ -13,16 +13,16 @@ export const profile = () => {
         Ana Maria Silva
         <div class="user-role">Estudante</div>
         <button id="signout" class="btn-out">Sair</button>
-      </div>
     </div>
-
+    </div>
+    
     <div class="post-box">
       <form>
       <label> Publicações </label>
         <textarea id="post" class="post-text" placeholder="No que você está pensando?" type="text" required></textarea>
         <div class="all-buttons">
           <button id="send-photo" class="btn-style">Foto</button>
-          <button id="send-btn" class="btn-style">Compartilhar</button>
+          <button id="send-btn" class="btn-style">Publicar</button>
         </div>
       </form>
     </div>
