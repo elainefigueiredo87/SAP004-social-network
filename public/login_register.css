@@ -48,7 +48,8 @@
     border-radius: 4px;
 }
 
-.sign-google .create-account {
+.sign-google .create-account,
+.return-login {
     font-size: 1rem;
     font-weight: 400;
 }
@@ -57,9 +58,6 @@
     display: flex;
     margin-left: auto;
     margin-right: auto;
-}
-
-.icon-google img {
     width: 2rem;
 }
 
@@ -121,7 +119,8 @@
         margin-bottom: 8rem;
     }
     .sign-google,
-    .create-account {
+    .create-account,
+    .return-login {
         font-size: 1.5rem;
         font-weight: 400;
     }
@@ -197,7 +196,8 @@
         width: 8rem;
     }
     .sign-google,
-    .create-account {
+    .create-account,
+    .return-login {
         font-size: 1.5rem;
         font-weight: 400;
     }
@@ -249,7 +249,8 @@
         margin-top: 5px;
     }
     .sign-google,
-    .create-account {
+    .create-account,
+    .return-login {
         font-size: 1.6rem;
     }
     .icon-google img {
@@ -267,7 +268,7 @@
         height: 1024px;
         width: 1366px;
     }
-    .signup-wrapper .sign-box {
+    .signup-wrapper {
         bottom: 0px;
     }
     .logo {
@@ -282,6 +283,7 @@
         height: auto;
     }
     .sign-box {
+        bottom: 0px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -312,7 +314,8 @@
         margin-top: 5px;
     }
     .sign-google,
-    .create-account {
+    .create-account,
+    .return-login {
         font-size: 1.6rem;
     }
 }
@@ -329,11 +332,21 @@
         background-image: url(images/primeiro\ fundo.png);
         background-size: cover;
     }
-    .signup-wrapper .sign-box {
+    .signup-wrapper {
         bottom: 0px;
     }
     .sign-box {
+        bottom: 0px;
         padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+        background-color: rgba(255, 255, 255, 40%);
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 50%;
     }
     .logo {
         align-items: center;
@@ -345,17 +358,6 @@
         margin: 2rem 5rem 10rem 10rem;
         width: 30rem;
         height: auto;
-    }
-    .sign-box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex: 1;
-        background-color: rgba(255, 255, 255, 40%);
-        position: absolute;
-        width: 50%;
-        height: 100%;
-        left: 50%;
     }
     .welcome {
         font-size: 1.8rem;
@@ -386,7 +388,8 @@
         margin-bottom: 8rem;
     }
     .sign-google,
-    .create-account {
+    .create-account,
+    .return-login {
         font-size: 1.5rem;
         font-weight: 400;
     }
