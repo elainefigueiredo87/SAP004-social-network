@@ -1,4 +1,4 @@
-import { createAccount } from './data.js';
+import { createAccount, sendEmailVerification } from './data.js';
 
 export const register = () => {
   const signUp = document.createElement('div');
@@ -40,7 +40,8 @@ export const register = () => {
     const registerAuth = createAccount.signRegister(email, password);
     registerAuth
       .then(() => {
-        window.location.href = '#login';
+        sendEmailVerification();
+        //  window.location.href = '#login';
       })
       .catch((error) => {
         let errorMessage = error.message;
