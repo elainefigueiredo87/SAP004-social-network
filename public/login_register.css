@@ -54,7 +54,7 @@
     font-weight: 400;
 }
 
-.icon-google img {
+.icon-google input {
     display: flex;
     margin-left: auto;
     margin-right: auto;
@@ -124,7 +124,7 @@
         font-size: 1.5rem;
         font-weight: 400;
     }
-    .icon-google img {
+    .icon-google input {
         width: 3rem;
     }
 }
@@ -201,7 +201,7 @@
         font-size: 1.5rem;
         font-weight: 400;
     }
-    .icon-google img {
+    .icon-google input {
         display: flex;
         margin-left: auto;
         margin-right: auto;
@@ -253,7 +253,7 @@
     .return-login {
         font-size: 1.6rem;
     }
-    .icon-google img {
+    .icon-google input {
         width: 4rem;
     }
 }
