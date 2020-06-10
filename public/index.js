@@ -2,7 +2,9 @@ import routes from './routes.js';
 
 const main = document.querySelector('#root');
 
-const validateHash = (hash) => (hash === '' ? 'login' : hash.replace('#', ''));
+function validateHash(hash) {
+  return (hash === '' ? 'login' : hash.replace('#', ''));
+}
 
 const renderPage = () => {
   main.innerHTML = '';

@@ -6,14 +6,19 @@ export const login = {
   },
 };
 
-/* firebase
-  .auth()
-  .signInWithEmailAndPassword(email, password)
-  .then(() => console.log("deu certo"))
-  .catch(function (error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log("deu ruim")
-      // ...
-  }); */
+export const signGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  return firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      const token = result.credential.accessToken;
+      const user = result.user;
+    })
+    .catch((error) => {
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      let email = error.email;
+      let credential = error.credential;
+    });
+};

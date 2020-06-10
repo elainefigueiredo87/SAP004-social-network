@@ -1,4 +1,4 @@
-import { /* logIn */ login /* errors */ } from './data.js';
+import { login, signGoogle } from './data.js';
 
 export const appStart = () => {
   const menuLogin = document.createElement('div');
@@ -23,7 +23,7 @@ export const appStart = () => {
       </div>
       <div class='sign-google'>Ou entre com...</div>
       <div class='icon-google'>
-        <img src='./images/logo-google.png'>
+        <input type=image src='./images/logo-google.png' id='input-google'></input>
       </div>
       <div class='create-account'>
         Quer entrar para a rede? <a href='/#register'>Cadastre-se</a>
@@ -32,6 +32,7 @@ export const appStart = () => {
     `;
 
   const btnLogin = menuLogin.querySelector('#btn-login');
+  const loginGoogle = menuLogin.querySelector('#input-google');
 
   btnLogin.addEventListener('click', () => {
     const email = menuLogin.querySelector('#email').value;
@@ -51,6 +52,10 @@ export const appStart = () => {
         const errorElement = menuLogin.querySelector('#message-error');
         errorElement.innerHTML = errorMessage;
       });
+  });
+
+  loginGoogle.addEventListener('click', () => {
+    signGoogle();
   });
 
   return menuLogin;
