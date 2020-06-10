@@ -17,7 +17,7 @@ export const register = () => {
       <input class='sign-login' type= "email" name= "email" id= "email" placeholder= "Email" required></input>
     </div>
     <div>
-      <input class='sign-login' type="password" name="password" id="password" placeholder= "Senha" required></input>
+      <input class='sign-login' type="password" name="password" id="password" placeholder= "Senha (mínimo 6 caracteres)" required></input>
     </div>
     <div>  
       <input class='sign-login' type="password" name="confirmPassword" id="confirmPassword" placeholder= "Confirme sua senha" required></input>
@@ -27,7 +27,7 @@ export const register = () => {
       <button class='btn-register' type="submit" id="btnRegister">Cadastrar</button>
     </div>  
     <div class='return-login'>
-        Já tem uma conta? <a href='/#login'>Faça login.</a>
+        Já tem uma conta? <a href='/#login'>Faça login</a>
       </div>
   </div>
   `;

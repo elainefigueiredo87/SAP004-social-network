@@ -48,7 +48,8 @@
     border-radius: 4px;
 }
 
-.sign-google .create-account {
+.sign-google .create-account,
+.return-login {
     font-size: 1rem;
     font-weight: 400;
 }
@@ -121,7 +122,8 @@
         margin-bottom: 8rem;
     }
     .sign-google,
-    .create-account {
+    .create-account,
+    .return-login {
         font-size: 1.5rem;
         font-weight: 400;
     }
@@ -197,7 +199,8 @@
         width: 8rem;
     }
     .sign-google,
-    .create-account {
+    .create-account,
+    .return-login {
         font-size: 1.5rem;
         font-weight: 400;
     }
@@ -249,7 +252,8 @@
         margin-top: 5px;
     }
     .sign-google,
-    .create-account {
+    .create-account,
+    .return-login {
         font-size: 1.6rem;
     }
     .icon-google img {
@@ -312,7 +316,8 @@
         margin-top: 5px;
     }
     .sign-google,
-    .create-account {
+    .create-account,
+    .return-login {
         font-size: 1.6rem;
     }
 }
@@ -386,7 +391,8 @@
         margin-bottom: 8rem;
     }
     .sign-google,
-    .create-account {
+    .create-account,
+    .return-login {
         font-size: 1.5rem;
         font-weight: 400;
     }
