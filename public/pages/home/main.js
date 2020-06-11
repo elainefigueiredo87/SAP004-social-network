@@ -1,4 +1,4 @@
-import { createPost, readPosts } from './data.js';
+import { createPost, readPosts, signOut } from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
@@ -13,6 +13,9 @@ export const home = () => {
       <div class='user-informations'>  
         Ana Maria Silva
         <div class='user-role'>Estudante</div>
+      </div>
+      <div>
+      <button id='btn-sign-out' class='btn-style'>Sair</button>
       </div>
     </div>
 
@@ -47,6 +50,7 @@ export const home = () => {
   const post = container.querySelector('#post');
   const sendBtn = container.querySelector('#send-btn');
   const allPosts = container.querySelector('#all-posts');
+  const btnSignOut = container.querySelector('#btn-sign-out');
 
   const postTemplate = (array) => {
     allPosts.innerHTML = array.map(post => `<p>${post.text}</p>`).join('');
@@ -56,6 +60,11 @@ export const home = () => {
     createPost(post.value);
     allPosts.innerHTML = '';
     readPosts(postTemplate);
+  });
+
+  btnSignOut.addEventListener('click', (event) => {
+    event.preventDefault();
+    signOut();
   });
 
   return container;
