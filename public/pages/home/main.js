@@ -69,12 +69,3 @@ export const home = () => {
 
   return container;
 };
-
-// const name = container.querySelector('#name');
-// const sendBtn = templatePost.querySelector('#sendBtn');
-// const greetingMessage = container.querySelector('#greeting-message');
-
-// sendBtn.addEventListener('click', (event) => {
-// event.preventDefault();
-// greetingMessage.innerHTML = greeting(name.value);
-// });
