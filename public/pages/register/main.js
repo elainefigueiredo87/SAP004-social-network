@@ -1,4 +1,4 @@
-import { createAccount, sendEmailVerification } from './data.js';
+import { createAccount, sendEmailVerification, createUser, createProfile } from './data.js';
 
 export const register = () => {
   const signUp = document.createElement('div');
@@ -11,7 +11,10 @@ export const register = () => {
   </div>
   <div class='sign-box'> 
     <div>
-      <input class='sign-login' type= "text" name= "name" id= "name" placeholder= "Nome Completo" required></input>
+      <input class='sign-login' type= "text" name= "name" id= "first-name" placeholder= "Nome" required></input>
+    </div>
+    <div>
+      <input class='sign-login' type= "text" name= "surname" id= "last-name" placeholder= "Sobrenome" required></input>
     </div>
     <div>  
       <input class='sign-login' type= "email" name= "email" id= "email" placeholder= "Email" required></input>
@@ -37,11 +40,19 @@ export const register = () => {
   btnRegister.addEventListener('click', () => {
     const email = signUp.querySelector('#email').value;
     const password = signUp.querySelector('#password').value;
+    const firstName = signUp.querySelector('#first-name').value;
+    const lastName = signUp.querySelector('#last-name').value;
     const registerAuth = createAccount.signRegister(email, password);
     registerAuth
       .then(() => {
+        createUser(email, firstName, lastName);
+      })
+      .then(() => {
+        createProfile(firstName, lastName);
+      })
+      .then(() => {
         sendEmailVerification();
-        //  window.location.href = '#login';
+        window.location.href = '#login';
       })
       .catch((error) => {
         let errorMessage = error.message;
