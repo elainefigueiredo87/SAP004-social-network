@@ -1,14 +1,11 @@
-// Aqui serão criados os eventos de Manipulação de DOM e templates
-// import { greeting } from './data.js';
-
-// const greeting = name => `Oi ${name}! Que bom ver você aqui!`;
+import { createPost, readPosts } from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
 
   container.className = ('feed-wrapper');
 
-  const templateFeed = `
+  container.innerHTML = `
     <div class='profile-box'>
       <div class='profile-img'>
         <img src='https://placekitten.com/100/100'>
@@ -37,7 +34,7 @@ export const home = () => {
         <div id='close-posted-box' class='close-box'>X</div>
       </div>
       <div class='posted-text'>
-      <p>Oi, meninas!!<p>
+      <p id='all-posts'>Oi, meninas!!<p>
       </div>  
       <div class ='all-buttons'>
         <button id='like-btn' class='btn-style'>Curtir</button>
@@ -47,7 +44,19 @@ export const home = () => {
     
   `;
 
-  container.innerHTML = templateFeed;
+  const post = container.querySelector('#post');
+  const sendBtn = container.querySelector('#send-btn');
+  const allPosts = container.querySelector('#all-posts');
+
+  const postTemplate = (array) => {
+    allPosts.innerHTML = array.map(post => `<p>${post.text}</p>`).join('');
+  };
+  sendBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    createPost(post.value);
+    allPosts.innerHTML = '';
+    readPosts(postTemplate);
+  });
 
   return container;
 };
