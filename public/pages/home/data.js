@@ -27,7 +27,9 @@ export const readPosts = (callback) => {
 export const signOut = () => {
   if (firebase.auth().currentUser) {
     console.log('desconectando user');
-    firebase.auth().signOut();
+    firebase.auth().signOut()
+      .then(() => {
+        window.location.href = '#login';
+      });
   }
-  window.location.href = '#login';
-}
+};
