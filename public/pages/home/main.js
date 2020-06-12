@@ -1,6 +1,8 @@
 import { createPost, readPosts, signOut } from './data.js';
+import { initApp } from '../../components.js';
 
 export const home = () => {
+  initApp();
   const container = document.createElement('div');
 
   container.className = ('feed-wrapper');
@@ -10,7 +12,8 @@ export const home = () => {
       <div class='profile-img'>
         <img src='https://placekitten.com/100/100'>
       </div>  
-      <div id='user-informations' class='user-informations'>  
+      <div id='user-informations' class='user-informations'> 
+
         <div class='user-role'>Estudante</div>
       </div>
       <div>

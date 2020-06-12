@@ -1,4 +1,4 @@
-// import { template } from "babel-core";
+import { initApp } from '../../components.js';
 
 export const profile = () => {
   const containerProfile = document.createElement('div');
@@ -45,6 +45,8 @@ export const profile = () => {
       </div>
     </div>  
   `;
+
+  initApp();
 
   const btnSignOut = containerProfile.querySelector('#sign-out');
 
