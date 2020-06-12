@@ -14,7 +14,8 @@ export const createPost = (text) => {
 
 export const readPosts = (callback) => {
   firebase.firestore().collection('post')
-    .onSnapshot(function (querySnapshot) {
+    .get()
+    .then(function (querySnapshot) {
       var posts = [];
       querySnapshot.forEach(function (doc) {
         posts.push(doc.data());
