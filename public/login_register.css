@@ -74,8 +74,8 @@
         line-height: 3rem;
         height: 1024px;
         width: 768px;
-        background-image: url(images/primeiro\ fundo.png);
-        background-size: cover;
+        /*background-image: url(images/primeiro\ fundo.png);
+        background-size: cover;*/
         padding-top: 8rem;
     }
     .logo {
@@ -143,8 +143,8 @@
         /* background-image: url(images/icones-medios.png); */
         /* background-image: url(images/icones-pequenos-menor-quantidade.png); */
         /* background-image: url(images/icones-pequenos-maior-quantidade.png);*/
-        background-image: url(images/primeiro\ fundo.png);
-        background-size: cover;
+        /*background-image: url(images/primeiro\ fundo.png);
+        background-size: cover;*/
     }
     .logo {
         align-items: center;
@@ -212,7 +212,7 @@
 
 /* css para ipad pro em pé*/
 
-@media (min-width: 1024px) and (min-height: 1366px) {
+@media (width: 1024px) and (height: 1366px) {
     .login-wrapper,
     .signup-wrapper {
         display: flex;
@@ -259,11 +259,12 @@
 }
 
 
-/* css para ipad pro deitado*/
+/* css para ipad pro deitado
 
 @media (min-width: 1366px) and (min-height: 1024px) {
     .login-wrapper,
     .signup-wrapper {
+        display: flex;
         line-height: 5rem;
         height: 1024px;
         width: 1366px;
@@ -319,6 +320,7 @@
         font-size: 1.6rem;
     }
 }
+*/
 
 
 /* css para desktop */
@@ -326,11 +328,12 @@
 @media (min-width: 1300px) and (min-height: 600px) {
     .login-wrapper,
     .signup-wrapper {
+        display: flex;
         line-height: 4rem;
-        height: 480px;
-        width: 1200px;
-        background-image: url(images/primeiro\ fundo.png);
-        background-size: cover;
+        height: 600px;
+        width: 1366px;
+        /*background-image: url(images/primeiro\ fundo.png);
+        background-size: cover;*/
     }
     .signup-wrapper {
         bottom: 0px;
