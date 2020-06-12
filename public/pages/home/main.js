@@ -28,24 +28,22 @@ export const home = () => {
         </div>
       </form>
     </div>
+    `;
 
-    <div class='posted-box'>
-      <div class='published-by'>
-        <div class='by-line'>
-          Publicado por Patrícia Santos
-        </div>
-        <div id='close-posted-box' class='close-box'>X</div>
-      </div>
-      <div class='posted-text'>
-      <p id='all-posts'>Oi, meninas!!<p>
-      </div>  
-      <div class ='all-buttons'>
-        <button id='like-btn' class='btn-style'>Curtir</button>
-        <button id='comment-btn' class='btn-style'>Comentar</button>    
-      </div>
-    </div> 
-    
+  const newPost = document.createElement('div');
+  newPost.innerHTML = `
+  <div class = 'posted-box'>
+    <div class = 'published-by'>
+      <div class = 'by-line'>Publicado por Patrícia Santos </div>
+      <div id = 'close-posted-box' class = 'close-box'> X </div>
+    </div>
+    <div class = 'posted-text' id = 'all-posts'></div>
+    <div class = 'all-buttons'>
+      <button id = 'like-btn' class = 'btn-style'> Curtir </button>
+      <button id = 'comment-btn' class = 'btn-style'> Comentar </button> 
+  </div>
   `;
+  container.appendChild(newPost);
 
   const post = container.querySelector('#post');
   const sendBtn = container.querySelector('#send-btn');
