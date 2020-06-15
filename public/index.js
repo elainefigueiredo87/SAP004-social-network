@@ -1,4 +1,7 @@
-import routes from './routes.js';
+import {
+  routes,
+  routeAllowed,
+} from './routes.js';
 
 const main = document.querySelector('#root');
 
@@ -9,6 +12,11 @@ function validateHash(hash) {
 const renderPage = () => {
   main.innerHTML = '';
   const pages = validateHash(window.location.hash);
+
+  // Check se a usuária está permitida acessar pages
+  if (!routeAllowed(pages)) {
+    return;
+  }
   main.appendChild(routes[pages]);
 };
 
