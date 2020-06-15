@@ -1,4 +1,5 @@
 import { createPost, signOut } from './data.js';
+import { initApp } from '../../components.js';
 
 export const home = () => {
   initApp();
