@@ -1,4 +1,4 @@
-import { createPost, readPosts, signOut } from './data.js';
+import { createPost, signOut } from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
@@ -57,12 +57,19 @@ export const home = () => {
     (array.map(posts => allPosts.appendChild(newPost(posts.text))).join(''));
   };
 
-  readPosts(postTemplate);
+  createPost.readPosts(postTemplate);
 
   sendBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    createPost(post.value);
-    readPosts(postTemplate);
+    const returnPosts = createPost.insertPosts(post.value);
+    returnPosts
+      .then((docRef) => {
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch((error) => {
+        console.error('Error adding document: ', error);
+      });
+    createPost.readPosts(postTemplate);
     document.getElementById('post').value = '';
   });
 

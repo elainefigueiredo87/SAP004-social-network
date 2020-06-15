@@ -1,29 +1,42 @@
-export const createPost = (text) => {
-  // Add a new document with a generated id.
-  firebase.firestore().collection('post').add({
-      text: text,
-      likes: 0,
-    })
-    .then(function (docRef) {
-      console.log('Document written with ID: ', docRef.id);
-    })
-    .catch(function (error) {
-      console.error('Error adding document: ', error);
-    });
-}
+export const createPost = {
+  insertPosts(text) {
+    return firebase
+      .firestore()
+      .collection('post')
+      .add({
+        text,
+        likes: 0,
+      });
+  },
+  readPosts(callback) {
+    return firebase
+      .firestore()
+      .collection('post')
+      .get()
+      .then((querySnapshot) => {
+        const posts = [];
+        querySnapshot.forEach((doc) => {
+          posts.push(doc.data());
+        });
+        callback(posts);
+      });
+  },
+};
 
-export const readPosts = (callback) => {
-  firebase.firestore().collection('post')
+// como estava antes
+/* export const readPosts = (callback) => {
+  firebase
+    .firestore()
+    .collection('post')
     .get()
-    .then(function (querySnapshot) {
-      var posts = [];
-      querySnapshot.forEach(function (doc) {
+    .then((querySnapshot) => {
+      const posts = [];
+      querySnapshot.forEach((doc) => {
         posts.push(doc.data());
       });
-
-      callback(posts)
+      callback(posts);
     });
-}
+}; */
 
 export const signOut = () => {
   if (firebase.auth().currentUser) {
