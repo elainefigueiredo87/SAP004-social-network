@@ -63,12 +63,8 @@ export const home = () => {
     event.preventDefault();
     const returnPosts = createPost.insertPosts(post.value);
     returnPosts
-      .then((docRef) => {
-        console.log('Document written with ID: ', docRef.id);
-      })
-      .catch((error) => {
-        console.error('Error adding document: ', error);
-      });
+      .then(docRef => docRef.id)
+      .catch(error => error);
     createPost.readPosts(postTemplate);
     document.getElementById('post').value = '';
   });

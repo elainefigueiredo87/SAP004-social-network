@@ -40,7 +40,6 @@ export const createPost = {
 
 export const signOut = () => {
   if (firebase.auth().currentUser) {
-    console.log('desconectando user');
     firebase.auth().signOut()
       .then(() => {
         window.location.href = '#login';
