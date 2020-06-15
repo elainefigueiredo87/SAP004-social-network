@@ -73,17 +73,21 @@ export const appStart = () => {
         window.location.href = '#home';
       })
       .catch((error) => {
-        const errorCode = error.code;
-        // const errorMessage = error.message;
+        // const errorCode = error.code;
+        let errorMessage = error.message;
         // const email = error.email;
         // const credential = error.credential;
-        if (errorCode === 'auth/account-exists-with-different-credential') {
-          alert('Você já se inscreveu com um provedor de autenticação diferente para esse email.');
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          errorMessage = 'Você já se inscreveu com um provedor de autenticação diferente para esse email.';
+        } else if (error.code === 'auth/popup-closed-by-user') {
+          errorMessage = ' A janela foi fechada antes de finalizar a operação. Tente novamente.';
+        } else if (error.code === 'auth/cancelled-popup-request') {
+          errorMessage = 'A operação foi cancelada';
         } else {
-          console.error(error);
-          // } else if (error.email === 'auth/) {
-          //  alert
+          errorMessage = (error);
         }
+        const errorElement = menuLogin.querySelector('#message-error');
+        errorElement.innerHTML = errorMessage;
       });
   });
 
