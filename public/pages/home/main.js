@@ -1,4 +1,4 @@
-import { createPost, readPosts, signOut } from './data.js';
+import { createPost, signOut } from './data.js';
 import { initApp } from '../../components.js';
 
 export const home = () => {
@@ -60,12 +60,15 @@ export const home = () => {
     (array.map(posts => allPosts.appendChild(newPost(posts.text))).join(''));
   };
 
-  readPosts(postTemplate);
+  createPost.readPosts(postTemplate);
 
   sendBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    createPost(post.value);
-    readPosts(postTemplate);
+    const returnPosts = createPost.insertPosts(post.value);
+    returnPosts
+      .then(docRef => docRef.id)
+      .catch(error => error);
+    createPost.readPosts(postTemplate);
     document.getElementById('post').value = '';
   });
 
