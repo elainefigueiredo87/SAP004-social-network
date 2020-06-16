@@ -1,4 +1,4 @@
-import { createPost, signOut } from './data.js';
+import { createPost, signOut, deletePost } from './data.js';
 import { initApp } from '../../components.js';
 
 export const home = () => {
@@ -29,19 +29,18 @@ export const home = () => {
           <button id='send-btn' class='btn-style'>Publicar</button>
         </div>
       </form>
-      
     </div>
     <div id='all-posts'></div>
     `;
-  const newPost = (text) => {
+  const newPost = (post) => {
     const postElement = document.createElement('div');
     postElement.innerHTML = `
   <div class = 'posted-box'>
     <div class = 'published-by'>
       <div class = 'by-line'>Publicado por Patrícia Santos </div>
-      <div id = 'close-posted-box' class = 'close-box'> X </div>
+      <button id = 'close-posted-box' class ='close-box' data-id='${post.id}'> X </button>
     </div>
-    <div class = 'posted-text' id = 'all-posts'> ${text} </div>
+    <div class = 'posted-text' id = 'all-posts'> ${post.text} </div>
     <div class = 'all-buttons'>
       <button id = 'like-btn' class = 'btn-style'> Curtir </button>
       <button id = 'comment-btn' class = 'btn-style'> Comentar </button> 
@@ -55,9 +54,18 @@ export const home = () => {
   const allPosts = container.querySelector('#all-posts');
   const btnSignOut = container.querySelector('#btn-sign-out');
 
+
   const postTemplate = (array) => {
     allPosts.innerHTML = '';
-    (array.map(posts => allPosts.appendChild(newPost(posts.text))).join(''));
+    array.forEach(posts => {
+      const postElements = newPost(posts);
+      const btnDelete = postElements.querySelector('.close-box');
+      btnDelete.addEventListener('click', () => {
+        deletePost(posts.id);
+      });
+      console.log(btnDelete);
+      allPosts.appendChild(postElements);
+    });
   };
 
   createPost.readPosts(postTemplate);
