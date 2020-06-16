@@ -38,11 +38,11 @@ export const routeAllowed = (route) => {
       // Mande para a página home
       window.location = '#home';
     }
-  } else if (!publicRoutes.includes(route)) { // User não logada, só rotas públicas são permitidas
-    // Usuária não logada está tentando acessar uma rota privada
-    isAllowed = false;
-    // Peça para fazer login.
-    window.location = '#login';
-  }
+  } // else if (!publicRoutes.includes(route)) { // User não logada, só rotas públicas são permitidas
+  // Usuária não logada está tentando acessar uma rota privada
+  // isAllowed = false;
+  // Peça para fazer login.
+  // window.location = '#login';
+  // }
   return isAllowed;
 };
