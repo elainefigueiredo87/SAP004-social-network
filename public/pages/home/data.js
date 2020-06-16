@@ -16,7 +16,7 @@ export const createPost = {
       .then((querySnapshot) => {
         const posts = [];
         querySnapshot.forEach((doc) => {
-          posts.push(doc.data());
+          posts.push({...doc.data(), id: doc.id });
         });
         callback(posts);
       });
@@ -45,4 +45,14 @@ export const signOut = () => {
         window.location.href = '#login';
       });
   }
+};
+
+export const deletePost = (post) => {
+  firebase.firestore().collection('post').doc(post).delete()
+    .then(() => {
+      console.log('document sucessfully deleted');
+    });
+  //.catch(function (error) {
+  //  console.log('error removing document:', error);
+  //});
 };
