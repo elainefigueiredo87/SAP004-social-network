@@ -74,7 +74,7 @@ export const home = () => {
     postElement.innerHTML = `
   <div class = 'posted-box'>
     <div class = 'published-by'>
-      <div class = 'by-line'>Publicado por Patrícia Santos </div>
+      <div class = 'by-line'>Publicado por ${post.user} </div>
       <button id = 'close-posted-box' class ='close-box' data-id='${post.id}'> X </button>
     </div>
     <div class = 'posted-text' id = 'all-posts'> ${post.text} </div>
