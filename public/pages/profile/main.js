@@ -1,5 +1,3 @@
-// import { initApp } from '../../components.js';
-
 export const profile = () => {
   const containerProfile = document.createElement('div');
 
@@ -7,16 +5,19 @@ export const profile = () => {
 
   containerProfile.innerHTML = `
     <div id='top-menu-profile-wrapper' class='top-menu-profile-wrapper-class'>
-         
+     
+      
       <div id='top-menu-profile-icon' class='top-menu-profile-icon-class' > 
         <a href='javascript:void(0);' class='icon' id='menu-icon-profile'>
           <i class='fa fa-bars'></i>
         </a>
       </div>
-
+      <div class='logo-texto'>
+      <img class='logo-texto-img' src='./images/logotexto.png'>
+      </div>  
       <div id='navigation-wrapper-profile' class='navigation-wrapper-profile-class disable-display'>
         <div class='close-profile-icon-wrapper-class'>
-          <a href='javascript:void(0);' class='icon' id='close-menu-icon-profile' class='close-menu-icon-profile-class'>
+          <a href='javascript:void(0);' class='icon-x' id='close-menu-icon-profile' class='close-menu-icon-profile-class'>
             <i class='fa fa-times'></i>
           </a>
         </div>
@@ -31,7 +32,6 @@ export const profile = () => {
       </div>  
       </div>
     </div>
-
     <div class='profile-box'>
       <div class='profile-img'>
         <img src='https://placekitten.com/100/100'>
@@ -44,7 +44,7 @@ export const profile = () => {
     
     <div class='post-box'>
       <form>
-      <label> Publicações </label>
+    
         <textarea id='post' class='post-text' placeholder='No que você está pensando?' type='text' required></textarea>
         <div class='all-buttons'>
           <button id='send-photo' class='btn-style'>Foto</button>
@@ -52,7 +52,6 @@ export const profile = () => {
         </div>
       </form>
     </div>
-
     <div class='posted-box'>
       <div class='published-by'>
         <div class='by-line'>
@@ -60,7 +59,7 @@ export const profile = () => {
         </div>
         <div id='close-posted-box' class='close-box'>X</div>
       </div>
-      <div class='posted-text'>
+      <div class='posted-text'> CSS é muuuuuito legal! Sempre dá certo! Risos
       <p> <p>
       </div>  
       <div class ='all-buttons'>
@@ -69,8 +68,6 @@ export const profile = () => {
       </div>
     </div>  
   `;
-
-  // initApp();
 
   /* -----------MENU HAMBURGER------------- */
   const navigationWrapperProfile = containerProfile.querySelector('#navigation-wrapper-profile');
