@@ -4,7 +4,6 @@ import {
   createUser,
   createProfile,
 } from './data.js';
-import { initApp } from '../../components.js';
 
 export const register = () => {
   const signUp = document.createElement('div');
@@ -40,8 +39,6 @@ export const register = () => {
       </div>
   </div>
   `;
-
-  initApp();
 
   const btnRegister = signUp.querySelector('#btnRegister');
 

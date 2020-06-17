@@ -57,7 +57,7 @@
     padding: 5px;
     margin: 2px;
     resize: none;
-    background-color: #DBA1BC;
+    background-color: whitesmoke;
     justify-content: center;
     align-items: center;
 }
@@ -90,15 +90,20 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    background-color: #DBA1BC;
+    background-color: #70174073;
 }
 
 .posted-text {
-    background-color: wheat;
+    background-color: whitesmoke;
     padding: 1rem;
 }
 
 .posted-box .all-buttons {
     padding: 1rem;
-    background-color: rgb(255, 255, 194);
+    background-color: white;
+}
+
+.by-line {
+    font-size: 1rem;
+    font-weight: 400;
 }
