@@ -100,6 +100,7 @@ export const home = () => {
       const btnDelete = postElements.querySelector('.close-box');
       btnDelete.addEventListener('click', () => {
         deletePost(posts.id);
+        postElements.innerHTML = '';
       });
       allPosts.appendChild(postElements);
     });
