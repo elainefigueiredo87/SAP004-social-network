@@ -6,6 +6,8 @@ export const createPost = {
       .add({
         text,
         likes: 0,
+        userUid: firebase.auth().currentUser.uid,
+        user: firebase.auth().currentUser.displayName,
       });
   },
   readPosts(callback) {
@@ -23,21 +25,6 @@ export const createPost = {
       });
   },
 };
-
-// como estava antes
-/* export const readPosts = (callback) => {
-  firebase
-    .firestore()
-    .collection('post')
-    .get()
-    .then((querySnapshot) => {
-      const posts = [];
-      querySnapshot.forEach((doc) => {
-        posts.push(doc.data());
-      });
-      callback(posts);
-    });
-}; */
 
 export const signOut = () => {
   if (firebase.auth().currentUser) {
