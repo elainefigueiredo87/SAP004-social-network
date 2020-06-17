@@ -1,4 +1,4 @@
-export const initApp = () => {
+/* export const initApp = () => {
   // Listening for auth state changes.
   // [START authstatelistener]
   firebase.auth().onAuthStateChanged(function (user) {
@@ -36,4 +36,4 @@ export const initApp = () => {
     //  document.getElementById('quickstart-sign-in').disabled = false;
     // [END_EXCLUDE]
   });
-}
+} */

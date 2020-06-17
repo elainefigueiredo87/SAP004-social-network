@@ -1,8 +1,6 @@
 import { createPost, signOut, deletePost } from './data.js';
-import { initApp } from '../../components.js';
 
 export const home = () => {
-  initApp();
   const container = document.createElement('div');
 
   container.className = ('feed-wrapper');
@@ -63,7 +61,6 @@ export const home = () => {
       btnDelete.addEventListener('click', () => {
         deletePost(posts.id);
       });
-      console.log(btnDelete);
       allPosts.appendChild(postElements);
     });
   };

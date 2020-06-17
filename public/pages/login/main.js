@@ -1,5 +1,4 @@
 import { login, signGoogle } from './data.js';
-import { initApp } from '../../components.js';
 
 export const appStart = () => {
   const menuLogin = document.createElement('div');
@@ -31,8 +30,6 @@ export const appStart = () => {
       </div>
     </div>
     `;
-
-  initApp();
 
   const btnLogin = menuLogin.querySelector('#btn-login');
   const loginGoogle = menuLogin.querySelector('#input-google');
