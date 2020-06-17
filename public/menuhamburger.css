@@ -1,4 +1,4 @@
-.top-menu-profile-wrapper-class {
+.top-menu-wrapper {
     display: flex;
     padding: 5px 20px 5px 10px;
     background-color: #701741;
@@ -27,7 +27,7 @@
     font-size: 35px;
 }
 
-.top-menu-profile-class {
+.top-menu {
     background-color: whitesmoke;
     padding: 0px 20px 20px 20px;
     text-decoration: none;
@@ -36,9 +36,9 @@
     flex-wrap: wrap;
 }
 
-.top-menu-profile-icon-class {}
+.top-menu-icon {}
 
-.navigation-wrapper-profile-class {
+.navigation-wrapper {
     z-index: 1000;
     position: absolute;
     top: 10px;
@@ -53,14 +53,14 @@
     visibility: hidden;
 }
 
-.close-profile-icon-wrapper-class {
+.close-icon-wrapper {
     display: flex;
     align-items: center;
     padding: 0px 0px 0px 4px;
     background-color: #DBA1BC;
 }
 
-.top-menu-profile-class li {
+.top-menu li {
     font-size: 25px;
     list-style: none;
     border-bottom: 1px solid black;
@@ -68,10 +68,10 @@
     padding: 0px 10px 0px 10px;
 }
 
-.top-menu-profile-class li:first-child {
+.top-menu li:first-child {
     margin-top: 0px;
 }
 
-.top-menu-profile-class li:last-child {
+.top-menu li:last-child {
     margin-bottom: 0px;
 }

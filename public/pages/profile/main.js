@@ -1,13 +1,14 @@
+import { signOut } from './data.js';
+
 export const profile = () => {
   const containerProfile = document.createElement('div');
 
   containerProfile.className = ('profile-wrapper');
 
   containerProfile.innerHTML = `
-    <div id='top-menu-profile-wrapper' class='top-menu-profile-wrapper-class'>
-     
-      
-      <div id='top-menu-profile-icon' class='top-menu-profile-icon-class' > 
+    <div id='top-menu-profile-wrapper' class='top-menu-wrapper'>
+           
+      <div id='top-menu-profile-icon' class='top-menu-icon' > 
         <a href='javascript:void(0);' class='icon' id='menu-icon-profile'>
           <i class='fa fa-bars'></i>
         </a>
@@ -15,13 +16,13 @@ export const profile = () => {
       <div class='logo-texto'>
       <img class='logo-texto-img' src='./images/logotexto.png'>
       </div>  
-      <div id='navigation-wrapper-profile' class='navigation-wrapper-profile-class disable-display'>
-        <div class='close-profile-icon-wrapper-class'>
-          <a href='javascript:void(0);' class='icon-x' id='close-menu-icon-profile' class='close-menu-icon-profile-class'>
+      <div id='navigation-wrapper-profile' class='navigation-wrapper disable-display'>
+        <div class='close-icon-wrapper'>
+          <a href='javascript:void(0);' class='icon-x' id='close-menu-icon-profile' class='close-menu-icon'>
             <i class='fa fa-times'></i>
           </a>
         </div>
-        <nav class='top-menu-profile-class'> 
+        <nav class='top-menu'> 
           <li>
             <div id='btn-home' class='menu-hamburger-btn-style'>Home</div>
           </li>
@@ -32,6 +33,7 @@ export const profile = () => {
       </div>  
       </div>
     </div>
+
     <div class='profile-box'>
       <div class='profile-img'>
         <img src='https://placekitten.com/100/100'>
@@ -69,6 +71,7 @@ export const profile = () => {
     </div>  
   `;
 
+
   /* -----------MENU HAMBURGER------------- */
   const navigationWrapperProfile = containerProfile.querySelector('#navigation-wrapper-profile');
   const profileHamburgerIcon = containerProfile.querySelector('#top-menu-profile-icon');
@@ -85,9 +88,11 @@ export const profile = () => {
   const btnSignOut = containerProfile.querySelector('#sign-out');
   const btnHome = containerProfile.querySelector('#btn-home');
 
-  btnSignOut.addEventListener('click', () => {
-    // container.innerHTML = templateProfile;
+  btnSignOut.addEventListener('click', (event) => {
+    event.preventDefault();
+    signOut();
   });
+
   btnHome.addEventListener('click', () => {
     window.location.href = '#home';
   });
