@@ -28,12 +28,14 @@
     border-radius: 50%;
 }
 
-.user-informations {
+.user-informations {}
+
+.name-information {
     font-size: 1.3rem;
     line-height: 1.5rem;
 }
 
-.user-informations .user-role {
+.user-role {
     font-size: .7em;
 }
 
