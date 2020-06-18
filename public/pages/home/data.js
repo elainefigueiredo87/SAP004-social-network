@@ -1,3 +1,19 @@
+export const loggedUser = (profile) => {
+  firebase
+    .auth()
+    .onAuthStateChanged(() => {
+      profile(firebase.auth().currentUser.displayName,
+        firebase.auth().currentUser.photoURL);
+    });
+};
+
+/* function convertTime(date) {
+  // let d = new Date(1556322834000);
+  // let d = new Date(`${time.value}`);
+  return date.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+  //  console.log(moment.tz(1556322834000, "America/Sao_Paulo").format());
+} */
+
 export const createPost = {
   insertPosts(text) {
     return firebase
@@ -8,6 +24,7 @@ export const createPost = {
         likes: 0,
         userUid: firebase.auth().currentUser.uid,
         user: firebase.auth().currentUser.displayName,
+        time: firebase.firestore.FieldValue.serverTimestamp(),
       });
   },
   readPosts(callback) {
@@ -40,7 +57,7 @@ export const deletePost = (post) => {
     .then(() => {
       console.log('document sucessfully deleted');
     });
-  //.catch(function (error) {
+  // .catch(function (error) {
   //  console.log('error removing document:', error);
-  //});
+  // });
 };

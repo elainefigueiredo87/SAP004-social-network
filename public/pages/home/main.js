@@ -1,4 +1,9 @@
-import { createPost, signOut, deletePost } from './data.js';
+import {
+  loggedUser,
+  createPost,
+  signOut,
+  deletePost,
+} from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
@@ -34,12 +39,11 @@ export const home = () => {
       </div>
     </div>
 
-    <div class='profile-box'>
+    <div id='profile-box' class='profile-box'>
       <div class='profile-img'>
         <img src='https://placekitten.com/100/100'>
       </div>  
-      <div id='user-informations' class='user-informations'> 
-
+      <div id='user-informations' class='user-informations'>
         <div class='user-role'>Estudante</div>
       </div>
     </div>
@@ -74,7 +78,7 @@ export const home = () => {
     postElement.innerHTML = `
   <div class = 'posted-box'>
     <div class = 'published-by'>
-      <div class = 'by-line'>Publicado por ${post.user} </div>
+      <div class = 'by-line'>Publicado por ${post.user} ${post.time} </div>
       <button id = 'close-posted-box' class ='close-box' data-id='${post.id}'> X </button>
     </div>
     <div class = 'posted-text' id = 'all-posts'> ${post.text} </div>
@@ -92,10 +96,15 @@ export const home = () => {
   const btnSignOut = container.querySelector('#sign-out');
   const btnProfile = container.querySelector('#btn-profile');
 
+  function profile(name) {
+    container.querySelector('#user-informations').innerHTML = `Olá, ${name}!`;
+  }
+
+  loggedUser(profile);
 
   const postTemplate = (array) => {
     allPosts.innerHTML = '';
-    array.forEach(posts => {
+    array.forEach((posts) => {
       const postElements = newPost(posts);
       const btnDelete = postElements.querySelector('.close-box');
       btnDelete.addEventListener('click', () => {
