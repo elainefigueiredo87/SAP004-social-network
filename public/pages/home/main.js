@@ -109,9 +109,10 @@ export const home = () => {
     event.preventDefault();
     const returnPosts = createPost.insertPosts(post.value);
     returnPosts
-      .then(docRef => docRef.id)
-      .catch(error => error);
-    createPost.readPosts(postTemplate);
+      .then(() => {
+        createPost.readPosts(postTemplate);
+      }).catch(error => error);
+
     document.getElementById('post').value = '';
   });
 
