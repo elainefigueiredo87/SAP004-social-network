@@ -1,4 +1,7 @@
-import { signOut } from './data.js';
+import {
+  loggedUser,
+  signOut,
+} from './data.js';
 
 export const profile = () => {
   const containerProfile = document.createElement('div');
@@ -39,9 +42,9 @@ export const profile = () => {
         <img src='https://placekitten.com/100/100'>
       </div> 
       <div>
-        Ana Maria Silva
-        <div class='user-role'>Estudante</div>
-     </div>
+        <div id = 'name-user'></div>
+        <div id = 'user-role' class='user-role'>Estudante</div>
+      </div>
     </div>
     
     <div class='post-box'>
@@ -71,6 +74,24 @@ export const profile = () => {
     </div>  
   `;
 
+  const btnSignOut = containerProfile.querySelector('#sign-out');
+  const btnHome = containerProfile.querySelector('#btn-home');
+
+
+  function profileInformation(name) {
+    containerProfile.querySelector('#name-user').innerHTML = `${name}`;
+  }
+
+  loggedUser(profileInformation);
+
+  btnSignOut.addEventListener('click', (event) => {
+    event.preventDefault();
+    signOut();
+  });
+
+  btnHome.addEventListener('click', () => {
+    window.location.href = '#home';
+  });
 
   /* -----------MENU HAMBURGER------------- */
   const navigationWrapperProfile = containerProfile.querySelector('#navigation-wrapper-profile');
@@ -83,18 +104,7 @@ export const profile = () => {
 
   containerProfile.querySelector('#menu-icon-profile').addEventListener('click', toggleMenu);
   containerProfile.querySelector('#close-menu-icon-profile').addEventListener('click', toggleMenu);
-  /* -------------FIM MENU HAMBUERGER----------- */
+  /* -------------FIM MENU HAMBURGER----------- */
 
-  const btnSignOut = containerProfile.querySelector('#sign-out');
-  const btnHome = containerProfile.querySelector('#btn-home');
-
-  btnSignOut.addEventListener('click', (event) => {
-    event.preventDefault();
-    signOut();
-  });
-
-  btnHome.addEventListener('click', () => {
-    window.location.href = '#home';
-  });
   return containerProfile;
 };

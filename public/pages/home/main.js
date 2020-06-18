@@ -43,9 +43,10 @@ export const home = () => {
       <div class='profile-img'>
         <img src='https://placekitten.com/100/100'>
       </div>  
-      <div id='user-informations' class='user-informations'>
-        <div class='user-role'>Estudante</div>
-      </div>
+      <div class= 'user-informations'>
+        <div id='name-information' class='name-information'></div>
+        <div id='user-role' class='user-role'>Estudante</div>
+      </div>  
     </div>
 
     <div class='post-box'>
@@ -60,25 +61,12 @@ export const home = () => {
     <div id='all-posts'></div>
     `;
 
-  /* -----------MENU HAMBURGER------------- */
-  const navigationWrapperHome = container.querySelector('#navigation-wrapper-home');
-  const homeHamburgerIcon = container.querySelector('#top-menu-home-icon');
-
-  function toggleMenu() {
-    navigationWrapperHome.classList.toggle('disable-display');
-    homeHamburgerIcon.classList.toggle('hide-visibility');
-  }
-
-  container.querySelector('#menu-icon-home').addEventListener('click', toggleMenu);
-  container.querySelector('#close-menu-icon-home').addEventListener('click', toggleMenu);
-  /* -------------FIM MENU HAMBUERGER----------- */
-
   const newPost = (post) => {
     const postElement = document.createElement('div');
     postElement.innerHTML = `
   <div class = 'posted-box'>
     <div class = 'published-by'>
-      <div class = 'by-line'>Publicado por ${post.user} ${post.time} </div>
+      <div class = 'by-line'>Publicado por ${post.user} em ${post.time} </div>
       <button id = 'close-posted-box' class ='close-box' data-id='${post.id}'> X </button>
     </div>
     <div class = 'posted-text' id = 'all-posts'> ${post.text} </div>
@@ -97,7 +85,7 @@ export const home = () => {
   const btnProfile = container.querySelector('#btn-profile');
 
   function profile(name) {
-    container.querySelector('#user-informations').innerHTML = `Olá, ${name}!`;
+    container.querySelector('#name-information').innerHTML = `Olá, ${name}!`;
   }
 
   loggedUser(profile);
@@ -136,9 +124,21 @@ export const home = () => {
     window.location.href = '#profile';
   });
 
+  /* -----------MENU HAMBURGER------------- */
+  const navigationWrapperHome = container.querySelector('#navigation-wrapper-home');
+  const homeHamburgerIcon = container.querySelector('#top-menu-home-icon');
+
+  function toggleMenu() {
+    navigationWrapperHome.classList.toggle('disable-display');
+    homeHamburgerIcon.classList.toggle('hide-visibility');
+  }
+
+  container.querySelector('#menu-icon-home').addEventListener('click', toggleMenu);
+  container.querySelector('#close-menu-icon-home').addEventListener('click', toggleMenu);
+  /* -------------FIM MENU HAMBURGER----------- */
+
   return container;
 };
-
 
 /* <div>
       <button id='btn-sign-out' class='btn-style'>Sair</button>
