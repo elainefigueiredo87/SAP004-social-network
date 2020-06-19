@@ -15,6 +15,7 @@ export const createPost = {
       .add({
         text,
         likes: 0,
+        comments: [],
         userUid: firebase.auth().currentUser.uid,
         user: firebase.auth().currentUser.displayName,
         time: firebase.firestore.FieldValue.serverTimestamp(),
@@ -29,7 +30,7 @@ export const createPost = {
       .then((querySnapshot) => {
         const posts = [];
         querySnapshot.forEach((doc) => {
-          // console.log(doc.data());
+          console.log(doc.data());
           posts.push({...doc.data(), id: doc.id });
         });
         callback(posts);
@@ -37,33 +38,33 @@ export const createPost = {
   },
 };
 
-/* início da inclusão de collection p/likes, falta chamar no main.js
+//início da inclusão de collection p/likes, falta chamar no main.js
 
-export const likeCollection = {
-  insertLike(user) {
+export const CommentsCollection = {
+  insertComment(user) {
     return firebase
       .firestore()
-      .collection('likes')
+      .collection('comments')
       .add({
         userUid: firebase.auth().currentUser.uid,
         user: firebase.auth().currentUser.displayName,
       });
   },
-  readLike(callback) {
+  /* readComments(callback) {
     return firebase
       .firestore()
-      .collection('likes')
+      .collection('comments')
       .get()
       .then((querySnapshot) => {
-        const likes = [];
+        const allComments = [];
         querySnapshot.forEach((doc) => {
           // console.log(doc.data());
-          likes.push({...doc.data(), id: doc.id });
+          allComments.push({...doc.data(), id: doc.id });
         });
-        callback(likes);
+        callback(allComments);
       });
-  },
-}; */
+  }, */
+};
 
 export const signOut = () => {
   if (firebase.auth().currentUser) {
