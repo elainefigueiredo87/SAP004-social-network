@@ -12,7 +12,6 @@ export const createPost = {
     return firebase
       .firestore()
       .collection('post')
-      // .orderBy(, 'desc')  estudar como ordenar
       .add({
         text,
         likes: 0,
@@ -25,6 +24,7 @@ export const createPost = {
     return firebase
       .firestore()
       .collection('post')
+      .orderBy('time', 'desc')
       .get()
       .then((querySnapshot) => {
         const posts = [];
