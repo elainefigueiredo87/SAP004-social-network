@@ -91,12 +91,26 @@ export const home = () => {
           <a id='like-btn' class='like-btn' >
           <i class="fa fa-heart"></i> </a>
         </div>
-        <button id = 'comment-btn' class = 'btn-style'> Comentar </button> 
+        <button id = 'comment-btn' class = 'btn-style btn-comment'> Comentar </button> 
       </div>
       </div>
+      <div class='space-comment'></div>
   </div>
   `;
     return postElement;
+  };
+
+  const newComment = (comment) => {
+    const templateComment = document.createElement('div');
+    templateComment.innerHTML = `
+    <div>
+      <textarea id='space-comment' class='space-comment' type='text' required>space comment</textarea>
+      <button class='btn-save'>Salvar</button>
+      <button>Editar</button>
+      <button>Excluir</button>
+    </div>
+    `;
+    return templateComment;
   };
 
   const post = container.querySelector('#post');
@@ -104,6 +118,8 @@ export const home = () => {
   const allPosts = container.querySelector('#all-posts');
   const btnSignOut = container.querySelector('#sign-out');
   const btnProfile = container.querySelector('#btn-profile');
+  const btnSaveComment = container.querySelector('.btn-save');
+  console.log(btnSaveComment);
 
   function profile(name) {
     container.querySelector('#name-information').innerHTML = `Olá, ${name}!`;
@@ -121,8 +137,16 @@ export const home = () => {
         postElements.innerHTML = '';
       });
       const btnLike = postElements.querySelector('.like-btn');
-      btnLike.addEventListener('click', () => {
+      btnLike.addEventListener('click', (event) => {
+        event.preventDefault();
         updateLike(posts.id);
+      });
+      const btnComment = postElements.querySelector('.btn-comment');
+      btnComment.addEventListener('click', (event) => {
+        event.preventDefault();
+        const spaceComment = postElements.querySelector('.space-comment');
+        const commentElements = newComment();
+        spaceComment.appendChild(commentElements);
       });
       allPosts.appendChild(postElements);
     });
@@ -140,6 +164,19 @@ export const home = () => {
 
     document.getElementById('post').value = '';
   });
+
+
+
+  /*  const createComment = (array) => {
+      spaceComment.innerHTML = '';
+      array.forEach((comment) => {
+        const commentElements = newComment(comment);
+        btn 
+        // const btnCommentDelete = postElements.querySelector('.close-box.');
+        //  btnCommentDelete.addEventListener('click', () => {
+        // deletePost(posts.id);
+        // postElements.innerHTML = '';
+      }); */
 
   btnSignOut.addEventListener('click', (event) => {
     event.preventDefault();
