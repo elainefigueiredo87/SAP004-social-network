@@ -1,8 +1,10 @@
 import {
   loggedUser,
   createPost,
+  // likeCollection,
   signOut,
   deletePost,
+  updateLike,
 } from './data.js';
 
 export const home = () => {
@@ -83,7 +85,8 @@ export const home = () => {
     </div>
     <div class = 'posted-text' id = 'all-posts'> ${post.text} </div>
     <div class = 'all-buttons'>
-      <button id = 'like-btn' class = 'btn-style'> Curtir </button>
+      <button id = 'like-btn' class = 'btn-style like-btn'> Curtir </button>
+      <div>${post.likes}</div>
       <button id = 'comment-btn' class = 'btn-style'> Comentar </button> 
   </div>
   `;
@@ -110,6 +113,10 @@ export const home = () => {
       btnDelete.addEventListener('click', () => {
         deletePost(posts.id);
         postElements.innerHTML = '';
+      });
+      const btnLike = postElements.querySelector('.like-btn');
+      btnLike.addEventListener('click', () => {
+        updateLike(posts.id);
       });
       allPosts.appendChild(postElements);
     });

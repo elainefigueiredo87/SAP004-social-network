@@ -29,13 +29,41 @@ export const createPost = {
       .then((querySnapshot) => {
         const posts = [];
         querySnapshot.forEach((doc) => {
-          console.log(doc.data());
+          // console.log(doc.data());
           posts.push({...doc.data(), id: doc.id });
         });
         callback(posts);
       });
   },
 };
+
+/* início da inclusão de collection p/likes, falta chamar no main.js
+
+export const likeCollection = {
+  insertLike(user) {
+    return firebase
+      .firestore()
+      .collection('likes')
+      .add({
+        userUid: firebase.auth().currentUser.uid,
+        user: firebase.auth().currentUser.displayName,
+      });
+  },
+  readLike(callback) {
+    return firebase
+      .firestore()
+      .collection('likes')
+      .get()
+      .then((querySnapshot) => {
+        const likes = [];
+        querySnapshot.forEach((doc) => {
+          // console.log(doc.data());
+          likes.push({...doc.data(), id: doc.id });
+        });
+        callback(likes);
+      });
+  },
+}; */
 
 export const signOut = () => {
   if (firebase.auth().currentUser) {
@@ -54,4 +82,13 @@ export const deletePost = (post) => {
   // .catch(function (error) {
   //  console.log('error removing document:', error);
   // });
+};
+
+export const updateLike = (post) => {
+  const db = firebase.firestore();
+  const increment = firebase.firestore.FieldValue.increment(1);
+  const storyRef = db.collection('post').doc(post);
+  storyRef.update({
+    likes: increment,
+  });
 };
