@@ -84,10 +84,16 @@ export const home = () => {
       <button id = 'close-posted-box' class ='close-box' data-id='${post.id}'> X </button>
     </div>
     <div class = 'posted-text' id = 'all-posts'> ${post.text} </div>
-    <div class = 'all-buttons'>
-      <button id = 'like-btn' class = 'btn-style like-btn'> Curtir </button>
-      <div>${post.likes}</div>
-      <button id = 'comment-btn' class = 'btn-style'> Comentar </button> 
+    <div class = 'interaction-space'>
+      <div class= 'btn-space'>
+        <div class= 'like-space'>
+          <div class= 'like-number'>${post.likes}</div>
+          <a id='like-btn' class='like-btn' >
+          <i class="fa fa-heart"></i> </a>
+        </div>
+        <button id = 'comment-btn' class = 'btn-style'> Comentar </button> 
+      </div>
+      </div>
   </div>
   `;
     return postElement;
@@ -160,6 +166,16 @@ export const home = () => {
   return container;
 };
 
-/* <div>
+/* button para versão web.
+ <div>
       <button id='btn-sign-out' class='btn-style'>Sair</button>
       </div> */
+
+// class='btn-style like-btn' botao like
+
+/* ícone curtir com <button>
+ <div class= 'like-space'>
+          <div class= 'like-number'>${post.likes}</div>
+          <button id='like-btn' class='like-btn' >
+          <i class="fa fa-heart"></i> </button>
+        </div> */
