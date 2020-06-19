@@ -7,18 +7,12 @@ export const loggedUser = (profile) => {
     });
 };
 
-/* function convertTime(date) {
-  // let d = new Date(1556322834000);
-  // let d = new Date(`${time.value}`);
-  return date.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-  //  console.log(moment.tz(1556322834000, "America/Sao_Paulo").format());
-} */
-
 export const createPost = {
   insertPosts(text) {
     return firebase
       .firestore()
       .collection('post')
+      // .orderBy(, 'desc')  estudar como ordenar
       .add({
         text,
         likes: 0,
@@ -35,7 +29,7 @@ export const createPost = {
       .then((querySnapshot) => {
         const posts = [];
         querySnapshot.forEach((doc) => {
-          console.log(doc.id);
+          console.log(doc.data());
           posts.push({...doc.data(), id: doc.id });
         });
         callback(posts);

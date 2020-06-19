@@ -61,12 +61,24 @@ export const home = () => {
     <div id='all-posts'></div>
     `;
 
+  /* const genereteReadableDate = (seconds) => {
+    const postDate = new Date(seconds * 1000);
+    const dateString = postDate.toLocaleString('pt-BR', {
+      dateStyle: 'long',
+      timeStyle: 'short',
+    });
+
+    return dateString;
+  }; */
+
   const newPost = (post) => {
     const postElement = document.createElement('div');
+    // const postDate = genereteReadableDate(post.time.seconds);
+    const date = new Date(post.time.seconds * 1000);
     postElement.innerHTML = `
   <div class = 'posted-box'>
     <div class = 'published-by'>
-      <div class = 'by-line'>Publicado por ${post.user} em ${post.time} </div>
+      <div class = 'by-line'>Publicado por ${post.user} em ${date.toLocaleString('pt-BR')} </div>
       <button id = 'close-posted-box' class ='close-box' data-id='${post.id}'> X </button>
     </div>
     <div class = 'posted-text' id = 'all-posts'> ${post.text} </div>
