@@ -88,10 +88,20 @@ export const home = () => {
         <div class='posted-box'>
           <div class='published-by'>
             ${privacySymbol}
-            <div class='by-line'>Publicado por ${post.user} em ${date.toLocaleString('pt-BR')} </div>
+            <div class='by-line'>&nbsp${post.user} em ${date.toLocaleString('pt-BR')} </div>
             <button id='close-posted-box' class='close-box' data-id='${post.id}'> <i class="fa fa-times"></i> </button>
           </div>
           <div class='posted-text' id='all-posts'> ${post.text} </div>
+          <div class='privacy-wrapper' id='privacy-options'>
+            <div class='public-option'>
+              <i class='fa fa-lock icon-style' ></i>
+              <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
+            </div>
+            <div class='private-option'>
+              <i class='fa fa-globe icon-style'></i>
+              <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
+            </div>
+          </div>
           <div class='interaction-space'>
             <div class='btn-space'>
               <div class='like-space'>
@@ -138,7 +148,7 @@ export const home = () => {
   const btnProfile = container.querySelector('#btn-profile');
 
   function profile(name) {
-    container.querySelector('#name-information').innerHTML = `Olá, ${name}!`;
+    container.querySelector('#name-information').innerHTML = `${name}`;
   }
 
   loggedUser(profile);
