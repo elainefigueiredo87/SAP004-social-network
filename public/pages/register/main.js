@@ -16,6 +16,9 @@ export const register = () => {
   </div>
   <div class='sign-box'> 
     <div>
+      <input id='your-photo' type='file'></input>
+    </div>
+    <div>
       <input class='sign-login' type= "text" name= "name" id= "first-name" placeholder= "Nome" required></input>
     </div>
     <div>
@@ -47,10 +50,11 @@ export const register = () => {
     const password = signUp.querySelector('#password').value;
     const firstName = signUp.querySelector('#first-name').value;
     const lastName = signUp.querySelector('#last-name').value;
+    const yourPhoto = signUp.querySelector('#your-photo').value;
     const registerAuth = createAccount.signRegister(email, password);
     registerAuth
       .then(() => {
-        createUser(email, firstName, lastName);
+        createUser(email, firstName, lastName, yourPhoto);
       })
       .then(() => {
         createProfile(firstName, lastName);
