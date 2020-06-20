@@ -8,7 +8,7 @@ export const loggedUser = (profile) => {
 };
 
 export const createPost = {
-  insertPosts(text) {
+  insertPosts(text, isPublic) {
     return firebase
       .firestore()
       .collection('post')
@@ -19,6 +19,7 @@ export const createPost = {
         userUid: firebase.auth().currentUser.uid,
         user: firebase.auth().currentUser.displayName,
         time: firebase.firestore.FieldValue.serverTimestamp(),
+        public: isPublic,
       });
   },
   readPosts(callback) {
@@ -38,7 +39,7 @@ export const createPost = {
   },
 };
 
-//início da inclusão de collection p/likes, falta chamar no main.js
+// início da inclusão de collection p/likes, falta chamar no main.js
 
 export const CommentsCollection = {
   insertComment(user) {
