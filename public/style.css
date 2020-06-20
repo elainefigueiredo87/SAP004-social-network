@@ -139,3 +139,38 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     align-self: center;
 }
+
+.space-comment {
+    resize: none;
+}
+
+.close-box {
+    background-color: transparent;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.icon-comment-style {
+    background-color: transparent;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.privacy-wrapper {
+    display: flex;
+}
+
+.privacy-wrapper>* {
+    padding: 10px;
+}
+
+.all-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-style {
+    background-color: transparent;
+    font-size: 100px;
+    cursor: pointer;
+}
