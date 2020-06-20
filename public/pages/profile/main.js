@@ -1,5 +1,6 @@
 import {
   loggedUser,
+  // updatePhoto,
   signOut,
 } from './data.js';
 
@@ -38,8 +39,9 @@ export const profile = () => {
     </div>
 
     <div class='profile-box'>
-      <div class='profile-img'>
+      <div id = 'profile-photo' class='profile-img'>
         <img src='https://placekitten.com/100/100'>
+        <button id='edit-photo' class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
       </div> 
       <div>
         <div id = 'name-user'></div>
@@ -74,9 +76,15 @@ export const profile = () => {
     </div>  
   `;
 
+  const profilePhoto = containerProfile.querySelector('#profile-photo');
+  const editPhoto = containerProfile.querySelector('#edit-photo');
   const btnSignOut = containerProfile.querySelector('#sign-out');
   const btnHome = containerProfile.querySelector('#btn-home');
 
+  /* editPhoto.addEventListener('click', () => {
+    console.log(updatePhoto());
+    profilePhoto.innerHTML = updatePhoto();
+  }); */
 
   function profileInformation(name) {
     containerProfile.querySelector('#name-user').innerHTML = `${name}`;

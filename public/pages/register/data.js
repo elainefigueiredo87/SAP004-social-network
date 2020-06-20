@@ -6,20 +6,21 @@ export const createAccount = {
   },
 };
 
-export const createUser = (email, firstName, lastName) => {
+export const createUser = (email, firstName, lastName, user) => {
   firebase.firestore().collection('users').add({
     firstName,
     lastName,
     email,
     userUid: firebase.auth().currentUser.uid,
+    photoUrl: user.photoURL,
   });
 };
 
-export const createProfile = (firstName, lastName) => {
+export const createProfile = (firstName, lastName, photoUrl) => {
   firebase
     .auth()
-    .currentUser.updateProfile({ displayName: `${firstName} ${lastName}` });
-}
+    .currentUser.updateProfile({ displayName: `${firstName} ${lastName}`, photoUrl: `${photoUrl}` });
+};
 
 export const sendEmailVerification = () => {
   firebase.auth().currentUser.sendEmailVerification().then(() => {
