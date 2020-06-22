@@ -21,7 +21,7 @@ export const appStart = () => {
       <div class='btn-box'>
         <button class='btn-login' type='submit' name='btn-login' id='btn-login'>Entrar</button>
       </div>
-      <div class='sign-google'>Ou entre com...</div>
+      <div class='sign-google'>Ou entre com:</div>
       <div class='icon-google'>
         <input type=image src='./images/logo-google.png' id='input-google'></input>
       </div>
