@@ -42,36 +42,6 @@ export const createPost = {
   },
 };
 
-// início da inclusão de collection p/comentários, falta chamar no main.js
-
-export const commentsCollection = {
-  insertComment(txtComment) {
-    return firebase
-      .firestore()
-      .collection('comments')
-      .add({
-        text: txtComment,
-        userUid: firebase.auth().currentUser.uid,
-        user: firebase.auth().currentUser.displayName,
-        time: firebase.firestore.FieldValue.serverTimestamp(),
-      });
-  },
-  readComments() {
-    return firebase
-      .firestore()
-      .collection('comments')
-      .get()
-      .then((querySnapshot) => {
-        const comments = [];
-        querySnapshot.forEach((doc) => {
-          console.log(doc.data());
-          comments.push({...doc.data(), id: doc.id });
-        });
-        // callback(comments);
-      });
-  },
-};
-
 export const signOut = () => {
   if (firebase.auth().currentUser) {
     firebase.auth().signOut()
@@ -98,4 +68,8 @@ export const updateLike = (post) => {
   storyRef.update({
     likes: increment,
   });
+};
+
+export const updateComments = (id, subComment) => {
+  firebase.firestore().collection('post').doc(id).update({ comments: firebase.firestore.FieldValue.arrayUnion(subComment) });
 };
