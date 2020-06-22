@@ -8,11 +8,11 @@ import {
 } from './data.js';
 
 export const home = () => {
-  const container = document.createElement('div');
+    const container = document.createElement('div');
 
-  container.className = ('feed-wrapper');
+    container.className = ('feed-wrapper');
 
-  container.innerHTML = `
+    container.innerHTML = `
   <div id='top-menu-home-wrapper' class='top-menu-wrapper'>
       <div id='top-menu-home-icon' class='top-menu-icon' >
         <a href='javascript:void(0);' id='menu-icon-home' class='icon' >
@@ -39,52 +39,59 @@ export const home = () => {
       </div>
       </div>
     </div>
-    <div id='profile-box' class='profile-box'>
-      <div class='profile-img'>
-        <img src='https://placekitten.com/100/100'>
-      </div>
-      <div class= 'user-informations'>
-        <div id='name-information' class='name-information'></div>
-        <div id='user-role' class='user-role'>Estudante</div>
-      </div>
-    </div>
-    <div class='post-box'>
-      <form id='post-send-form'>
-        <textarea id='post' class='post-text' placeholder='Compartilhe aqui o seu conhecimento' type='text' required></textarea>
-        <div class='all-buttons'>
-          <div class='privacy-wrapper' id='privacy-options'>
-            <div class='public-option'>
-              <i class='fa fa-lock icon-style' ></i>
-              <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
-            </div>
-            <div class='private-option'>
-              <i class='fa fa-globe icon-style'></i>
-              <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
-            </div>
-          </div>
-          <button id='send-btn' class='btn-style'>Publicar</button>
+    <div class='caixona'>
+    <div class='left-side'>
+      <div id='profile-box' class='profile-box'>
+        <div class='profile-img'>
+          <img src='https://placekitten.com/100/100'>
         </div>
-      </form>
+        <div class= 'user-informations'>
+          <div id='name-information' class='name-information'></div>
+          <div id='user-role' class='user-role'>Estudante</div>
+        </div>
+     </div>
     </div>
-    <div id='all-posts'></div>
+    <div class='right-side'>
+      <div class='post-box'>
+        <form id='post-send-form'>
+          <textarea id='post' class='post-text' placeholder='Compartilhe aqui o seu conhecimento' type='text' required></textarea>
+          <div class='all-buttons'>
+            <div class='privacy-wrapper' id='privacy-options'>
+              <div class='public-option'>
+                <i class='fa fa-lock icon-style' ></i>
+                <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
+              </div>
+              <div class='private-option'>
+                <i class='fa fa-globe icon-style'></i>
+                <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
+              </div>
+            </div>
+            <button id='send-btn' class='btn-style'>Publicar</button>
+          </div>
+        </form>
+      </div>
+      <div id='all-posts'></div>
+      </div>
+    </div>
+    </div>
     `;
 
-  const newPost = (post) => {
-    const postElement = document.createElement('div');
+    const newPost = (post) => {
+        const postElement = document.createElement('div');
 
-    const date = new Date(post.time.seconds * 1000);
+        const date = new Date(post.time.seconds * 1000);
 
-    // imprimir simbolo no post
-    let privacySymbol = '';
-    if (typeof post.public !== 'undefined') {
-      if (post.public) {
-        privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
-      } else {
-        privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
-      }
-    }
+        // imprimir simbolo no post
+        let privacySymbol = '';
+        if (typeof post.public !== 'undefined') {
+          if (post.public) {
+            privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
+          } else {
+            privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
+          }
+        }
 
-    postElement.innerHTML = `
+        postElement.innerHTML = `
         <div class='posted-box'>
           <div class='published-by'>
             ${privacySymbol}
@@ -112,6 +119,7 @@ export const home = () => {
               <button id='comment-btn' class='btn-style btn-comment'> Comentar </button>
             </div>
           </div>
+          <div>${post.comments.map(comment => `<p>${comment}</p>`).join('')}</div>
           <div class='space-comment'></div>
         </div>
   `;
