@@ -1,9 +1,12 @@
 export const loggedUser = (profile) => {
   firebase
     .auth()
-    .onAuthStateChanged(() => {
-      profile(firebase.auth().currentUser.displayName,
-        firebase.auth().currentUser.photoURL);
+    .onAuthStateChanged((user) => {
+      if (!user) {
+        return;
+      }
+      profile(user.displayName,
+        user.photoURL);
     });
 };
 
