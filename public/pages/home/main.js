@@ -1,19 +1,19 @@
 import {
   loggedUser,
   createPost,
-  commentsCollection,
   signOut,
   deletePost,
   updateLike,
+  updateComments,
 } from './data.js';
 
 export const home = () => {
-  const container = document.createElement('div');
+    const container = document.createElement('div');
 
-  container.className = ('feed-wrapper');
+    container.className = ('feed-wrapper');
 
-  container.innerHTML = `
-  <div id='top-menu-home-wrapper' class='top-menu-wrapper'>
+    container.innerHTML = `
+    <div id='top-menu-home-wrapper' class='top-menu-wrapper'>
       <div id='top-menu-home-icon' class='top-menu-icon' >
         <a href='javascript:void(0);' id='menu-icon-home' class='icon' >
           <i class='fa fa-bars'></i>
@@ -69,22 +69,22 @@ export const home = () => {
     <div id='all-posts'></div>
     `;
 
-  const newPost = (post) => {
-    const postElement = document.createElement('div');
+    const newPost = (post) => {
+        const postElement = document.createElement('div');
 
-    const date = new Date(post.time.seconds * 1000);
+        const date = new Date(post.time.seconds * 1000);
 
-    // imprimir simbolo no post
-    let privacySymbol = '';
-    if (typeof post.public !== 'undefined') {
-      if (post.public) {
-        privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
-      } else {
-        privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
-      }
-    }
+        // imprimir simbolo no post
+        let privacySymbol = '';
+        if (typeof post.public !== 'undefined') {
+          if (post.public) {
+            privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
+          } else {
+            privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
+          }
+        }
 
-    postElement.innerHTML = `
+        postElement.innerHTML = `
         <div class='posted-box'>
           <div class='published-by'>
             ${privacySymbol}
@@ -112,13 +112,14 @@ export const home = () => {
               <button id='comment-btn' class='btn-style btn-comment'> Comentar </button>
             </div>
           </div>
+          <div>${post.comments.map(comment => `<p>${comment}</p>`).join('')}</div>
           <div class='space-comment'></div>
         </div>
   `;
     return postElement;
   };
 
-  const newComment = () => {
+  const newComment = (id) => {
     const templateComment = document.createElement('div');
     templateComment.innerHTML = `
     <div class='space-wrapper'>
@@ -135,15 +136,8 @@ export const home = () => {
 
     btnSaveComment.addEventListener('click', () => {
       const subComment = templateComment.querySelector('.space-comment').value;
-      const commentContent = commentsCollection.insertComment(subComment)
-        .then((text) => {
-          commentsCollection.readComments(text);
-          console.log('olá, comente aqui2');
-        })
-        .catch(error => error);
-
-      document.querySelector('.comment-posted').innerHTML = commentContent;
-      console.log('olá, comente aqui');
+      updateComments(id, subComment);
+      // firebase.firestore().collection('post').doc(id).update({ comments: firebase.firestore.FieldValue.arrayUnion(subComment) });
     });
 
     return templateComment;
@@ -200,12 +194,13 @@ export const home = () => {
       btnLike.addEventListener('click', (event) => {
         event.preventDefault();
         updateLike(posts.id);
+        // createPost.readPosts(postTemplate);
       });
       const btnComment = postElements.querySelector('.btn-comment');
       btnComment.addEventListener('click', (event) => {
         event.preventDefault();
         const spaceComment = postElements.querySelector('.space-comment');
-        const commentElements = newComment();
+        const commentElements = newComment(posts.id);
         spaceComment.appendChild(commentElements);
       });
       allPosts.appendChild(postElements);
