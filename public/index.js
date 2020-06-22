@@ -3,6 +3,8 @@ import {
   routeAllowed,
 } from './routes.js';
 
+// Prepara uma variável que armazena a função unsubscribe de onAuthStateChanged
+let unsubscribe;
 const main = document.querySelector('#root');
 
 function validateHash(hash) {
@@ -11,6 +13,9 @@ function validateHash(hash) {
 
 // renderPage recebe o objeto "user" pronto e o repassa para routeAllowed
 const renderPage = (user) => {
+  // Desativa o observador que chamou essa função agora.
+  // Isso garante que cada 'hashchange' só pode acionar essa função uma vez.
+  unsubscribe();
   main.innerHTML = '';
   const page = validateHash(window.location.hash);
 
@@ -21,15 +26,18 @@ const renderPage = (user) => {
   main.appendChild(routes[page]);
 };
 
+
+// Precisamos desativar o observador de onAuthStateChanged.
+
 const first = () => {
   window.addEventListener('hashchange', () => {
     // renderPage só pode ser invocada quando o objeto "user" já estiver pronto
-    firebase.auth().onAuthStateChanged(renderPage);
+    unsubscribe = firebase.auth().onAuthStateChanged(renderPage);
   });
 };
 
 window.addEventListener('load', () => {
   // renderPage só pode ser invocada quando o objeto "user" já estiver pronto
-  firebase.auth().onAuthStateChanged(renderPage);
+  unsubscribe = firebase.auth().onAuthStateChanged(renderPage);
   first();
 });
