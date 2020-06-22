@@ -1,9 +1,12 @@
 export const loggedUser = (profile) => {
   firebase
     .auth()
-    .onAuthStateChanged(() => {
-      profile(firebase.auth().currentUser.displayName,
-        firebase.auth().currentUser.photoURL);
+    .onAuthStateChanged((user) => {
+      if (!user) {
+        return;
+      }
+      profile(user.displayName,
+        user.photoURL);
     });
 };
 
@@ -39,32 +42,34 @@ export const createPost = {
   },
 };
 
-// início da inclusão de collection p/likes, falta chamar no main.js
+// início da inclusão de collection p/comentários, falta chamar no main.js
 
-export const CommentsCollection = {
-  insertComment(user) {
+export const commentsCollection = {
+  insertComment(txtComment) {
     return firebase
       .firestore()
       .collection('comments')
       .add({
+        text: txtComment,
         userUid: firebase.auth().currentUser.uid,
         user: firebase.auth().currentUser.displayName,
+        time: firebase.firestore.FieldValue.serverTimestamp(),
       });
   },
-  /* readComments(callback) {
+  readComments() {
     return firebase
       .firestore()
       .collection('comments')
       .get()
       .then((querySnapshot) => {
-        const allComments = [];
+        const comments = [];
         querySnapshot.forEach((doc) => {
-          // console.log(doc.data());
-          allComments.push({...doc.data(), id: doc.id });
+          console.log(doc.data());
+          comments.push({...doc.data(), id: doc.id });
         });
-        callback(allComments);
+        // callback(comments);
       });
-  }, */
+  },
 };
 
 export const signOut = () => {
