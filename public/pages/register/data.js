@@ -6,8 +6,8 @@ export const createAccount = {
   },
 };
 
-export const createUser = (email, firstName, lastName, user) => {
-  firebase.firestore().collection('users').add({
+export const createUser = (email, firstName, lastName) => {
+  return firebase.firestore().collection('users').add({
     firstName,
     lastName,
     email,
@@ -16,12 +16,12 @@ export const createUser = (email, firstName, lastName, user) => {
   });
 };
 
-export const createProfile = (firstName, lastName, photoUrl) => {
-  firebase
+export const createProfile = (firstName, lastName) => {
+  return firebase
     .auth()
     .currentUser.updateProfile({
       displayName: `${firstName} ${lastName}`,
-      photoUrl: `${photoUrl}`,
+      // photoUrl: `${photoUrl}`,
     });
 };
 
@@ -32,11 +32,10 @@ export const signOut = () => {
         window.location.href = '#login';
       });
   }
-  // return Promise.resolve(); retorna uma promessa que já foi resolvida.
+  return Promise.resolve(); // retorna uma promessa que já foi resolvida.
 };
-
 export const sendEmailVerification = () => {
-  firebase.auth().currentUser.sendEmailVerification().then(() => {
+  return firebase.auth().currentUser.sendEmailVerification().then(() => {
     alert('Email Verification Sent!');
     signOut();
   });
