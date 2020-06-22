@@ -1,167 +1,136 @@
-import { login, signGoogle } from './data.js';
+import {
+  loggedUser,
+  createPost,
+  commentsCollection,
+  signOut,
+  deletePost,
+  updateLike,
+} from './data.js';
 
-export const appStart = () => {
-  const menuLogin = document.createElement('div');
+export const home = () => {
+  const container = document.createElement('div');
 
-  menuLogin.className = ('login-wrapper');
+  container.className = ('feed-wrapper');
 
-  menuLogin.innerHTML = `
-    <div class='logo'> 
-      <img src='./images/wecanlogo.png' alt='logo'>
+  container.innerHTML = `
+  <div id='top-menu-home-wrapper' class='top-menu-wrapper'>
+      <div id='top-menu-home-icon' class='top-menu-icon' >
+        <a href='javascript:void(0);' id='menu-icon-home' class='icon' >
+          <i class='fa fa-bars'></i>
+        </a>
+      </div>
+      <div class='logo-texto'>
+      <img class='logo-texto-img' src='./images/logotexto.png'>
+      </div>
+      <div id='navigation-wrapper-home' class='navigation-wrapper disable-display'>
+        <div class='close-icon-wrapper'>
+          <a href='javascript:void(0);' class='icon-x' id='close-menu-icon-home' class='close-menu-icon'>
+            <i class='fa fa-times'></i>
+          </a>
+        </div>
+        <nav class='top-menu'>
+          <li>
+            <div id='btn-profile' class='menu-hamburger-btn-style'>Perfil</div>
+          </li>
+          <li>
+            <div id='sign-out' class='menu-hamburger-btn-style'>Sair</div>
+          </li>
+        </nav>
+      </div>
+      </div>
     </div>
-    <div class='sign-box'> 
-      <div class='welcome'>Bem vinda Dev!</div>
-      <div>
-       <input class='sign-login' type= 'email' name= 'email' id= 'email' placeholder= 'Email' required></input>
+    <div id='profile-box' class='profile-box'>
+      <div class='profile-img'>
+        <img src='https://placekitten.com/100/100'>
       </div>
-      <div>
-        <input class='sign-login' type='password' name='password' id='password' placeholder= 'Senha' required></input>
-      </div>
-      <div class='message-error' id='message-error'></div>
-      <div class='btn-box'>
-        <button class='btn-login' type='submit' name='btn-login' id='btn-login'>Entrar</button>
-      </div>
-      <div class='sign-google'>Ou entre com:</div>
-      <div class='icon-google'>
-        <input type=image src='./images/logo-google.png' id='input-google'></input>
-      </div>
-      <div class='create-account'>
-        Quer entrar para a rede? <a href='/#register'>Cadastre-se</a>
+      <div class= 'user-informations'>
+        <div id='name-information' class='name-information'></div>
+        <div id='user-role' class='user-role'>Estudante</div>
       </div>
     </div>
+    <div class='post-box'>
+      <form id='post-send-form'>
+        <textarea id='post' class='post-text' placeholder='Compartilhe aqui o seu conhecimento' type='text' required></textarea>
+        <div class='all-buttons'>
+          <div class='privacy-wrapper' id='privacy-options'>
+            <div class='public-option'>
+              <i class='fa fa-lock icon-style' ></i>
+              <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
+            </div>
+            <div class='private-option'>
+              <i class='fa fa-globe icon-style'></i>
+              <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
+            </div>
+          </div>
+          <button id='send-btn' class='btn-style'>Publicar</button>
+        </div>
+      </form>
+    </div>
+    <div id='all-posts'></div>
     `;
 
-  const btnLogin = menuLogin.querySelector('#btn-login');
-  const loginGoogle = menuLogin.querySelector('#input-google');
+  const newPost = (post) => {
+    const postElement = document.createElement('div');
 
-  btnLogin.addEventListener('click', () => {
-    const email = menuLogin.querySelector('#email').value;
-    const password = menuLogin.querySelector('#password').value;
-    const loginAuth = login.signIn(email, password);
-    loginAuth
-      .then(() => {
-        window.location.href = '#home';
-      })
-      .catch((error) => {
-        let errorMessage = error.message;
-        if (error.code === 'auth/wrong-password') {
-          errorMessage = 'Credenciais inválidas';
-        } else if (error.code === 'auth/invalid-email') {
-          errorMessage = 'Formato do email inválido';
-        }
-        const errorElement = menuLogin.querySelector('#message-error');
-        errorElement.innerHTML = errorMessage;
-      });
-  });
+    const date = new Date(post.time.seconds * 1000);
 
-  loginGoogle.addEventListener('click', () => {
-    signGoogle()
-      .then((result) => {
-        // const token = result.credential.accessToken;
-        const user = {
-          firstName: result.additionalUserInfo.profile.given_name,
-          lastName: result.additionalUserInfo.profile.family_name,
-          email: result.user.email,
-        };
-        firebase
-          .firestore()
-          .collection('users')
-          .add(user);
-        window.location.href = '#home';
-      })
-      .catch((error) => {
-        // const errorCode = error.code;
-        let errorMessage = error.message;
-        // const email = error.email;
-        // const credential = error.credential;
-        if (error.code === 'auth/account-exists-with-different-credential') {
-          errorMessage = 'Você já se inscreveu com um provedor de autenticação diferente para esse email.';
-        } else if (error.code === 'auth/popup-closed-by-user') {
-          errorMessage = ' A janela foi fechada antes de finalizar a operação. Tente novamente.';
-        } else if (error.code === 'auth/cancelled-popup-request') {
-          errorMessage = 'A operação foi cancelada';
-        } else {
-          errorMessage = (error);
-        }
-        const errorElement = menuLogin.querySelector('#message-error');
-        errorElement.innerHTML = errorMessage;
-      });
-  });
+    // imprimir simbolo no post
+    let privacySymbol = '';
+    if (typeof post.public !== 'undefined') {
+      if (post.public) {
+        privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
+      } else {
+        privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
+      }
+    }
 
-  return menuLogin;
-}; <
-/div> <
-div class = 'posted-text'
-id = 'all-posts' > $ { post.text } < /div> <
-  div class = 'privacy-wrapper'
-id = 'privacy-options' >
-  <
-  div class = 'public-option' >
-  <
-  i class = 'fa fa-lock icon-style' > < /i> <
-  input type = 'radio'
-name = 'privacy'
-id = 'private-option'
-class = 'privacy-options'
-value = "private" >
-  <
-  /div> <
-  div class = 'private-option' >
-  <
-  i class = 'fa fa-globe icon-style' > < /i> <
-  input type = 'radio'
-name = 'privacy'
-id = 'public-option'
-class = 'privacy-options'
-checked = "true"
-value = "public" >
-  <
-  /div> <
-  /div> <
-  div class = 'interaction-space' >
-  <
-  div class = 'btn-space' >
-  <
-  div class = 'like-space' >
-  <
-  div class = 'like-number' > $ { post.likes } < /div> <
-  a id = 'like-btn'
-class = 'like-btn' >
-  <
-  i class = "fa fa-heart" > < /i> </a >
-  <
-  /div> <
-  button id = 'comment-btn'
-class = 'btn-style btn-comment' > Comentar < /button> <
-  /div> <
-  /div> <
-  div class = 'space-comment' > < /div> <
-  /div>
-`;
+    postElement.innerHTML = `
+        <div class='posted-box'>
+          <div class='published-by'>
+            ${privacySymbol}
+            <div class='by-line'>&nbsp${post.user} em ${date.toLocaleString('pt-BR')} </div>
+            <button id='close-posted-box' class='close-box' data-id='${post.id}'> <i class="fa fa-times"></i> </button>
+          </div>
+          <div class='posted-text' id='all-posts'> ${post.text} </div>
+          <div class='privacy-wrapper' id='privacy-options'>
+            <div class='public-option'>
+              <i class='fa fa-lock icon-style' ></i>
+              <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
+            </div>
+            <div class='private-option'>
+              <i class='fa fa-globe icon-style'></i>
+              <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
+            </div>
+          </div>
+          <div class='interaction-space'>
+            <div class='btn-space'>
+              <div class='like-space'>
+                <div class='like-number'>${post.likes}</div>
+                <a id='like-btn' class='like-btn' >
+                  <i class="fa fa-heart"></i> </a>
+              </div>
+              <button id='comment-btn' class='btn-style btn-comment'> Comentar </button>
+            </div>
+          </div>
+          <div class='space-comment'></div>
+        </div>
+  `;
     return postElement;
   };
 
   const newComment = () => {
     const templateComment = document.createElement('div');
-    templateComment.innerHTML = ` <
-div class = 'space-wrapper' >
-  <
-  textarea id = 'space-comment'
-class = 'space-comment'
-type = 'text'
-required placeholder = 'comente aqui' > < /textarea> <
-  div class = 'comment-btn-space' >
-  <
-  button class = 'btn-save-comment icon-comment-style' > < i class = 'fa fa-paper-plane-o' > < /i></button >
-  <
-  button class = 'btn-edit-comment icon-comment-style' > < i class = 'fa fa-pencil' > < /i></button >
-  <
-  button class = 'btn-delete-comment icon-comment-style' > < i class = 'fa fa-trash-o' > < /i></button >
-  <
-  /div> <
-  div class = 'comment-posted' > < /div> <
-  /div>
-`;
+    templateComment.innerHTML = `
+    <div class='space-wrapper'>
+          <textarea id='space-comment' class='space-comment' type='text' required placeholder='comente aqui'></textarea>
+          <div class='comment-btn-space'>
+            <button class='btn-save-comment icon-comment-style'><i class='fa fa-paper-plane-o'></i></button>
+            <button class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
+            <button class='btn-delete-comment icon-comment-style'><i class='fa fa-trash-o'></i></button>
+          </div>
+          <div class='comment-posted'></div>
+        </div>
+    `;
     const btnSaveComment = templateComment.querySelector('.btn-save-comment');
 
     btnSaveComment.addEventListener('click', () => {
@@ -194,9 +163,7 @@ required placeholder = 'comente aqui' > < /textarea> <
   const btnProfile = container.querySelector('#btn-profile');
 
   function profile(name) {
-    container.querySelector('#name-information').innerHTML = `
-$ { name }
-`;
+    container.querySelector('#name-information').innerHTML = `${name}`;
   }
 
   loggedUser(profile);
