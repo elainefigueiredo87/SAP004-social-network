@@ -1,10 +1,10 @@
 import {
   loggedUser,
   createPost,
-  commentsCollection,
   signOut,
   deletePost,
   updateLike,
+  updateComments,
 } from './data.js';
 
 export const home = () => {
@@ -118,7 +118,7 @@ export const home = () => {
     return postElement;
   };
 
-  const newComment = () => {
+  const newComment = (id) => {
     const templateComment = document.createElement('div');
     templateComment.innerHTML = `
     <div class='space-wrapper'>
@@ -135,15 +135,7 @@ export const home = () => {
 
     btnSaveComment.addEventListener('click', () => {
       const subComment = templateComment.querySelector('.space-comment').value;
-      const commentContent = commentsCollection.insertComment(subComment)
-        .then((text) => {
-          commentsCollection.readComments(text);
-          console.log('olá, comente aqui2');
-        })
-        .catch(error => error);
-
-      document.querySelector('.comment-posted').innerHTML = commentContent;
-      console.log('olá, comente aqui');
+      updateComments(id, subComment);
     });
 
     return templateComment;
@@ -200,12 +192,13 @@ export const home = () => {
       btnLike.addEventListener('click', (event) => {
         event.preventDefault();
         updateLike(posts.id);
+        // createPost.readPosts(postTemplate);
       });
       const btnComment = postElements.querySelector('.btn-comment');
       btnComment.addEventListener('click', (event) => {
         event.preventDefault();
         const spaceComment = postElements.querySelector('.space-comment');
-        const commentElements = newComment();
+        const commentElements = newComment(posts.id);
         spaceComment.appendChild(commentElements);
       });
       allPosts.appendChild(postElements);
@@ -268,3 +261,4 @@ export const home = () => {
             <button id='like-btn' class='like-btn' >
               <i class="fa fa-heart"></i> </button>
           </div> */
+// comentario
