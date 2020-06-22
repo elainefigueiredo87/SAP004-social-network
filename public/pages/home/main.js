@@ -1,7 +1,7 @@
 import {
   loggedUser,
   createPost,
-  // likeCollection,
+  commentsCollection,
   signOut,
   deletePost,
   updateLike,
@@ -118,7 +118,7 @@ export const home = () => {
     return postElement;
   };
 
-  const newComment = (comment) => {
+  const newComment = () => {
     const templateComment = document.createElement('div');
     templateComment.innerHTML = `
     <div class='space-wrapper'>
@@ -128,8 +128,24 @@ export const home = () => {
             <button class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
             <button class='btn-delete-comment icon-comment-style'><i class='fa fa-trash-o'></i></button>
           </div>
+          <div class='comment-posted'></div>
         </div>
     `;
+    const btnSaveComment = templateComment.querySelector('.btn-save-comment');
+
+    btnSaveComment.addEventListener('click', () => {
+      const subComment = templateComment.querySelector('.space-comment').value;
+      const commentContent = commentsCollection.insertComment(subComment)
+        .then((text) => {
+          commentsCollection.readComments(text);
+          console.log('olá, comente aqui2');
+        })
+        .catch(error => error);
+
+      document.querySelector('.comment-posted').innerHTML = commentContent;
+      console.log('olá, comente aqui');
+    });
+
     return templateComment;
   };
 
@@ -141,7 +157,6 @@ export const home = () => {
 
   // Post list elements
   const allPosts = container.querySelector('#all-posts');
-  const btnSaveComment = container.querySelector('.btn-save-comment');
 
   // User management elements
   const btnSignOut = container.querySelector('#sign-out');
@@ -155,6 +170,9 @@ export const home = () => {
 
   const isPostAllowed = (post) => {
     const currentUser = firebase.auth().currentUser;
+    if (!currentUser) {
+      return false;
+    }
     // Se a usuária atual é a autora do post, ela é pode ver
     // Não é preciso conferir se é privado ou não
     if (post.userUid === currentUser.uid) {
@@ -195,6 +213,7 @@ export const home = () => {
   };
 
   createPost.readPosts(postTemplate);
+  // CommentsCollection.readComments();
 
   sendPostBtn.addEventListener('click', (event) => {
     event.preventDefault();
@@ -210,17 +229,6 @@ export const home = () => {
 
     document.getElementById('post').value = '';
   });
-
-  /*  const createComment = (array) => {
-          spaceComment.innerHTML = '';
-      array.forEach((comment) => {
-        const commentElements = newComment(comment);
-        btn
-        // const btnCommentDelete = postElements.querySelector('.close-box.');
-        //  btnCommentDelete.addEventListener('click', () => {
-          // deletePost(posts.id);
-          // postElements.innerHTML = '';
-        }); */
 
   btnSignOut.addEventListener('click', (event) => {
     event.preventDefault();
