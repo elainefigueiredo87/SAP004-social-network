@@ -1,22 +1,37 @@
 import {
-  home
+  home,
 } from './pages/home/main.js';
 import {
-  appStart
+  appStart,
 } from './pages/login/main.js';
 import {
-  register
+  register,
 } from './pages/register/main.js';
 import {
-  profile
+  profile,
 } from './pages/profile/main.js';
 
-export const routes = {
-  home: home(),
-  login: appStart(),
-  register: register(),
-  profile: profile(),
-};
+
+// If the users logIn or logOut, re-render all the pages
+/* export let routes;
+firebase.auth().onAuthStateChanged(() => {
+  routes = {
+    home: home(),
+    login: appStart(),
+    register: register(),
+    profile: profile(),
+  };
+}); */
+
+
+// Se a usuária fizer login ou logout, re-render todas as páginas
+export const routes = {};
+firebase.auth().onAuthStateChanged(() => {
+  routes.home = home();
+  routes.login = appStart();
+  routes.register = register();
+  routes.profile = profile();
+});
 
 // routeAllowed já recebe o objeto "user" pronto e não precisa se preocupar em obtê-lo com o firebase
 export const routeAllowed = (route, user) => {
@@ -37,6 +52,7 @@ export const routeAllowed = (route, user) => {
         .then(() => {
           window.location.href = '#login';
         });
+      return isAllowed;
     }
     // Usuária está logada, então só rotas privadas são permitidas
     if (!publicRoutes.includes(route)) {

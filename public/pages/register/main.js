@@ -35,7 +35,7 @@ export const register = () => {
     </div>
     <div class='message-error' id='message-error'></div>
     <div> 
-      <button class='btn-register' type="submit" id="btnRegister">Cadastrar</button>
+      <button class='btn-register' type="button" id="btnRegister">Cadastrar</button>
     </div>  
     <div class='return-login'>
         Já tem uma conta? <a href='/#login'>Faça login</a>
@@ -45,7 +45,8 @@ export const register = () => {
 
   const btnRegister = signUp.querySelector('#btnRegister');
 
-  btnRegister.addEventListener('click', () => {
+  btnRegister.addEventListener('click', (event) => {
+    event.preventDefault();
     const email = signUp.querySelector('#email').value;
     const password = signUp.querySelector('#password').value;
     const firstName = signUp.querySelector('#first-name').value;
@@ -54,14 +55,11 @@ export const register = () => {
     const registerAuth = createAccount.signRegister(email, password);
     registerAuth
       .then(() => {
-        createUser(email, firstName, lastName, yourPhoto);
-      })
-      .then(() => {
-        createProfile(firstName, lastName);
-      })
-      .then(() => {
-        sendEmailVerification();
-        window.location.href = '#login';
+        createUser(email, firstName, lastName, yourPhoto).then(() => {
+          createProfile(firstName, lastName).then(() => {
+            sendEmailVerification();
+          });
+        });
       })
       .catch((error) => {
         let errorMessage = error.message;
