@@ -199,8 +199,9 @@ export const home = () => {
       const btnLike = postElements.querySelector('.like-btn');
       btnLike.addEventListener('click', (event) => {
         event.preventDefault();
-        updateLike(posts.id);
-        // createPost.readPosts(postTemplate);
+        updateLike(posts.id).then(() => {
+          createPost.readPosts(postTemplate);
+        });
       });
       const btnComment = postElements.querySelector('.btn-comment');
       btnComment.addEventListener('click', (event) => {
