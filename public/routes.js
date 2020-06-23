@@ -48,10 +48,10 @@ export const routeAllowed = (route, user) => {
     // Check se a usuária logada tem o email verificado
     if (!user.emailVerified) {
       alert('Verifique o seu email antes de fazer login');
-      firebase.auth().signOut();
-      /* .then(() => {
+      firebase.auth().signOut()
+        .then(() => {
           window.location.href = '#login';
-        }); */
+        });
       return isAllowed;
     }
     // Usuária está logada, então só rotas privadas são permitidas
