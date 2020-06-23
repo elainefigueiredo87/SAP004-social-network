@@ -93,30 +93,32 @@ export const home = () => {
 
     postElement.innerHTML = `
         <div class='posted-box'>
-          <div class='published-by'>
-            ${privacySymbol}
-            <div class='by-line'>&nbsp${post.user} em ${date.toLocaleString('pt-BR')} </div>
-            <button id='close-posted-box' class='close-box' data-id='${post.id}'> <i class="fa fa-times"></i> </button>
-          </div>
-          <div class='posted-text' id='all-posts'> ${post.text} </div>
-          <div class='privacy-wrapper' id='privacy-options'>
-            <div class='public-option'>
-              <i class='fa fa-lock icon-style' ></i>
-              <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
+          <div class='posted-elements'>
+            <div class='published-by'>
+              ${privacySymbol}
+              <div class='by-line'>&nbsp${post.user} em ${date.toLocaleString('pt-BR')} </div>
+              <button id='close-posted-box' class='close-box' data-id='${post.id}'> <i class="fa fa-times"></i> </button>
             </div>
-            <div class='private-option'>
-              <i class='fa fa-globe icon-style'></i>
-              <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
-            </div>
-          </div>
-          <div class='interaction-space'>
-            <div class='btn-space'>
-              <div class='like-space'>
-                <div class='like-number'>${post.likes}</div>
-                <a id='like-btn' class='like-btn' >
-                  <i class="fa fa-heart"></i> </a>
+            <div class='posted-text' id='all-posts'>${post.text}</div>
+            <div class='privacy-wrapper' id='privacy-options'>
+              <div class='public-option'>
+                <i class='fa fa-lock icon-style' ></i>
+                <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
               </div>
-              <button id='comment-btn' class='btn-style btn-comment'> Comentar </button>
+              <div class='private-option'>
+                <i class='fa fa-globe icon-style'></i>
+                <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
+              </div>
+            </div>
+            <div class='interaction-space'>
+              <div class='btn-space'>
+                <div class='like-space'>
+                  <div class='like-number'>${post.likes}</div>
+                  <a id='like-btn' class='like-btn' >
+                    <i class="fa fa-heart"></i> </a>
+                </div>
+                <button id='comment-btn' class='btn-style btn-comment'> Comentar </button>
+              </div>
             </div>
           </div>
           <div class='space-comment'>${post.comments.map(comment => commentPosted(comment)).join('')}</div>
@@ -197,10 +199,24 @@ export const home = () => {
   const commentPosted = (text) => {
     // const templateCommentPosted = document.createElement('div');
     const templateCommentPosted = `
-    <div class='space-comment'>
-    <p>${text}</p>
-    <button class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
-    </div>
+      <div class='comment-wrapper'>
+        <div class='commented-wrapper'>
+          <div class='space-commented'>${text}</div>
+        </div>
+        <div class='btn-comment-wrapper'>
+          <div class='btn-edit-delete-wrapper'>
+            <div class='btn-edit-wrapper'>
+              <button class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
+            </div>
+            <div class='btn-delete-wrapper'>
+              <button class='btn-delete-comment icon-comment-style'><i class='fa fa-trash-o'></i></button>
+            </div>
+          </div>
+          <div class='btn-save-wrapper'>
+            <button class='btn-save-comment icon-comment-style'><i class='fa fa-check'></i></button>
+          </div>
+        </div>
+      </div>
     `;
     return templateCommentPosted;
   }
@@ -208,15 +224,13 @@ export const home = () => {
   const newComment = (id) => {
     const templateComment = document.createElement('div');
     templateComment.innerHTML = `
-    <div class='space-wrapper'>
-          <textarea id='write-space-comment' class='write-space-comment' type='text' required placeholder='comente aqui'></textarea>
-          <div class='comment-btn-space'>
-            <button class='btn-save-comment icon-comment-style'><i class='fa fa-paper-plane-o'></i></button>
-            <button class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
-            <button class='btn-delete-comment icon-comment-style'><i class='fa fa-trash-o'></i></button>
-          </div>
-          <div class='comment-posted'></div>
+      <div class='space-wrapper'>
+        <textarea id='write-space-comment' class='write-space-comment' type='text' required cols='25'placeholder='comente aqui'></textarea>
+        <div class='comment-btn-space'>
+          <button class='btn-save-comment'><i class='fa fa-paper-plane-o'></i></button>
         </div>
+        <div class='comment-posted'></div>
+      </div>
     `;
     const btnSaveComment = templateComment.querySelector('.btn-save-comment');
 
