@@ -90,6 +90,11 @@
     border-radius: 5px;
 }
 
+.posted-elements {
+    border: 2px solid #701741;
+    border-radius: 8px;
+}
+
 .published-by {
     display: flex;
     justify-content: space-between;
@@ -100,6 +105,7 @@
 .posted-text {
     background-color: whitesmoke;
     padding: 1rem;
+    word-wrap: break-word;
 }
 
 .posted-box .interaction-space {
@@ -143,7 +149,41 @@
 }
 
 .space-comment {
+    padding: 5px 0px 0px 0px;
+    margin: 5px;
+}
+
+.comment-wrapper {
+    border-radius: 8px;
+    border: 1px solid #701741;
+    margin: 2px 2px 2px 2px;
+}
+
+.space-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.write-space-comment {
     resize: none;
+    border: 2px solid #701741;
+    padding: 5px;
+    border-radius: 4px;
+    margin: 5px;
+    background-color: whitesmoke;
+}
+
+.comment-btn-space {
+    display: flex;
+    text-align: center;
+}
+
+.commented-wrapper {
+    padding: 2px 2px 2px 2px;
+    border-radius: 8px;
+    margin: 5px 5px 5px 5px;
+    word-wrap: break-word;
+    align-items: center;
 }
 
 .close-box {
@@ -154,8 +194,50 @@
 
 .icon-comment-style {
     background-color: transparent;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #701741;
+}
+
+.btn-save-comment {
+    background-color: transparent;
     font-size: 1.6rem;
     cursor: pointer;
+    color: #701741;
+}
+
+.space-commented {
+    background-color: whitesmoke;
+    margin: 3px 3px 3px 3px;
+    padding: 0px 5px 8px 8px;
+    border-radius: 8px;
+    border: 1px solid whitesmoke;
+}
+
+.btn-comment-wrapper {
+    background-color: #ebe1e5;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px 5px 10px;
+    border-radius: 8px;
+    margin: 5px 5px 5px 5px;
+}
+
+.btn-edit-delete-wrapper {
+    display: flex;
+    justify-content: start;
+}
+
+.btn-edit-wrapper {
+    padding: 0px 15px 0px 5px;
+}
+
+.btn-delete-wrapper {
+    padding: 0px 5px 0px 5px;
+}
+
+.btn-save-wrapper {
+    justify-content: flex-end;
 }
 
 .privacy-wrapper {
