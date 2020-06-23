@@ -1,8 +1,8 @@
 import {
   createAccount,
-  sendEmailVerification,
   createUser,
   createProfile,
+  emailVerification,
 } from './data.js';
 
 export const register = () => {
@@ -15,9 +15,6 @@ export const register = () => {
     <img src='./images/wecanlogo.png' alt='logo'>
   </div>
   <div class='sign-box'> 
-    <div>
-      <input id='your-photo' type='file'></input>
-    </div>
     <div>
       <input class='sign-login' type= "text" name= "name" id= "first-name" placeholder= "Nome" required></input>
     </div>
@@ -34,6 +31,7 @@ export const register = () => {
       <input class='sign-login' type="password" name="confirmPassword" id="confirmPassword" placeholder= "Confirme sua senha" required></input>
     </div>
     <div class='message-error' id='message-error'></div>
+    <div class='message-email' id='message-email'></div>
     <div> 
       <button class='btn-register' type="button" id="btnRegister">Cadastrar</button>
     </div>  
@@ -51,13 +49,14 @@ export const register = () => {
     const password = signUp.querySelector('#password').value;
     const firstName = signUp.querySelector('#first-name').value;
     const lastName = signUp.querySelector('#last-name').value;
-    const yourPhoto = signUp.querySelector('#your-photo').value;
     const registerAuth = createAccount.signRegister(email, password);
     registerAuth
       .then(() => {
-        createUser(email, firstName, lastName, yourPhoto).then(() => {
-          createProfile(firstName, lastName).then(() => {
-            sendEmailVerification();
+        createUser.newUser(email, firstName, lastName).then(() => {
+          createProfile.newProfile(firstName, lastName).then(() => {
+            emailVerification.sendEmailVerification();
+            const sucessRegister = signUp.querySelector('#message-email');
+            sucessRegister.innerHTML = 'Verifique seu email antes de fazer login.';
           });
         });
       })

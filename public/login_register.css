@@ -42,6 +42,12 @@
     text-decoration: underline;
 }
 
+.message-email {
+    color: #1E1B1D;
+    font-size: .8rem;
+    text-decoration: underline;
+}
+
 .btn-login,
 .btn-register {
     background-color: #701741;
@@ -106,6 +112,9 @@
         font-size: 20px;
     }
     .message-error {
+        font-size: 1.5rem;
+    }
+    .message-email {
         font-size: 1.5rem;
     }
     .btn-login,
@@ -177,6 +186,9 @@
         border-radius: 6px;
     }
     .message-error {
+        font-size: 1.5rem;
+    }
+    .message-email {
         font-size: 1.5rem;
     }
     .btn-login,
