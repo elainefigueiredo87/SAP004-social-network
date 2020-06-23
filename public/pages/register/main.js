@@ -56,7 +56,7 @@ export const register = () => {
           createProfile.newProfile(firstName, lastName).then(() => {
             emailVerification.sendEmailVerification();
             const sucessRegister = signUp.querySelector('#message-email');
-            sucessRegister.innerHTML = 'Verifique seu email antes de fazer login.';
+            sucessRegister.innerHTML = 'Cadastro efetuado com sucesso. Verifique seu email antes de fazer login.';
           });
         });
       })
