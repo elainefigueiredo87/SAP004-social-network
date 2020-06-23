@@ -178,7 +178,16 @@
 }
 
 @media (min-width: 1300px) and (min-height: 760px) {
-    .feed-wrapper {
+    .feed-wrapper {}
+    .caixona {
+        justify-content: center;
+        flex: 1;
         display: flex;
+    }
+    .left-side {
+        background-color: lightcoral;
+    }
+    .right-side {
+        background-color: lightseagreen;
     }
 }
