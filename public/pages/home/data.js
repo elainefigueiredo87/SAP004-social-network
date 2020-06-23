@@ -71,5 +71,5 @@ export const updateLike = (post) => {
 };
 
 export const updateComments = (id, subComment) => {
-  firebase.firestore().collection('post').doc(id).update({ comments: firebase.firestore.FieldValue.arrayUnion(subComment) });
+  return firebase.firestore().collection('post').doc(id).update({ comments: firebase.firestore.FieldValue.arrayUnion(subComment) });
 };

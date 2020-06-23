@@ -143,7 +143,19 @@
 }
 
 .space-comment {
+    padding: 5px;
+    border-radius: 4px;
+    margin: 5px;
+    background-color: whitesmoke;
+    border: 2px solid black;
+}
+
+.write-space-comment {
     resize: none;
+    border: 2px solid #701741;
+    padding: 5px;
+    border-radius: 4px;
+    margin: 5px;
 }
 
 .close-box {

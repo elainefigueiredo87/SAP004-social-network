@@ -8,11 +8,11 @@ import {
 } from './data.js';
 
 export const home = () => {
-    const container = document.createElement('div');
+  const container = document.createElement('div');
 
-    container.className = ('feed-wrapper');
+  container.className = ('feed-wrapper');
 
-    container.innerHTML = `
+  container.innerHTML = `
   <div id='top-menu-home-wrapper' class='top-menu-wrapper'>
       <div id='top-menu-home-icon' class='top-menu-icon' >
         <a href='javascript:void(0);' id='menu-icon-home' class='icon' >
@@ -76,22 +76,22 @@ export const home = () => {
     </div>
     `;
 
-    const newPost = (post) => {
-        const postElement = document.createElement('div');
+  const newPost = (post) => {
+    const postElement = document.createElement('div');
 
-        const date = new Date(post.time.seconds * 1000);
+    const date = new Date(post.time.seconds * 1000);
 
-        // imprimir simbolo no post
-        let privacySymbol = '';
-        if (typeof post.public !== 'undefined') {
-          if (post.public) {
-            privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
-          } else {
-            privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
-          }
-        }
+    // imprimir simbolo no post
+    let privacySymbol = '';
+    if (typeof post.public !== 'undefined') {
+      if (post.public) {
+        privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
+      } else {
+        privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
+      }
+    }
 
-        postElement.innerHTML = `
+    postElement.innerHTML = `
         <div class='posted-box'>
           <div class='published-by'>
             ${privacySymbol}
@@ -119,35 +119,12 @@ export const home = () => {
               <button id='comment-btn' class='btn-style btn-comment'> Comentar </button>
             </div>
           </div>
-          <div>${post.comments.map(comment => `<p>${comment}</p>`).join('')}</div>
-          <div class='space-comment'></div>
+          <div class='space-comment'>${post.comments.map(comment => commentPosted(comment)).join('')}</div>
         </div>
   `;
     return postElement;
   };
 
-  const newComment = (id) => {
-    const templateComment = document.createElement('div');
-    templateComment.innerHTML = `
-    <div class='space-wrapper'>
-          <textarea id='space-comment' class='space-comment' type='text' required placeholder='comente aqui'></textarea>
-          <div class='comment-btn-space'>
-            <button class='btn-save-comment icon-comment-style'><i class='fa fa-paper-plane-o'></i></button>
-            <button class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
-            <button class='btn-delete-comment icon-comment-style'><i class='fa fa-trash-o'></i></button>
-          </div>
-          <div class='comment-posted'></div>
-        </div>
-    `;
-    const btnSaveComment = templateComment.querySelector('.btn-save-comment');
-
-    btnSaveComment.addEventListener('click', () => {
-      const subComment = templateComment.querySelector('.space-comment').value;
-      updateComments(id, subComment);
-    });
-
-    return templateComment;
-  };
 
   // Send post elements
   const postSendForm = container.querySelector('#post-send-form');
@@ -216,6 +193,42 @@ export const home = () => {
 
   createPost.readPosts(postTemplate);
   // CommentsCollection.readComments();
+
+  const commentPosted = (text) => {
+    // const templateCommentPosted = document.createElement('div');
+    const templateCommentPosted = `
+    <div class='space-comment'>
+    <p>${text}</p>
+    <button class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
+    </div>
+    `;
+    return templateCommentPosted;
+  }
+
+  const newComment = (id) => {
+    const templateComment = document.createElement('div');
+    templateComment.innerHTML = `
+    <div class='space-wrapper'>
+          <textarea id='write-space-comment' class='write-space-comment' type='text' required placeholder='comente aqui'></textarea>
+          <div class='comment-btn-space'>
+            <button class='btn-save-comment icon-comment-style'><i class='fa fa-paper-plane-o'></i></button>
+            <button class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
+            <button class='btn-delete-comment icon-comment-style'><i class='fa fa-trash-o'></i></button>
+          </div>
+          <div class='comment-posted'></div>
+        </div>
+    `;
+    const btnSaveComment = templateComment.querySelector('.btn-save-comment');
+
+    btnSaveComment.addEventListener('click', () => {
+      const subComment = templateComment.querySelector('.write-space-comment').value;
+      updateComments(id, subComment).then(() => {
+        createPost.readPosts(postTemplate);
+      });
+    });
+
+    return templateComment;
+  };
 
   sendPostBtn.addEventListener('click', (event) => {
     event.preventDefault();
