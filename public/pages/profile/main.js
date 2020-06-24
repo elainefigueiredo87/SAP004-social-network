@@ -38,14 +38,37 @@ export const profile = () => {
       </div>
     </div>
 
-    <div class='profile-box'>
-      <div id = 'profile-photo' class='profile-img'>
-        <img src='https://placekitten.com/100/100'>
-        
-      </div> 
-      <div>
-        <div id = 'name-user'></div>
-          <button id='edit-photo' class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
+    <div class = 'profile-content-wrapper'>
+      <div class='profile-box'>
+        <div id = 'profile-photo' class='profile-img'>
+          <img src='./images/code-girls.png'>
+        </div> 
+        <div>
+          <div>
+            <div id = 'name-user' class= 'name-user'></div>
+          </div>
+          <div>
+            <button id='edit-photo' class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = 'text-wrapper'>
+      <div class = 'text-content'>
+        <h3 class='title'>
+        Por que precisamos de uma rede para mulheres em tecnologia
+        </h3>
+        <p>As mulheres do setor de tecnologia trouxeram enormes mudanças sociais e estão fazendo a diferença no mundo!</p>
+        <p>Mostre seu apoio às desenvolvedoras:</p>
+        <ul>
+          <li>Ajude a inserir mulheres na área de tecnologia indicando programas como a 
+            <a href= 'https://www.laboratoria.la/br'>Laboratoria</a>,
+            <a href='https://reprograma.com.br/'>Reprograma</a>,
+            <a href='https://www.programaria.org/'>PrograMaria</a> e muitas outras iniciativas incríveis;</li>
+          <li>Incentive-as a enviar propostas de palestras e participe também desses eventos;</li>
+          <li>Peça a uma colega que compartilhe mais sobre um projeto em que está trabalhando e sugira sua ajuda;</li>
+          <li>Fale sobre suas experiências e crie o mesmo ambiente para que outras façam o mesmo.</li>
+        </ul>
       </div>
     </div>
   `;
