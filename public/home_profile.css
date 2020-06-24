@@ -224,13 +224,23 @@
 
 /* css para tablet em pé */
 
-@media (min-width: 768px) and (min-height: 1024px) {
+@media (min-width: 500px) {
+    .big-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+    }
+}
+
+
+/* @media (min-width: 768px) and (min-height: 1024px) {
     .write-space-comment {
         height: 60px;
         width: 600px;
         margin-top: 7px;
     }
-}
+}*/
 
 
 /* css para tablet deitado */
@@ -250,13 +260,14 @@
 
 /* css para ipad pro deitado e desktop */
 
-@media (min-width: 980px) and (min-height: 760px) {
+
+/* @media (min-width: 980px) and (min-height: 760px) {
     .big-box {
         display: flex;
         line-height: 3rem;
         height: 755px;
         width: 1300px;
-        /* justify-content: center; */
+        justify-content: center;
     }
     .write-space-comment {
         height: 70px;
@@ -283,4 +294,4 @@
     .privacy-wrapper {
         line-height: 0px;
     }
-}
+} */
