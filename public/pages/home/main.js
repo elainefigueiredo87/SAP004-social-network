@@ -39,7 +39,7 @@ export const home = () => {
       </div>
       </div>
     </div>
-    <div class='caixona'>
+    <div class='big-box'>
     <div class='left-side'>
       <div id='profile-box' class='profile-box'>
         <div class='profile-img'>
@@ -207,27 +207,12 @@ export const home = () => {
   const commentPosted = (text) => {
     // const templateCommentPosted = document.createElement('div');
     const templateCommentPosted = `
-      <div class='comment-wrapper'>
-        <div class='commented-wrapper'>
-          <div class='space-commented'>${text}</div>
-        </div>
-        <div class='btn-comment-wrapper'>
-          <div class='btn-edit-delete-wrapper'>
-            <div class='btn-edit-wrapper'>
-              <button class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
-            </div>
-            <div class='btn-delete-wrapper'>
-              <button class='btn-delete-comment icon-comment-style'><i class='fa fa-trash-o'></i></button>
-            </div>
-          </div>
-          <div class='btn-save-wrapper'>
-            <button class='btn-save-comment icon-comment-style'><i class='fa fa-check'></i></button>
-          </div>
-        </div>
+      <div class='commented-wrapper'>
+        <div class='space-commented'>${text}</div>
       </div>
     `;
     return templateCommentPosted;
-  }
+  };
 
   const newComment = (id) => {
     const templateComment = document.createElement('div');
