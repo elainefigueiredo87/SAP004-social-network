@@ -40,8 +40,8 @@ Após identificarmos os problemas com os quais nós, alunas da _Laboratória_ no
 ## 5. Protótipo
 
 * Mobile-First - Tela de Login e Feed
- ![mobile](src/images/pag1.JPG)
- ![mobile](src/images/pag2.JPG)
+ ![mobile](public/images/pag1.JPG)
+ ![mobile](public/images/pag2.JPG)
 
 ## 6. Desevolvedoras
 * Elaine Figueiredo
