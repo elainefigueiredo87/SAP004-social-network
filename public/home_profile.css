@@ -7,6 +7,12 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.btn-edit-post {}
+
+.display-none {
+    display: none;
+}
+
 .feed-wrapper {
     margin: 0 auto;
 }
@@ -78,6 +84,11 @@
     border-radius: 4px;
 }
 
+.posted-content {
+    display: flex;
+    background-color: whitesmoke;
+}
+
 .posted-box {
     background-color: white;
     border: 2px solid #701741;
@@ -102,8 +113,21 @@
 
 .posted-text {
     background-color: whitesmoke;
+    flex: 10;
     padding: 1rem;
     word-wrap: break-word;
+}
+
+.posted-text-editor>input {
+    padding: .5rem;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.posted-text-edit-button {
+    justify-self: center;
+    align-self: center;
+    padding: 1rem;
 }
 
 .posted-box .interaction-space {
@@ -210,6 +234,16 @@
     padding: 10px;
 }
 
+
+/*.public-options {
+    display: flex;
+}
+
+.private-options {
+    display: flex;
+}
+*/
+
 .all-buttons {
     display: flex;
     justify-content: space-between;
@@ -217,8 +251,9 @@
 
 .icon-style {
     background-color: transparent;
-    font-size: 100px;
+    font-size: 1.5em;
     cursor: pointer;
+    outline: none;
 }
 
 
@@ -231,22 +266,28 @@
         justify-content: space-around;
         text-align: center;
     }
+    .btn-delete-wrapper {
+        padding: 0px 5px 0px 15px;
+    }
 }
 
 
-/* @media (min-width: 768px) and (min-height: 1024px) {
+/*@media (min-width: 768px) and (min-height: 1024px) {
     .write-space-comment {
         height: 60px;
         width: 600px;
         margin-top: 7px;
     }
-}*/
+    .btn-delete-wrapper {
+        padding: 0px 5px 0px 15px;
+    }
+}
 
 
 /* css para tablet deitado */
 
 
-/* @media (min-width: 1024px) and (min-height: 759px) {
+/*@media (min-width: 1024px) and (min-height: 759px) {
     .write-space-comment {
         height: 60px;
         width: 850px;
@@ -261,12 +302,12 @@
 /* css para ipad pro deitado e desktop */
 
 
-/* @media (min-width: 980px) and (min-height: 760px) {
-    .big-box {
+/* @media (min-width: 1300px) and (min-height: 760px) {
+    .feed-wrapper {}
+    .caixona {
         display: flex;
         line-height: 3rem;
         height: 755px;
-        width: 1300px;
         justify-content: center;
     }
     .write-space-comment {
