@@ -91,13 +91,19 @@ export const home = () => {
       }
     }
 
+    let deleteButton = '';
+    const user = firebase.auth().currentUser;
+    if (post.userUid === user.uid) {
+      deleteButton = `<button id='close-posted-box' class='close-box' data-id='${post.id}'> <i class="fa fa-times"></i> </button>`
+    }
+
     postElement.innerHTML = `
         <div class='posted-box'>
           <div class='posted-elements'>
             <div class='published-by'>
               ${privacySymbol}
               <div class='by-line'>&nbsp${post.user} em ${date.toLocaleString('pt-BR')} </div>
-              <button id='close-posted-box' class='close-box' data-id='${post.id}'> <i class="fa fa-times"></i> </button>
+              ${deleteButton}
             </div>
             <div class='posted-text' id='all-posts'>${post.text}</div>
             <div class='privacy-wrapper' id='privacy-options'>
@@ -163,7 +169,6 @@ export const home = () => {
 
   const postTemplate = (array) => {
     allPosts.innerHTML = '';
-    // Take a peek at all the posts we may, ou may not, show on the page
     // console.log(array);
     array.forEach((posts) => {
       if (!isPostAllowed(posts)) { // Se não se aplica aos casos de isPostAllowed, return para interromper.
@@ -171,10 +176,13 @@ export const home = () => {
       }
       const postElements = newPost(posts);
       const btnDelete = postElements.querySelector('.close-box');
-      btnDelete.addEventListener('click', () => {
-        deletePost(posts.id);
-        postElements.innerHTML = '';
-      });
+      if (btnDelete) {
+        btnDelete.addEventListener('click', () => {
+          deletePost(posts.id);
+          postElements.innerHTML = '';
+        });
+      }
+
       const btnLike = postElements.querySelector('.like-btn');
       btnLike.addEventListener('click', (event) => {
         event.preventDefault();
