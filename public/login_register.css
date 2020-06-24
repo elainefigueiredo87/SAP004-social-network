@@ -75,36 +75,42 @@ body {
 
 /* css para tablet em pé */
 
-@media (min-width: 768px) and (min-height: 1024px) {
+@media (min-width: 500px) {
     .login-wrapper,
     .signup-wrapper {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-around;
         text-align: center;
-        padding: 1rem;
-        line-height: 3rem;
-        height: 1024px;
-        width: 768px;
-        padding-top: 8rem;
     }
     .logo {
-        display: flex;
-        margin-left: auto;
-        margin-right: auto;
+        min-width: 350px;
+        height: auto;
+        margin: 0;
+        padding: 7%;
+        text-align: center;
+        justify-content: center;
     }
     .logo img {
-        width: 20rem;
-        height: auto;
+        width: 25vw;
+        height: 20vw;
     }
     .welcome {
-        font-size: 2.5rem;
-        font-weight: 500;
+        font-size: 2rem;
+        font-weight: 400;
         margin-top: 20px;
         margin-bottom: 10px;
     }
+    .sign-box {
+        align-items: center;
+        flex-direction: column;
+        min-width: 400px;
+        margin: 0;
+        margin-top: 5%;
+    }
     .sign-login {
-        height: 3rem;
-        width: 25rem;
+        height: 2rem;
+        width: 20rem;
         margin: 15px;
         padding: 15px;
         border: 2px solid #701741;
@@ -142,7 +148,7 @@ body {
 }
 
 
-/* css para tablet deitado */
+/* css para tablet deitado 
 
 @media (min-width: 1024px) and (min-height: 759px) {
     .login-wrapper,
@@ -217,15 +223,17 @@ body {
         margin-right: auto;
         width: 3rem;
     }
-}
+} */
 
 
 /* css para ipad pro deitado e desktop */
 
-@media (min-width: 1300px) and (min-height: 760px) {
+
+/* @media (min-width: 1300px) {
     .login-wrapper,
     .signup-wrapper {
         display: flex;
+        flex-direction: row;
         line-height: 5rem;
         height: 755px;
         width: 1300px;
@@ -280,4 +288,4 @@ body {
     .return-login {
         font-size: 1.6rem;
     }
-}
+}*/
