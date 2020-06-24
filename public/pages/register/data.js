@@ -13,7 +13,6 @@ export const createUser = {
       lastName,
       email,
       userUid: firebase.auth().currentUser.uid,
-      // photoUrl: user.photoURL,
     });
   },
 };
@@ -24,25 +23,20 @@ export const createProfile = {
       .auth()
       .currentUser.updateProfile({
         displayName: `${firstName} ${lastName}`,
-        // photoUrl: `${photoUrl}`,
       });
   },
 };
 
 export const signOut = () => {
   if (firebase.auth().currentUser) {
-    return firebase.auth().signOut()
-      /* .then(() => {
-        window.location.href = '#login';
-      }); */
+    return firebase.auth().signOut();
   }
-  return Promise.resolve(); // retorna uma promessa que já foi resolvida.
+  return Promise.resolve();
 };
 
 export const emailVerification = {
   sendEmailVerification() {
     return firebase.auth().currentUser.sendEmailVerification().then(() => {
-      // alert('Email Verification Sent!');
       signOut();
     });
   },

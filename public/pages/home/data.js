@@ -70,6 +70,16 @@ export const updateLike = (post) => {
   });
 };
 
+export const updatePost = (post, newText, privacy) => {
+  const isPublic = privacy === 'public';
+  const db = firebase.firestore();
+  const storyRef = db.collection('post').doc(post);
+  return storyRef.update({
+    text: newText,
+    public: isPublic,
+  });
+};
+
 export const updateComments = (id, subComment) => {
   return firebase.firestore().collection('post').doc(id).update({ comments: firebase.firestore.FieldValue.arrayUnion(subComment) });
 };
