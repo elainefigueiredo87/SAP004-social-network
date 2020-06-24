@@ -28,8 +28,6 @@
     border-radius: 50%;
 }
 
-.user-informations {}
-
 .name-information {
     font-size: 1.3rem;
     line-height: 1.5rem;
@@ -111,6 +109,7 @@
 .posted-box .interaction-space {
     padding: 1rem;
     background-color: white;
+    border-radius: 8px;
 }
 
 .by-line {
@@ -259,17 +258,68 @@
     cursor: pointer;
 }
 
+
+/* css para tablet em pé */
+
+@media (min-width: 768px) and (min-height: 1024px) {
+    .write-space-comment {
+        height: 60px;
+        width: 600px;
+        margin-top: 7px;
+    }
+    .btn-delete-wrapper {
+        padding: 0px 5px 0px 15px;
+    }
+}
+
+
+/* css para tablet deitado */
+
+@media (min-width: 1024px) and (min-height: 759px) {
+    .write-space-comment {
+        height: 60px;
+        width: 850px;
+        margin-top: 7px;
+    }
+    .btn-save-comment {
+        margin-left: 8px;
+    }
+}
+
+
+/* css para ipad pro deitado e desktop */
+
 @media (min-width: 1300px) and (min-height: 760px) {
     .feed-wrapper {}
     .caixona {
-        justify-content: center;
-        flex: 1;
         display: flex;
+        line-height: 3rem;
+        height: 755px;
+        justify-content: center;
+    }
+    .write-space-comment {
+        height: 70px;
+        width: 350px;
+        margin-top: 7px;
     }
     .left-side {
-        background-color: lightcoral;
+        width: 438px;
     }
     .right-side {
-        background-color: lightseagreen;
+        width: 529px;
+    }
+    .user-informations {
+        font-weight: 500;
+        font-size: 1em;
+        line-height: 3rem;
+    }
+    .user-role {
+        font-size: 1.1rem;
+    }
+    .published-by {
+        line-height: 2rem;
+    }
+    .privacy-wrapper {
+        line-height: 0px;
     }
 }
