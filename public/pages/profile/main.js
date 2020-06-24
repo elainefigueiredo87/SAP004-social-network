@@ -41,43 +41,15 @@ export const profile = () => {
     <div class='profile-box'>
       <div id = 'profile-photo' class='profile-img'>
         <img src='https://placekitten.com/100/100'>
-        <button id='edit-photo' class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
+        
       </div> 
       <div>
         <div id = 'name-user'></div>
-        <div id = 'user-role' class='user-role'>Estudante</div>
+          <button id='edit-photo' class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
       </div>
     </div>
-    
-    <div class='post-box'>
-      <form>
-    
-        <textarea id='post' class='post-text' placeholder='No que você está pensando?' type='text' required></textarea>
-        <div class='all-buttons'>
-          <button id='send-photo' class='btn-style'>Foto</button>
-          <button id='send-btn' class='btn-style'>Publicar</button>
-        </div>
-      </form>
-    </div>
-    <div class='posted-box'>
-      <div class='published-by'>
-        <div class='by-line'>
-          Suas postagens anteriores
-        </div>
-        <div id='close-posted-box' class='close-box'>X</div>
-      </div>
-      <div class='posted-text'> CSS é muuuuuito legal! Sempre dá certo! Risos
-      <p> <p>
-      </div>  
-      <div class ='all-buttons'>
-        <button id='like-btn' class='btn-style'>Curtir</button>
-        <button id='comment-btn' class='btn-style'>Comentar</button>    
-      </div>
-    </div>  
   `;
 
-  const profilePhoto = containerProfile.querySelector('#profile-photo');
-  const editPhoto = containerProfile.querySelector('#edit-photo');
   const btnSignOut = containerProfile.querySelector('#sign-out');
   const btnHome = containerProfile.querySelector('#btn-home');
 
