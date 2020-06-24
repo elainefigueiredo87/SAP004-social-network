@@ -44,11 +44,10 @@ export const home = () => {
     <div class='left-side'>
       <div id='profile-box' class='profile-box'>
         <div class='profile-img'>
-          <img src='https://placekitten.com/100/100'>
+          <img src='./images/code-girls.png'>
         </div>
         <div class= 'user-informations'>
           <div id='name-information' class='name-information'></div>
-          <div id='user-role' class='user-role'>Estudante</div>
         </div>
      </div>
     </div>
