@@ -3,6 +3,7 @@ import {
   createPost,
   signOut,
   deletePost,
+  updatePost,
   updateLike,
   updateComments,
 } from './data.js';
@@ -39,7 +40,7 @@ export const home = () => {
       </div>
       </div>
     </div>
-    <div class='caixona'>
+    <div class='big-box'>
     <div class='left-side'>
       <div id='profile-box' class='profile-box'>
         <div class='profile-img'>
@@ -57,12 +58,12 @@ export const home = () => {
           <textarea id='post' class='post-text' placeholder='Compartilhe aqui o seu conhecimento' type='text' required></textarea>
           <div class='all-buttons'>
             <div class='privacy-wrapper' id='privacy-options'>
-              <div class='public-option'>
-                <i class='fa fa-lock icon-style' ></i>
+              <div class='public-option icon-style'>
+                <i class='fa fa-lock' ></i>
                 <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
               </div>
-              <div class='private-option'>
-                <i class='fa fa-globe icon-style'></i>
+              <div class='private-option  icon-style'>
+                <i class='fa fa-globe'></i>
                 <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
               </div>
             </div>
@@ -83,52 +84,68 @@ export const home = () => {
 
     // imprimir simbolo no post
     let privacySymbol = '';
-    if (typeof post.public !== 'undefined') {
-      if (post.public) {
-        privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
-      } else {
-        privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
-      }
+    if (post.public) {
+      privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
+    } else {
+      privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
     }
 
+
     let deleteButton = '';
+    let editButton = '';
+    let privacyOptionButton = '';
+
     const user = firebase.auth().currentUser;
     if (post.userUid === user.uid) {
-      deleteButton = `<button id='close-posted-box' class='close-box' data-id='${post.id}'> <i class="fa fa-times"></i> </button>`
+      deleteButton = `<button id='close-posted-box' class='close-box' data-id='${post.id}'> <i class="fa fa-times"></i> </button>`;
+      editButton = `
+       <button class='btn-edit-post icon-style'>
+         <i class='fa fa-pencil'></i>
+       </button>
+      `;
+      privacyOptionButton = `<form class='privacy-wrapper' id='privacy-options'>
+      <div class='public-option  icon-style'>
+        <i class='fa fa-lock' ></i>
+        <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
+      </div>
+        <div class='private-option icon-style'>
+          <i class='fa fa-globe'></i>
+          <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
+        </div>
+    </form>`;
     }
 
     postElement.innerHTML = `
-        <div class='posted-box'>
+        <div class='posted-box' >
           <div class='posted-elements'>
             <div class='published-by'>
               ${privacySymbol}
               <div class='by-line'>&nbsp${post.user} em ${date.toLocaleString('pt-BR')} </div>
               ${deleteButton}
             </div>
-            <div class='posted-text' id='all-posts'>${post.text}</div>
-            <div class='privacy-wrapper' id='privacy-options'>
-              <div class='public-option'>
-                <i class='fa fa-lock icon-style' ></i>
-                <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
+            <div class='posted-content'>
+              <div class='posted-text' id='all-posts'>${post.text}</div>
+              <div class='posted-text posted-text-editor display-none'>
+                <input type='text' value='${post.text}' />
               </div>
-              <div class='private-option'>
-                <i class='fa fa-globe icon-style'></i>
-                <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
+              <div class='posted-text-edit-button'>
+                ${editButton}
               </div>
             </div>
-            <div class='interaction-space'>
-              <div class='btn-space'>
-                <div class='like-space'>
-                  <div class='like-number'>${post.likes}</div>
-                  <a id='like-btn' class='like-btn' >
-                    <i class="fa fa-heart"></i> </a>
+            ${privacyOptionButton}
+                <div class='interaction-space'>
+                  <div class='btn-space'>
+                    <div class='like-space'>
+                      <div class='like-number'>${post.likes}</div>
+                      <a id='like-btn' class='like-btn' >
+                        <i class="fa fa-heart"></i> </a>
+                    </div>
+                    <button id='comment-btn' class='btn-style btn-comment'> Comentar </button>
+                  </div>
                 </div>
-                <button id='comment-btn' class='btn-style btn-comment'> Comentar </button>
               </div>
+              <div class='space-comment'>${post.comments.map(comment => commentPosted(comment)).join('')}</div>
             </div>
-          </div>
-          <div class='space-comment'>${post.comments.map(comment => commentPosted(comment)).join('')}</div>
-        </div>
   `;
     return postElement;
   };
@@ -167,6 +184,28 @@ export const home = () => {
     return post.public;
   };
 
+  const editTextPost = (post, postElement) => {
+    const postedElem = postElement.querySelector('.posted-text');
+    const editElement = postElement.querySelector('.posted-text-editor');
+    const iconElem = postElement.querySelector('.btn-edit-post > i');
+    const newText = editElement.querySelector('input').value;
+
+    if (iconElem.classList.contains('fa-check')) {
+      const formPrivacy = postElement.querySelector('#privacy-options');
+      console.log(formPrivacy.privacy.value);
+      updatePost(post.id, newText, formPrivacy.privacy.value).then(() => {
+        createPost.readPosts(postTemplate);
+      });
+    } else {
+      // Toggle classes para esconder ou mostrar a interface de editar
+      postedElem.classList.toggle('display-none');
+      editElement.classList.toggle('display-none');
+      iconElem.classList.toggle('fa-pencil');
+      iconElem.classList.toggle('fa-check');
+    }
+  };
+
+
   const postTemplate = (array) => {
     allPosts.innerHTML = '';
     // console.log(array);
@@ -175,6 +214,7 @@ export const home = () => {
         return;
       }
       const postElements = newPost(posts);
+
       const btnDelete = postElements.querySelector('.close-box');
       if (btnDelete) {
         btnDelete.addEventListener('click', () => {
@@ -182,6 +222,22 @@ export const home = () => {
           postElements.innerHTML = '';
         });
       }
+      const btnEdit = postElements.querySelector('.btn-edit-post');
+      if (btnEdit) {
+        btnEdit.addEventListener('click', () => {
+          editTextPost(posts, postElements);
+        });
+      }
+
+
+      // if (formPrivacy) {
+
+      /* formPrivacy.addEventListener('change', (event) => {
+        console.log(event.target.value);
+        //  editPrivacyPost
+      }); */
+      // }
+
 
       const btnLike = postElements.querySelector('.like-btn');
       btnLike.addEventListener('click', (event) => {
@@ -207,38 +263,23 @@ export const home = () => {
   const commentPosted = (text) => {
     // const templateCommentPosted = document.createElement('div');
     const templateCommentPosted = `
-      <div class='comment-wrapper'>
-        <div class='commented-wrapper'>
-          <div class='space-commented'>${text}</div>
-        </div>
-        <div class='btn-comment-wrapper'>
-          <div class='btn-edit-delete-wrapper'>
-            <div class='btn-edit-wrapper'>
-              <button class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
-            </div>
-            <div class='btn-delete-wrapper'>
-              <button class='btn-delete-comment icon-comment-style'><i class='fa fa-trash-o'></i></button>
-            </div>
-          </div>
-          <div class='btn-save-wrapper'>
-            <button class='btn-save-comment icon-comment-style'><i class='fa fa-check'></i></button>
-          </div>
-        </div>
-      </div>
+      <div class='commented-wrapper'>
+        <div class='space-commented'>${text}</div>
+      </div>      
     `;
     return templateCommentPosted;
-  }
+  };
 
   const newComment = (id) => {
     const templateComment = document.createElement('div');
     templateComment.innerHTML = `
       <div class='space-wrapper'>
-        <textarea id='write-space-comment' class='write-space-comment' type='text' required cols='25'placeholder='comente aqui'></textarea>
-        <div class='comment-btn-space'>
-          <button class='btn-save-comment'><i class='fa fa-paper-plane-o'></i></button>
-        </div>
-        <div class='comment-posted'></div>
-      </div>
+              <textarea id='write-space-comment' class='write-space-comment' type='text' required cols='25' placeholder='comente aqui'></textarea>
+              <div class='comment-btn-space'>
+                <button class='btn-save-comment'><i class='fa fa-paper-plane-o'></i></button>
+              </div>
+              <div class='comment-posted'></div>
+            </div>
     `;
     const btnSaveComment = templateComment.querySelector('.btn-save-comment');
 
@@ -291,18 +332,3 @@ export const home = () => {
 
   return container;
 };
-
-/* button para versão web.
- <div>
-          <button id='btn-sign-out' class='btn-style'>Sair</button>
-        </div> */
-
-// class='btn-style like-btn' botao like
-
-/* ícone curtir com <button>
-          <div class='like-space'>
-            <div class='like-number'>${post.likes}</div>
-            <button id='like-btn' class='like-btn' >
-              <i class="fa fa-heart"></i> </button>
-          </div> */
-// comentario
