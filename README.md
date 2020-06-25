@@ -9,7 +9,7 @@
 
 ## 1. Introdução
 Muitas vezes as novas desenvolvedoras se vêem perdidas no meio de um mar de conteúdo e acabam não encontrando o material ideal para o que buscam no momento, então, através desta rede elas poderão se comunicar, conhecer novas pessoas e contar com o apoio de muitas mulheres que tem o mesmo objetivo, crescer na área e desenvolver habilidades técnicas no mundo da programação.
-A rede social <a href='https://sap004-social-network.web.app/#login'>__**We Can**__</a> surge para facilitar e apoiar novas desenvolvedoras Front-end, oferecendo troca de material de apoio para estudos.
+A rede social **We Can** surge para facilitar e apoiar novas desenvolvedoras Front-end, oferecendo troca de material de apoio para estudos. <a href='https://sap004-social-network.web.app/#login'>Clique aqui</a> para conhecer.
 Porque juntas **We Can**!!!
 
 
