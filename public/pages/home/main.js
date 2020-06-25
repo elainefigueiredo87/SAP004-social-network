@@ -117,10 +117,13 @@ export const home = () => {
     postElement.innerHTML = `
         <div class='posted-box' >
           <div class='posted-elements'>
+          <div class='delete-wrapper'>
+            ${deleteButton}
+          </div>
             <div class='published-by'>
               ${privacySymbol}
-              <div class='by-line'>&nbsp${post.user} em ${date.toLocaleString('pt-BR')} </div>
-              ${deleteButton}
+              <div class='by-line'>&nbsp${post.user}</div>
+              <div class='date-style'> ${date.toLocaleString('pt-BR')} </div> 
             </div>
             <div class='posted-content'>
               <div class='posted-text' id='all-posts'>${post.text}</div>
@@ -131,7 +134,9 @@ export const home = () => {
                 ${editButton}
               </div>
             </div>
-            ${privacyOptionButton}
+            <div class='edit-privacity-post display-none'>
+              ${privacyOptionButton}
+            </div>
                 <div class='interaction-space'>
                   <div class='btn-space'>
                     <div class='like-space'>
@@ -188,6 +193,7 @@ export const home = () => {
     const editElement = postElement.querySelector('.posted-text-editor');
     const iconElem = postElement.querySelector('.btn-edit-post > i');
     const newText = editElement.querySelector('input').value;
+    const privacyIcon = postElement.querySelector('.edit-privacity-post');
 
     if (iconElem.classList.contains('fa-check')) {
       const formPrivacy = postElement.querySelector('#privacy-options');
@@ -199,6 +205,7 @@ export const home = () => {
       // Toggle classes para esconder ou mostrar a interface de editar
       postedElem.classList.toggle('display-none');
       editElement.classList.toggle('display-none');
+      privacyIcon.classList.toggle('display-none');
       iconElem.classList.toggle('fa-pencil');
       iconElem.classList.toggle('fa-check');
     }

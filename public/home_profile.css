@@ -3,7 +3,6 @@
     margin: 0;
     border: 0;
     box-sizing: border-box;
-    /*se refere ao tamanho total do elemento. Considera o padding e border. */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -133,8 +132,13 @@
 .published-by {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 10px 10px 10px 10px;
     background-color: #70174073;
+}
+
+.date-style {
+    font-size: 15px;
+    align-self: center;
 }
 
 .posted-text {
@@ -163,7 +167,7 @@
 }
 
 .by-line {
-    font-size: 1rem;
+    font-size: 20px;
     font-weight: 400;
 }
 
@@ -217,11 +221,20 @@
 }
 
 .commented-wrapper {
+    justify-content: flex-end;
+    display: flex;
     padding: 2px 2px 2px 2px;
     border-radius: 8px;
     margin: 5px 5px 5px 5px;
     word-wrap: break-word;
     align-items: center;
+}
+
+.delete-wrapper {
+    display: flex;
+    background-color: #70174073;
+    justify-content: flex-end;
+    padding: 0px 10px 0px 0px;
 }
 
 .close-box {
@@ -246,8 +259,8 @@
 
 .space-commented {
     background-color: #ebe1e5;
-    margin: 3px 3px 3px 3px;
-    padding: 0px 5px 8px 8px;
+    margin: 2px 3px 3px 3px;
+    padding: 9px 10px 10px 10px;
     border-radius: 8px;
     border: 1px solid whitesmoke;
 }
@@ -259,16 +272,6 @@
 .privacy-wrapper>* {
     padding: 10px;
 }
-
-
-/*.public-options {
-    display: flex;
-}
-
-.private-options {
-    display: flex;
-}
-*/
 
 .all-buttons {
     display: flex;
@@ -296,69 +299,3 @@
         padding: 0px 5px 0px 15px;
     }
 }
-
-
-/*@media (min-width: 768px) and (min-height: 1024px) {
-    .write-space-comment {
-        height: 60px;
-        width: 600px;
-        margin-top: 7px;
-    }
-    .btn-delete-wrapper {
-        padding: 0px 5px 0px 15px;
-    }
-}
-
-
-/* css para tablet deitado */
-
-
-/*@media (min-width: 1024px) and (min-height: 759px) {
-    .write-space-comment {
-        height: 60px;
-        width: 850px;
-        margin-top: 7px;
-    }
-    .btn-save-comment {
-        margin-left: 8px;
-    }
-} */
-
-
-/* css para ipad pro deitado e desktop */
-
-
-/* @media (min-width: 1300px) and (min-height: 760px) {
-    .feed-wrapper {}
-    .caixona {
-        display: flex;
-        line-height: 3rem;
-        height: 755px;
-        justify-content: center;
-    }
-    .write-space-comment {
-        height: 70px;
-        width: 350px;
-        margin-top: 7px;
-    }
-    .left-side {
-        width: 438px;
-    }
-    .right-side {
-        width: 529px;
-    }
-    .user-informations {
-        font-weight: 500;
-        font-size: 1em;
-        line-height: 3rem;
-    }
-    .user-role {
-        font-size: 1.1rem;
-    }
-    .published-by {
-        line-height: 2rem;
-    }
-    .privacy-wrapper {
-        line-height: 0px;
-    }
-} */
