@@ -34,7 +34,6 @@ export const createPost = {
       .then((querySnapshot) => {
         const posts = [];
         querySnapshot.forEach((doc) => {
-          // console.log(doc.data());
           posts.push({...doc.data(), id: doc.id });
         });
         callback(posts);
@@ -56,16 +55,13 @@ export const deletePost = (post) => {
     .then(() => {
       console.log('document sucessfully deleted');
     });
-  // .catch(function (error) {
-  //  console.log('error removing document:', error);
-  // });
 };
 
 export const updateLike = (post) => {
   const db = firebase.firestore();
   const increment = firebase.firestore.FieldValue.increment(1);
   const storyRef = db.collection('post').doc(post);
-  return storyRef.update({ // return devolve uma promessa
+  return storyRef.update({
     likes: increment,
   });
 };
@@ -81,5 +77,9 @@ export const updatePost = (post, newText, privacy) => {
 };
 
 export const updateComments = (id, subComment) => {
-  return firebase.firestore().collection('post').doc(id).update({ comments: firebase.firestore.FieldValue.arrayUnion(subComment) });
+  return firebase
+    .firestore()
+    .collection('post')
+    .doc(id)
+    .update({ comments: firebase.firestore.FieldValue.arrayUnion(subComment) });
 };

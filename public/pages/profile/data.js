@@ -17,12 +17,3 @@ export const signOut = () => {
       });
   }
 };
-
-/* export const updateInformation = () => {
-  const displayName = `${firstName} ${lastName}`;
-  const db = firebase.firestore();
-  const storyRef = db.collection('users').doc();
-  return storyRef.update({
-    displayName,
-  });
-}; */

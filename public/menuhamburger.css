@@ -36,8 +36,6 @@
     flex-wrap: wrap;
 }
 
-.top-menu-icon {}
-
 .navigation-wrapper {
     z-index: 1000;
     position: absolute;
