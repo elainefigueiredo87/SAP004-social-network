@@ -81,14 +81,12 @@ export const home = () => {
 
     const date = new Date(post.time.seconds * 1000);
 
-    // imprimir simbolo no post
     let privacySymbol = '';
     if (post.public) {
       privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
     } else {
       privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
     }
-
 
     let deleteButton = '';
     let editButton = '';
@@ -155,16 +153,11 @@ export const home = () => {
   };
 
 
-  // Send post elements
   const postSendForm = container.querySelector('#post-send-form');
   const postText = postSendForm.querySelector('#post');
   const postPublic = postSendForm.querySelector('#public-option');
   const sendPostBtn = postSendForm.querySelector('#send-btn');
-
-  // Post list elements
   const allPosts = container.querySelector('#all-posts');
-
-  // User management elements
   const btnSignOut = container.querySelector('#sign-out');
   const btnProfile = container.querySelector('#btn-profile');
 
@@ -179,12 +172,9 @@ export const home = () => {
     if (!currentUser) {
       return false;
     }
-    // Se a usuária atual é a autora do post, ela é pode ver
-    // Não é preciso conferir se é privado ou não
     if (post.userUid === currentUser.uid) {
       return true;
     }
-    // Se a usuária atual não é a autora, a propriedade 'public' pode ser vista.
     return post.public;
   };
 
@@ -197,12 +187,10 @@ export const home = () => {
 
     if (iconElem.classList.contains('fa-check')) {
       const formPrivacy = postElement.querySelector('#privacy-options');
-      console.log(formPrivacy.privacy.value);
       updatePost(post.id, newText, formPrivacy.privacy.value).then(() => {
         createPost.readPosts(postTemplate);
       });
     } else {
-      // Toggle classes para esconder ou mostrar a interface de editar
       postedElem.classList.toggle('display-none');
       editElement.classList.toggle('display-none');
       privacyIcon.classList.toggle('display-none');
@@ -211,14 +199,13 @@ export const home = () => {
     }
   };
 
-
   const postTemplate = (array) => {
     allPosts.innerHTML = '';
-    // console.log(array);
     array.forEach((posts) => {
-      if (!isPostAllowed(posts)) { // Se não se aplica aos casos de isPostAllowed, return para interromper.
+      if (!isPostAllowed(posts)) {
         return;
       }
+
       const postElements = newPost(posts);
 
       const btnDelete = postElements.querySelector('.close-box');
@@ -234,17 +221,6 @@ export const home = () => {
           editTextPost(posts, postElements);
         });
       }
-
-
-      // if (formPrivacy) {
-
-      /* formPrivacy.addEventListener('change', (event) => {
-        console.log(event.target.value);
-        //  editPrivacyPost
-      }); */
-      // }
-
-
       const btnLike = postElements.querySelector('.like-btn');
       btnLike.addEventListener('click', (event) => {
         event.preventDefault();
@@ -264,10 +240,8 @@ export const home = () => {
   };
 
   createPost.readPosts(postTemplate);
-  // CommentsCollection.readComments();
 
   const commentPosted = (text) => {
-    // const templateCommentPosted = document.createElement('div');
     const templateCommentPosted = `
       <div class='commented-wrapper'>
         <div class='space-commented'>${text}</div>
@@ -323,7 +297,6 @@ export const home = () => {
     window.location.href = '#profile';
   });
 
-  /* -----------MENU HAMBURGER------------- */
   const navigationWrapperHome = container.querySelector('#navigation-wrapper-home');
   const homeHamburgerIcon = container.querySelector('#top-menu-home-icon');
 
@@ -334,7 +307,6 @@ export const home = () => {
 
   container.querySelector('#menu-icon-home').addEventListener('click', toggleMenu);
   container.querySelector('#close-menu-icon-home').addEventListener('click', toggleMenu);
-  /* -------------FIM MENU HAMBURGER----------- */
 
   return container;
 };

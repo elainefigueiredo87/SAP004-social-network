@@ -1,6 +1,5 @@
 import {
   loggedUser,
-  // updatePhoto,
   signOut,
 } from './data.js';
 
@@ -11,7 +10,6 @@ export const profile = () => {
 
   containerProfile.innerHTML = `
     <div id='top-menu-profile-wrapper' class='top-menu-wrapper'>
-           
       <div id='top-menu-profile-icon' class='top-menu-icon' > 
         <a href='javascript:void(0);' class='icon' id='menu-icon-profile'>
           <i class='fa fa-bars'></i>
@@ -37,7 +35,6 @@ export const profile = () => {
       </div>  
       </div>
     </div>
-
     <div class = 'profile-content-wrapper'>
       <div class='profile-box'>
         <div id = 'profile-photo' class='profile-img'>
@@ -71,11 +68,6 @@ export const profile = () => {
   const btnSignOut = containerProfile.querySelector('#sign-out');
   const btnHome = containerProfile.querySelector('#btn-home');
 
-  /* editPhoto.addEventListener('click', () => {
-    console.log(updatePhoto());
-    profilePhoto.innerHTML = updatePhoto();
-  }); */
-
   function profileInformation(name) {
     containerProfile.querySelector('#name-user').innerHTML = `${name}`;
   }
@@ -91,7 +83,6 @@ export const profile = () => {
     window.location.href = '#home';
   });
 
-  /* -----------MENU HAMBURGER------------- */
   const navigationWrapperProfile = containerProfile.querySelector('#navigation-wrapper-profile');
   const profileHamburgerIcon = containerProfile.querySelector('#top-menu-profile-icon');
 
@@ -102,7 +93,6 @@ export const profile = () => {
 
   containerProfile.querySelector('#menu-icon-profile').addEventListener('click', toggleMenu);
   containerProfile.querySelector('#close-menu-icon-profile').addEventListener('click', toggleMenu);
-  /* -------------FIM MENU HAMBURGER----------- */
 
   return containerProfile;
 };
