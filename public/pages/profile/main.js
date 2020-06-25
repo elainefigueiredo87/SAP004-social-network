@@ -43,14 +43,9 @@ export const profile = () => {
         <div id = 'profile-photo' class='profile-img'>
           <img src='./images/code-girls.png'>
         </div> 
-        <div>
-          <div>
+          <div class='name-wrapper'>
             <div id = 'name-user' class= 'name-user'></div>
-          </div>
-          <div>
-            <button id='edit-photo' class='btn-edit-comment icon-comment-style'><i class='fa fa-pencil'></i></button>
-          </div>
-        </div>
+          </div>   
       </div>
     </div>
     <div class = 'text-wrapper'>
