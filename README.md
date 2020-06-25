@@ -8,8 +8,8 @@
 * [6. Desenvolvedoras](#6-desenvolvedoras)
 
 ## 1. Introdução
-Muitas vezes as novas desenvolvedoras se vêem perdidas no meio de um mar de conteúdo e acabam não encontrando o material ideal para o que buscam no momento, então, através desta rede elas poderão se comunicar, conhecer novas pessoas e contar com o apoio de muitas mulheres que tem o mesmo objetivo, crescer na área e desenvolver habilidades técnicas.
-A rede social **We Can** surge para facilitar e apoiar novas desenvolvedoras Front-end, oferecendo troca de material de apoio para estudos.
+Muitas vezes as novas desenvolvedoras se vêem perdidas no meio de um mar de conteúdo e acabam não encontrando o material ideal para o que buscam no momento, então, através desta rede elas poderão se comunicar, conhecer novas pessoas e contar com o apoio de muitas mulheres que tem o mesmo objetivo, crescer na área e desenvolver habilidades técnicas no mundo da programação.
+A rede social **We Can** surge para facilitar e apoiar novas desenvolvedoras Front-end, oferecendo troca de material de apoio para estudos. <a href='https://sap004-social-network.web.app/#login'>Clique aqui</a> para conhecer.
 Porque juntas **We Can**!!!
 
 
@@ -25,7 +25,7 @@ Após identificarmos os problemas com os quais nós, alunas da _Laboratória_ no
 - Temos uma página para logar com e-mail e senha ou com a conta Google.
 - Uma tela para cadastro para novas usuárias.
 - Um Feed para compartilhar conhecimento através de posts, interação via comentários e curtidas. É possível deixar as postagens públicas ou privadas e deletar publicações.
-- Uma página de perfil para atualizar e modificar informações pessoais.
+- Uma página de perfil.
 - Todo o planejamento foi baseado em **Histórias de Usuário** pré-definidas junto a apresentação do projeto _Social-NetWork_.
 
 ## 4. Ferramentas utilizadas
