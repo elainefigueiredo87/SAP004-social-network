@@ -6,8 +6,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.btn-edit-post {}
-
 .display-none {
     display: none;
 }
@@ -129,7 +127,6 @@
 }
 
 .published-by {
-    display: flex;
     justify-content: space-between;
     padding: 10px 10px 10px 10px;
     background-color: #70174073;
@@ -138,6 +135,7 @@
 .date-style {
     font-size: 15px;
     align-self: center;
+    text-align: center;
 }
 
 .posted-text {
@@ -145,6 +143,9 @@
     flex: 10;
     padding: 1rem;
     word-wrap: break-word;
+    width: 250px;
+    overflow-y: auto;
+    max-height: 150px;
 }
 
 .posted-text-editor>input {
@@ -168,6 +169,7 @@
 .by-line {
     font-size: 20px;
     font-weight: 400;
+    text-align: center;
 }
 
 .btn-space {
@@ -262,6 +264,8 @@
     padding: 9px 10px 10px 10px;
     border-radius: 8px;
     border: 1px solid whitesmoke;
+    overflow-x: auto;
+    overflow-y: auto;
 }
 
 .privacy-wrapper {
@@ -294,9 +298,6 @@
         justify-content: space-around;
         text-align: center;
     }
-    .btn-delete-wrapper {
-        padding: 0px 5px 0px 15px;
-    }
     .profile-box {
         justify-content: space-between;
         padding: 20px 25px 20px 25px;
@@ -307,6 +308,9 @@
     .profile-img img {
         width: 100%;
         width: 200px;
+    }
+    .btn-delete-wrapper {
+        padding: 0px 5px 0px 15px;
     }
     .name-wrapper {
         display: flex;
@@ -338,33 +342,15 @@
         justify-content: space-evenly;
     }
     .posted-text {
-        width: 400px;
-        word-wrap: break-word;
+        width: 300px;
     }
-}
-
-
-/*.profile-img {
-    width: 35%;
-    margin: 0rem 1.5rem 0rem .5rem;
-}
-
-.profile-img img {
-    width: 100%;
-    max-width: 100px;
-    min-width: 70%;
-    border-radius: 50%;
-}
-*/
-
-
-/*.profile-box {
-    display: flex;
-    padding: .5rem 0rem .5rem 0rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 2px 2px 2px whitesmoke;
-    margin-top: 2px;*/
-
-
+    .space-commented {
+        max-width: 450px;
+    }
+    .write-space-comment {
+        width: 350px;
+    }
+    .btn-save-comment {
+        padding: 10px 0;
+    }
 }
