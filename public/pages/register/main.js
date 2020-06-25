@@ -11,34 +11,34 @@ export const register = () => {
   signUp.className = ('signup-wrapper');
 
   signUp.innerHTML = `
-  <div class='logo'> 
-    <img src='./images/wecanlogo.png' alt='logo'>
-  </div>
-  <div class='sign-box'> 
-    <div>
-      <input class='sign-login' type= "text" name= "name" id= "first-name" placeholder= "Nome" required></input>
+    <div class='logo'> 
+      <img src='./images/wecanlogo.png' alt='logo'>
     </div>
-    <div>
-      <input class='sign-login' type= "text" name= "surname" id= "last-name" placeholder= "Sobrenome" required></input>
-    </div>
-    <div>  
-      <input class='sign-login' type= "email" name= "email" id= "email" placeholder= "Email" required></input>
-    </div>
-    <div>
-      <input class='sign-login' type="password" name="password" id="password" placeholder= "Senha (mínimo 6 caracteres)" required></input>
-    </div>
-    <div>  
-      <input class='sign-login' type="password" name="confirmPassword" id="confirmPassword" placeholder= "Confirme sua senha" required></input>
-    </div>
-    <div class='message-error' id='message-error'></div>
-    <div class='message-email' id='message-email'></div>
-    <div> 
-      <button class='btn-register' type="button" id="btnRegister">Cadastrar</button>
-    </div>  
-    <div class='return-login'>
+    <div class='sign-box'> 
+      <div>
+        <input class='sign-login' type= "text" name= "name" id= "first-name" placeholder= "Nome" required></input>
+      </div>
+      <div>
+        <input class='sign-login' type= "text" name= "surname" id= "last-name" placeholder= "Sobrenome" required></input>
+      </div>
+      <div>  
+        <input class='sign-login' type= "email" name= "email" id= "email" placeholder= "Email" required></input>
+      </div>
+      <div>
+        <input class='sign-login' type="password" name="password" id="password" placeholder= "Senha (mínimo 6 caracteres)" required></input>
+      </div>
+      <div>  
+        <input class='sign-login' type="password" name="confirmPassword" id="confirmPassword" placeholder= "Confirme sua senha" required></input>
+      </div>
+      <div class='message-error' id='message-error'></div>
+      <div class='message-email' id='message-email'></div>
+      <div> 
+        <button class='btn-register' type="button" id="btnRegister">Cadastrar</button>
+      </div>  
+      <div class='return-login'>
         Já tem uma conta? <a href='/#login'>Faça login</a>
       </div>
-  </div>
+    </div>
   `;
 
   const btnRegister = signUp.querySelector('#btnRegister');

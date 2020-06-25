@@ -57,7 +57,6 @@ export const appStart = () => {
   loginGoogle.addEventListener('click', () => {
     signGoogle()
       .then((result) => {
-        // const token = result.credential.accessToken;
         const user = {
           firstName: result.additionalUserInfo.profile.given_name,
           lastName: result.additionalUserInfo.profile.family_name,
@@ -70,10 +69,7 @@ export const appStart = () => {
         window.location.href = '#home';
       })
       .catch((error) => {
-        // const errorCode = error.code;
         let errorMessage = error.message;
-        // const email = error.email;
-        // const credential = error.credential;
         if (error.code === 'auth/account-exists-with-different-credential') {
           errorMessage = 'Você já se inscreveu com um provedor de autenticação diferente para esse email.';
         } else if (error.code === 'auth/popup-closed-by-user') {

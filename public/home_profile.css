@@ -288,9 +288,6 @@
     outline: none;
 }
 
-
-/* css para tablet em pé */
-
 @media (min-width: 500px) {
     .big-box {
         display: flex;
