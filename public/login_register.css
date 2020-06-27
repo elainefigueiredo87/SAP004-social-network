@@ -1,5 +1,9 @@
 body {
     background-image: url(images/primeiro\ fundo.png);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .login-wrapper,

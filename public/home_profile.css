@@ -134,8 +134,9 @@
 
 .date-style {
     font-size: 15px;
-    align-self: center;
+    align-self: flex-end;
     text-align: center;
+    padding-bottom: 1.5px;
 }
 
 .posted-text {
@@ -209,7 +210,7 @@
 
 .space-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .write-space-comment {
@@ -288,7 +289,12 @@
     outline: none;
 }
 
-@media (min-width: 500px) {
+.published-by .icon-style {
+    align-self: center;
+    padding-top: 2px;
+}
+
+@media (min-width: 700px) {
     .big-box {
         display: flex;
         flex-direction: row;
@@ -348,6 +354,6 @@
         width: 350px;
     }
     .btn-save-comment {
-        padding: 10px 0;
+        padding: 10px 0px 10px 10px;
     }
 }
