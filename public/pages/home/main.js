@@ -14,15 +14,15 @@ export const home = () => {
   container.className = ('feed-wrapper');
 
   container.innerHTML = `
-  <div id='top-menu-home-wrapper' class='top-menu-wrapper'>
+    <header id='top-menu-home-wrapper' class='top-menu-wrapper'>
       <div id='top-menu-home-icon' class='top-menu-icon' >
         <a href='javascript:void(0);' id='menu-icon-home' class='icon' >
           <i class='fa fa-bars'></i>
         </a>
       </div>
-      <div class='logo-texto'>
-      <img class='logo-texto-img' src='./images/logotexto.png'>
-      </div>
+      <figure class='logo-texto'>
+        <img class='logo-texto-img' src='./images/logotexto.png'>
+      </figure>
       <div id='navigation-wrapper-home' class='navigation-wrapper disable-display'>
         <div class='close-icon-wrapper'>
           <a href='javascript:void(0);' class='icon-x' id='close-menu-icon-home' class='close-menu-icon'>
@@ -39,13 +39,13 @@ export const home = () => {
         </nav>
       </div>
       </div>
-    </div>
+    </header>
     <div class='big-box'>
     <div class='left-side'>
       <div id='profile-box' class='profile-box'>
-        <div class='profile-img'>
+        <figure class='profile-img'>
           <img src='./images/code-girls.png'>
-        </div>
+        </figure>
         <div class= 'user-informations'>
           <div id='name-information' class='name-information'></div>
         </div>
