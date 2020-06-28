@@ -6,9 +6,9 @@ export const appStart = () => {
   menuLogin.className = ('login-wrapper');
 
   menuLogin.innerHTML = `
-    <div class='logo'> 
+    <figure class='logo'> 
       <img src='./images/wecanlogo.png' alt='logo'>
-    </div>
+    </figure>
     <div class='sign-box'> 
       <div class='welcome'>Bem vinda Dev!</div>
       <div>
