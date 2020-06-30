@@ -237,6 +237,8 @@
     background-color: #c196aa;
     justify-content: flex-end;
     padding: 0px 10px 0px 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .close-box {
@@ -300,6 +302,7 @@
         flex-direction: row;
         justify-content: space-around;
         text-align: center;
+        background-color: rgba(255, 255, 255, 0.550);
     }
     .profile-box {
         justify-content: space-between;
