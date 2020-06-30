@@ -9,15 +9,15 @@ export const profile = () => {
   containerProfile.className = ('profile-wrapper');
 
   containerProfile.innerHTML = `
-    <div id='top-menu-profile-wrapper' class='top-menu-wrapper'>
+    <header id='top-menu-profile-wrapper' class='top-menu-wrapper'>
       <div id='top-menu-profile-icon' class='top-menu-icon' > 
         <a href='javascript:void(0);' class='icon' id='menu-icon-profile'>
           <i class='fa fa-bars'></i>
         </a>
       </div>
-      <div class='logo-texto'>
-      <img class='logo-texto-img' src='./images/logotexto.png'>
-      </div>  
+      <figure class='logo-texto'>
+        <img class='logo-texto-img' src='./images/logotexto.png'>
+      </figure>  
       <div id='navigation-wrapper-profile' class='navigation-wrapper disable-display'>
         <div class='close-icon-wrapper'>
           <a href='javascript:void(0);' class='icon-x' id='close-menu-icon-profile' class='close-menu-icon'>
@@ -34,7 +34,7 @@ export const profile = () => {
         </nav>
       </div>  
       </div>
-    </div>
+    </header>
     <div class = 'profile-content-wrapper'>
       <div class='profile-box'>
         <div id = 'profile-photo' class='profile-img'>

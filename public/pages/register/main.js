@@ -11,10 +11,10 @@ export const register = () => {
   signUp.className = ('signup-wrapper');
 
   signUp.innerHTML = `
-    <div class='logo'> 
+    <figure class='logo'> 
       <img src='./images/wecanlogo.png' alt='logo'>
-    </div>
-    <div class='sign-box'> 
+    </figure>
+    <form class='sign-box'> 
       <div>
         <input class='sign-login' type= "text" name= "name" id= "first-name" placeholder= "Nome" required></input>
       </div>
@@ -38,7 +38,7 @@ export const register = () => {
       <div class='return-login'>
         Já tem uma conta? <a href='/#login'>Faça login</a>
       </div>
-    </div>
+    </form>
   `;
 
   const btnRegister = signUp.querySelector('#btnRegister');

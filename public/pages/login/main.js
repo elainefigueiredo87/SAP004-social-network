@@ -9,7 +9,7 @@ export const appStart = () => {
     <figure class='logo'> 
       <img src='./images/wecanlogo.png' alt='logo'>
     </figure>
-    <div class='sign-box'> 
+    <form class='sign-box'> 
       <div class='welcome'>Bem vinda Dev!</div>
       <div>
        <input class='sign-login' type= 'email' name= 'email' id= 'email' placeholder= 'Email' required></input>
@@ -28,7 +28,7 @@ export const appStart = () => {
       <div class='create-account'>
         Quer entrar para a rede? <a href='/#register'>Cadastre-se</a>
       </div>
-    </div>
+    </form>
     `;
 
   const btnLogin = menuLogin.querySelector('#btn-login');
