@@ -17,6 +17,7 @@
 .profile-content-wrapper {
     display: flex;
     justify-content: center;
+    background-color: rgba(255, 255, 255, 0.550);
 }
 
 .profile-box {
@@ -24,7 +25,7 @@
     padding: .5rem 0rem .5rem 0rem;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0px 2px 2px 2px whitesmoke;
+    box-shadow: 0px 0px 10px 0px #701741;
     margin-top: 2px;
 }
 
@@ -52,6 +53,7 @@
 
 .text-wrapper {
     display: flex;
+    background-color: rgba(255, 255, 255, 0.550);
 }
 
 .text-content {
@@ -296,13 +298,16 @@
     padding-top: 2px;
 }
 
+.big-box {
+    background-color: rgba(255, 255, 255, 0.550);
+}
+
 @media (min-width: 700px) {
     .big-box {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         text-align: center;
-        background-color: rgba(255, 255, 255, 0.550);
     }
     .profile-box {
         justify-content: space-between;
