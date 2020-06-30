@@ -113,7 +113,7 @@
 }
 
 .posted-box {
-    background-color: white;
+    /* background-color: white; */
     margin: 16px 16px 20px 16px;
     padding: 20px;
     justify-content: center;
@@ -129,7 +129,7 @@
 .published-by {
     justify-content: space-between;
     padding: 10px 10px 10px 10px;
-    background-color: #70174073;
+    background-color: #c196aa;
 }
 
 .date-style {
@@ -234,9 +234,11 @@
 
 .delete-wrapper {
     display: flex;
-    background-color: #70174073;
+    background-color: #c196aa;
     justify-content: flex-end;
     padding: 0px 10px 0px 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .close-box {
@@ -300,6 +302,7 @@
         flex-direction: row;
         justify-content: space-around;
         text-align: center;
+        background-color: rgba(255, 255, 255, 0.550);
     }
     .profile-box {
         justify-content: space-between;
