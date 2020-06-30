@@ -14,7 +14,7 @@ export const register = () => {
     <figure class='logo'> 
       <img src='./images/wecanlogo.png' alt='logo'>
     </figure>
-    <form class='sign-box'> 
+    <div class='sign-box'> 
       <div>
         <input class='sign-login' type= "text" name= "name" id= "first-name" placeholder= "Nome" required></input>
       </div>
@@ -38,7 +38,7 @@ export const register = () => {
       <div class='return-login'>
         Já tem uma conta? <a href='/#login'>Faça login</a>
       </div>
-    </form>
+    </div>
   `;
 
   const btnRegister = signUp.querySelector('#btnRegister');
