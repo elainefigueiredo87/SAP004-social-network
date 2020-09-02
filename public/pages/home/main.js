@@ -152,7 +152,6 @@ export const home = () => {
     return postElement;
   };
 
-
   const postSendForm = container.querySelector('#post-send-form');
   const postText = postSendForm.querySelector('#post');
   const postPublic = postSendForm.querySelector('#public-option');

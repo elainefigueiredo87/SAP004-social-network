@@ -37,15 +37,18 @@ export const profile = () => {
     </header>
     <div class = 'profile-content-wrapper'>
       <div class='profile-box'>
-        <div id = 'profile-photo' class='profile-img'>
+        <figure id = 'profile-photo' class='profile-img'>
           <img src='./images/code-girls.png'>
-        </div> 
+        </figure> 
           <div class='name-wrapper'>
-            <div id = 'name-user' class= 'name-user'></div>
+            <div id='name-user' class='name-user'></div>
           </div>   
+          <div>
+            <div id='profile-role' class='profile-role'></div>
+          </div>
       </div>
     </div>
-    <div class = 'text-wrapper'>
+    <main class = 'text-wrapper'>
       <div class = 'text-content'>
         <h3 class='title'>
         Por que precisamos de uma rede para mulheres em tecnologia
@@ -62,14 +65,15 @@ export const profile = () => {
           <li>Fale sobre suas experiências e crie o mesmo ambiente para que outras façam o mesmo.</li>
         </ul>
       </div>
-    </div>
+    </main>
   `;
 
   const btnSignOut = containerProfile.querySelector('#sign-out');
   const btnHome = containerProfile.querySelector('#btn-home');
 
-  function profileInformation(name) {
+  function profileInformation(name, role) {
     containerProfile.querySelector('#name-user').innerHTML = `${name}`;
+    containerProfile.querySelector('#profile-role').innerHTML = `${role}`;
   }
 
   loggedUser(profileInformation);
@@ -96,3 +100,12 @@ export const profile = () => {
 
   return containerProfile;
 };
+
+/*      <div>
+         <form>
+            <label for='file'>Adicione sua foto:</label>
+            <input type='file' id='file' name='file' disabled>
+         </form>
+      </div>
+      <div id='myImg'></div>
+*/
