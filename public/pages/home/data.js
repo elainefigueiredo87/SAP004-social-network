@@ -34,7 +34,7 @@ export const createPost = {
       .then((querySnapshot) => {
         const posts = [];
         querySnapshot.forEach((doc) => {
-          posts.push({...doc.data(), id: doc.id });
+          posts.push({ ...doc.data(), id: doc.id });
         });
         callback(posts);
       });

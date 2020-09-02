@@ -14,7 +14,7 @@ export const register = () => {
     <figure class='logo'> 
       <img src='./images/wecanlogo.png' alt='logo'>
     </figure>
-    <div class='sign-box'> 
+    <form class='sign-box'> 
       <div>
         <input class='sign-login' type= "text" name= "name" id= "first-name" placeholder= "Nome" required></input>
       </div>
@@ -22,13 +22,13 @@ export const register = () => {
         <input class='sign-login' type= "text" name= "surname" id= "last-name" placeholder= "Sobrenome" required></input>
       </div>
       <div>  
+        <input class='sign-login' type="text" name="role" id="role" placeholder= "Profissão ou área de interesse" required></input>
+      </div>
+      <div>  
         <input class='sign-login' type= "email" name= "email" id= "email" placeholder= "Email" required></input>
       </div>
       <div>
         <input class='sign-login' type="password" name="password" id="password" placeholder= "Senha (mínimo 6 caracteres)" required></input>
-      </div>
-      <div>  
-        <input class='sign-login' type="password" name="confirmPassword" id="confirmPassword" placeholder= "Confirme sua senha" required></input>
       </div>
       <div class='message-error' id='message-error'></div>
       <div class='message-email' id='message-email'></div>
@@ -38,7 +38,7 @@ export const register = () => {
       <div class='return-login'>
         Já tem uma conta? <a href='/#login'>Faça login</a>
       </div>
-    </div>
+    </form>
   `;
 
   const btnRegister = signUp.querySelector('#btnRegister');
@@ -47,12 +47,13 @@ export const register = () => {
     event.preventDefault();
     const email = signUp.querySelector('#email').value;
     const password = signUp.querySelector('#password').value;
+    const role = signUp.querySelector('#role').value;
     const firstName = signUp.querySelector('#first-name').value;
     const lastName = signUp.querySelector('#last-name').value;
     const registerAuth = createAccount.signRegister(email, password);
     registerAuth
       .then(() => {
-        createUser.newUser(email, firstName, lastName).then(() => {
+        createUser.newUser(email, firstName, lastName, role).then(() => {
           createProfile.newProfile(firstName, lastName).then(() => {
             emailVerification.sendEmailVerification();
             const sucessRegister = signUp.querySelector('#message-email');

@@ -106,6 +106,7 @@ body {
         margin-bottom: 10px;
     }
     .sign-box {
+        display: flex;
         align-items: center;
         flex-direction: column;
         min-width: 400px;
