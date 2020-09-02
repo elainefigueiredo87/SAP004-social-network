@@ -5,9 +5,7 @@ export const loggedUser = (profile) => {
       if (!user) {
         return;
       }
-      profile(user.displayName,
-        user.role
-      );
+      profile(user.displayName);
     });
 };
 

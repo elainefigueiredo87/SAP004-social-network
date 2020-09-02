@@ -7,12 +7,11 @@ export const createAccount = {
 };
 
 export const createUser = {
-  newUser(email, firstName, lastName, role) {
+  newUser(email, firstName, lastName) {
     return firebase.firestore().collection('users').add({
       firstName,
       lastName,
       email,
-      role,
       userUid: firebase.auth().currentUser.uid,
     });
   },

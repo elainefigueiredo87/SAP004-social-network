@@ -42,9 +42,6 @@ export const profile = () => {
         </figure> 
           <div class='name-wrapper'>
             <div id='name-user' class='name-user'></div>
-          </div>   
-          <div>
-            <div id='profile-role' class='profile-role'></div>
           </div>
       </div>
     </div>
@@ -73,7 +70,6 @@ export const profile = () => {
 
   function profileInformation(name, role) {
     containerProfile.querySelector('#name-user').innerHTML = `${name}`;
-    containerProfile.querySelector('#profile-role').innerHTML = `${role}`;
   }
 
   loggedUser(profileInformation);

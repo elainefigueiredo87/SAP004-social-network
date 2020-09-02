@@ -22,9 +22,6 @@ export const register = () => {
         <input class='sign-login' type= "text" name= "surname" id= "last-name" placeholder= "Sobrenome" required></input>
       </div>
       <div>  
-        <input class='sign-login' type="text" name="role" id="role" placeholder= "Profissão ou área de interesse" required></input>
-      </div>
-      <div>  
         <input class='sign-login' type= "email" name= "email" id= "email" placeholder= "Email" required></input>
       </div>
       <div>
@@ -53,7 +50,7 @@ export const register = () => {
     const registerAuth = createAccount.signRegister(email, password);
     registerAuth
       .then(() => {
-        createUser.newUser(email, firstName, lastName, role).then(() => {
+        createUser.newUser(email, firstName, lastName).then(() => {
           createProfile.newProfile(firstName, lastName).then(() => {
             emailVerification.sendEmailVerification();
             const sucessRegister = signUp.querySelector('#message-email');
