@@ -42,11 +42,11 @@ export const profile = () => {
         </figure> 
           <div class='name-wrapper'>
             <div id='name-user' class='name-user'></div>
-          </div>
+          </div>   
       </div>
     </div>
-    <main class = 'text-wrapper'>
-      <div class = 'text-content'>
+    <main class='text-wrapper'>
+      <div class='text-content'>
         <h3 class='title'>
         Por que precisamos de uma rede para mulheres em tecnologia
         </h3>
@@ -54,7 +54,7 @@ export const profile = () => {
         <p>Mostre seu apoio às desenvolvedoras:</p>
         <ul>
           <li>Ajude a inserir mulheres na área de tecnologia indicando programas como a 
-            <a href= 'https://www.laboratoria.la/br'>Laboratoria</a>,
+            <a href='https://www.laboratoria.la/br'>Laboratoria</a>,
             <a href='https://reprograma.com.br/'>Reprograma</a>,
             <a href='https://www.programaria.org/'>PrograMaria</a> e muitas outras iniciativas incríveis;</li>
           <li>Incentive-as a enviar propostas de palestras e participe também desses eventos;</li>
@@ -68,7 +68,7 @@ export const profile = () => {
   const btnSignOut = containerProfile.querySelector('#sign-out');
   const btnHome = containerProfile.querySelector('#btn-home');
 
-  function profileInformation(name, role) {
+  function profileInformation(name) {
     containerProfile.querySelector('#name-user').innerHTML = `${name}`;
   }
 
@@ -96,12 +96,3 @@ export const profile = () => {
 
   return containerProfile;
 };
-
-/*      <div>
-         <form>
-            <label for='file'>Adicione sua foto:</label>
-            <input type='file' id='file' name='file' disabled>
-         </form>
-      </div>
-      <div id='myImg'></div>
-*/
