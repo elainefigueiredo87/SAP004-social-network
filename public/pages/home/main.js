@@ -93,7 +93,7 @@ export const home = () => {
     let privacyOptionButton = '';
 
     const user = firebase.auth().currentUser;
-    if (post.userUid === user.uid) {
+    if (post.uid === user.uid) {
       deleteButton = `<button id='close-posted-box' class='close-box' data-id='${post.id}'> <i class="fa fa-times"></i> </button>`;
       editButton = `
        <button class='btn-edit-post icon-style'>
@@ -171,7 +171,7 @@ export const home = () => {
     if (!currentUser) {
       return false;
     }
-    if (post.userUid === currentUser.uid) {
+    if (post.uid === currentUser.uid) {
       return true;
     }
     return post.public;

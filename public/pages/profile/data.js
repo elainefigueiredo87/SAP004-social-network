@@ -6,7 +6,6 @@ export const loggedUser = (profile) => {
         return;
       }
       profile(user.displayName,
-        user.role
       );
     });
 };
@@ -16,6 +15,9 @@ export const signOut = () => {
     firebase.auth().signOut()
       .then(() => {
         window.location.href = '#login';
-      });
+      })
+      .catch(() => {
+        growl({ text: 'Falha ao desconectar. Tente novamente', type: 'error', fadeAway: true, fadeAwayTimeout: 3000 });
+      })
   }
 };

@@ -13,7 +13,7 @@ export const createUser = {
       lastName,
       email,
       role,
-      userUid: firebase.auth().currentUser.uid,
+      uid: firebase.auth().currentUser.uid,
     });
   },
 };
@@ -37,8 +37,12 @@ export const signOut = () => {
 
 export const emailVerification = {
   sendEmailVerification() {
-    return firebase.auth().currentUser.sendEmailVerification().then(() => {
-      signOut();
-    });
-  },
+    return firebase.auth().currentUser.sendEmailVerification()
+      .then(() => {
+        signOut();
+      })
+      .catch((error) => {
+        growl({ text: error, type: 'error', fadeAway: true, fadeAwayTimeout: 3000 });
+      })
+  }
 };
