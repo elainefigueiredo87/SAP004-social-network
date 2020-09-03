@@ -42,7 +42,9 @@ export const emailVerification = {
         signOut();
       })
       .catch((error) => {
-        growl({ text: error, type: 'error', fadeAway: true, fadeAwayTimeout: 3000 });
-      })
-  }
+        growl({
+          text: error, type: 'error', fadeAway: true, fadeAwayTimeout: 3000,
+        });
+      });
+  },
 };

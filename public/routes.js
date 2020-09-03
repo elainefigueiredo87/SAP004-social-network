@@ -21,10 +21,17 @@ export const routeAllowed = (route, user) => {
 
   if (user) {
     if (!user.emailVerified) {
-      growl({ text: 'Verifique o seu email antes de fazer login', type: 'error', fadeAway: true, fadeAwayTimeout: 3000 });
+      growl({
+        text: 'Verifique o seu email antes de fazer login', type: 'error', fadeAway: true, fadeAwayTimeout: 3000,
+      });
       firebase.auth().signOut()
         .then(() => {
           window.location.href = '#login';
+        })
+        .catch(() => {
+          growl({
+            text: 'Verifique o seu email antes de fazer login', type: 'error', fadeAway: true, fadeAwayTimeout: 3000,
+          });
         });
       return isAllowed;
     }
