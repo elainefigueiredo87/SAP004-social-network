@@ -1,152 +1,157 @@
 body {
-    background-image: url(images/fundonovo.png);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  background-image: url(images/fundonovo.png);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .login-wrapper,
 .signup-wrapper {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 1rem;
-    line-height: 3rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1rem;
+  line-height: 3rem;
 }
 
 .logo {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .logo img {
-    width: 10rem;
+  width: 10rem;
 }
 
 .welcome {
-    font-size: 1rem;
-    font-weight: 500;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .sign-login {
-    height: 2rem;
-    width: 15rem;
-    margin: 4px;
-    padding: 5px;
-    border: 1px solid #701741;
-    border-radius: 4px;
+  height: 2rem;
+  width: 15rem;
+  margin: 4px;
+  padding: 5px;
+  border: 1px solid #701741;
+  border-radius: 4px;
 }
 
 .message-error {
-    color: red;
-    font-size: .8rem;
-    text-decoration: underline;
+  color: red;
+  font-size: .8rem;
+  text-decoration: underline;
 }
 
 .message-email {
-    color: #1E1B1D;
-    font-size: .8rem;
-    text-decoration: underline;
+  color: #1E1B1D;
+  font-size: .8rem;
+  text-decoration: underline;
 }
 
 .btn-login,
 .btn-register {
-    background-color: #701741;
-    color: white;
-    font-size: 1rem;
-    height: 2rem;
-    width: 6rem;
-    padding: 5px;
-    border-radius: 4px;
+  background-color: #701741;
+  color: white;
+  font-size: 1rem;
+  height: 2rem;
+  width: 6rem;
+  padding: 5px;
+  border-radius: 4px;
 }
 
 .btn-box {
-    margin-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 
 .sign-google .create-account,
 .return-login {
-    font-size: 1rem;
-    font-weight: 400;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .icon-google input {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    width: 2rem;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 2rem;
 }
 
 @media (min-width: 500px) {
-    .login-wrapper,
-    .signup-wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        text-align: center;
-    }
-    .logo {
-        min-width: 350px;
-        height: auto;
-        margin: 0;
-        padding: 7%;
-        text-align: center;
-        justify-content: center;
-    }
-    .logo img {
-        width: 28vw;
-        height: 18vw;
-    }
-    .welcome {
-        font-size: 2rem;
-        font-weight: 400;
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-    .sign-box {
-        align-items: center;
-        flex-direction: column;
-        min-width: 400px;
-        margin: 0;
-        margin-top: 5%;
-    }
-    .sign-login {
-        height: 2rem;
-        width: 20rem;
-        margin: 15px;
-        padding: 15px;
-        border: 2px solid #701741;
-        border-radius: 6px;
-        font-size: 20px;
-    }
-    .message-error {
-        font-size: 1.5rem;
-    }
-    .message-email {
-        font-size: 1.5rem;
-    }
-    .btn-login,
-    .btn-register {
-        margin-top: 20px;
-        font-size: 1.5rem;
-        height: 3rem;
-        width: 10rem;
-        padding: 4px;
-        border-radius: 6px;
-        align-items: center;
-    }
-    .btn-box {
-        margin-bottom: 4rem;
-    }
-    .sign-google,
-    .create-account,
-    .return-login {
-        font-size: 1.5rem;
-        font-weight: 400;
-    }
-    .icon-google input {
-        width: 3rem;
-    }
+  .login-wrapper,
+  .signup-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+  }
+  .logo {
+    min-width: 350px;
+    height: auto;
+    margin: 0;
+    padding: 7%;
+    text-align: center;
+    justify-content: center;
+  }
+  .logo img {
+    width: 28vw;
+    height: 18vw;
+  }
+  .welcome {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .sign-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 400px;
+    margin: 0;
+    margin-top: 5%;
+  }
+  .sign-box-wrapper{
+    padding-top: 40px;
+    margin-top: 20px;
+  }
+  .sign-login {
+    height: 2rem;
+    width: 20rem;
+    margin: 15px;
+    padding: 15px;
+    border: 2px solid #701741;
+    border-radius: 6px;
+    font-size: 20px;
+  }
+  .message-error {
+    font-size: 1.5rem;
+  }
+  .message-email {
+    font-size: 1.5rem;
+  }
+  .btn-login,
+  .btn-register {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    height: 3rem;
+    width: 10rem;
+    padding: 4px;
+    border-radius: 6px;
+    align-items: center;
+  }
+  .btn-box {
+    margin-bottom: 4rem;
+  }
+  .sign-google,
+  .create-account,
+  .return-login {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  .icon-google input {
+    width: 3rem;
+  }
 }

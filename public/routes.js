@@ -3,7 +3,6 @@ import { appStart } from './pages/login/main.js';
 import { register } from './pages/register/main.js';
 import { profile } from './pages/profile/main.js';
 
-
 export const routes = {};
 firebase.auth().onAuthStateChanged(() => {
   routes.home = home();
@@ -22,10 +21,17 @@ export const routeAllowed = (route, user) => {
 
   if (user) {
     if (!user.emailVerified) {
-      alert('Verifique o seu email antes de fazer login');
+      growl({
+        text: 'Verifique o seu email antes de fazer login', type: 'error', fadeAway: true, fadeAwayTimeout: 3000,
+      });
       firebase.auth().signOut()
         .then(() => {
           window.location.href = '#login';
+        })
+        .catch(() => {
+          growl({
+            text: 'Verifique o seu email antes de fazer login', type: 'error', fadeAway: true, fadeAwayTimeout: 3000,
+          });
         });
       return isAllowed;
     }

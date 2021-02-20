@@ -11,29 +11,20 @@ export const register = () => {
   signUp.className = ('signup-wrapper');
 
   signUp.innerHTML = `
-    <div class='logo'> 
+    <figure class='logo'> 
       <img src='./images/wecanlogo.png' alt='logo'>
-    </div>
-    <div class='sign-box'> 
-      <div>
-        <input class='sign-login' type= "text" name= "name" id= "first-name" placeholder= "Nome" required></input>
-      </div>
-      <div>
-        <input class='sign-login' type= "text" name= "surname" id= "last-name" placeholder= "Sobrenome" required></input>
-      </div>
-      <div>  
-        <input class='sign-login' type= "email" name= "email" id= "email" placeholder= "Email" required></input>
-      </div>
-      <div>
-        <input class='sign-login' type="password" name="password" id="password" placeholder= "Senha (mínimo 6 caracteres)" required></input>
-      </div>
-      <div>  
-        <input class='sign-login' type="password" name="confirmPassword" id="confirmPassword" placeholder= "Confirme sua senha" required></input>
-      </div>
+    </figure>
+    <div class='sign-box-wrapper'>
+      <form class='sign-box'> 
+        <input class='sign-login' type='text' name='name' id='first-name' placeholder='Nome' required></input>
+        <input class='sign-login' type='text' name='surname' id='last-name' placeholder='Sobrenome' required></input>
+        <input class='sign-login' type='email' name='email' id='email' placeholder='Email' required></input>
+        <input class='sign-login' type='password' name='password" id='password' placeholder='Senha (mínimo 6 caracteres)' required></input>
+      </form>
       <div class='message-error' id='message-error'></div>
       <div class='message-email' id='message-email'></div>
       <div> 
-        <button class='btn-register' type="button" id="btnRegister">Cadastrar</button>
+        <button class='btn-register' type='button' id='btnRegister'>Cadastrar</button>
       </div>  
       <div class='return-login'>
         Já tem uma conta? <a href='/#login'>Faça login</a>
@@ -63,7 +54,7 @@ export const register = () => {
       .catch((error) => {
         let errorMessage = error.message;
         if (error.code === 'auth/weak-password') {
-          errorMessage = 'Senha deve ter no mínimo 6 caracteres';
+          errorMessage = 'Sua senha deve ter no mínimo 6 caracteres';
         } else if (error.code === 'auth/invalid-email') {
           errorMessage = 'Formato de e-mail inválido';
         }

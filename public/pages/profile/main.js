@@ -9,15 +9,15 @@ export const profile = () => {
   containerProfile.className = ('profile-wrapper');
 
   containerProfile.innerHTML = `
-    <div id='top-menu-profile-wrapper' class='top-menu-wrapper'>
+    <header id='top-menu-profile-wrapper' class='top-menu-wrapper'>
       <div id='top-menu-profile-icon' class='top-menu-icon' > 
         <a href='javascript:void(0);' class='icon' id='menu-icon-profile'>
           <i class='fa fa-bars'></i>
         </a>
       </div>
-      <div class='logo-texto'>
-      <img class='logo-texto-img' src='./images/logotexto.png'>
-      </div>  
+      <figure class='logo-texto'>
+        <img class='logo-texto-img' src='./images/logotexto.png'>
+      </figure>  
       <div id='navigation-wrapper-profile' class='navigation-wrapper disable-display'>
         <div class='close-icon-wrapper'>
           <a href='javascript:void(0);' class='icon-x' id='close-menu-icon-profile' class='close-menu-icon'>
@@ -34,19 +34,19 @@ export const profile = () => {
         </nav>
       </div>  
       </div>
-    </div>
+    </header>
     <div class = 'profile-content-wrapper'>
       <div class='profile-box'>
-        <div id = 'profile-photo' class='profile-img'>
+        <figure id = 'profile-photo' class='profile-img'>
           <img src='./images/code-girls.png'>
-        </div> 
+        </figure> 
           <div class='name-wrapper'>
-            <div id = 'name-user' class= 'name-user'></div>
+            <div id='name-user' class='name-user'></div>
           </div>   
       </div>
     </div>
-    <div class = 'text-wrapper'>
-      <div class = 'text-content'>
+    <main class='text-wrapper'>
+      <div class='text-content'>
         <h3 class='title'>
         Por que precisamos de uma rede para mulheres em tecnologia
         </h3>
@@ -54,7 +54,7 @@ export const profile = () => {
         <p>Mostre seu apoio às desenvolvedoras:</p>
         <ul>
           <li>Ajude a inserir mulheres na área de tecnologia indicando programas como a 
-            <a href= 'https://www.laboratoria.la/br'>Laboratoria</a>,
+            <a href='https://www.laboratoria.la/br'>Laboratoria</a>,
             <a href='https://reprograma.com.br/'>Reprograma</a>,
             <a href='https://www.programaria.org/'>PrograMaria</a> e muitas outras iniciativas incríveis;</li>
           <li>Incentive-as a enviar propostas de palestras e participe também desses eventos;</li>
@@ -62,7 +62,7 @@ export const profile = () => {
           <li>Fale sobre suas experiências e crie o mesmo ambiente para que outras façam o mesmo.</li>
         </ul>
       </div>
-    </div>
+    </main>
   `;
 
   const btnSignOut = containerProfile.querySelector('#sign-out');

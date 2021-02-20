@@ -12,10 +12,10 @@ export const appStart = () => {
     <div class='sign-box'> 
       <div class='welcome'>Bem vinda Dev!</div>
       <div>
-       <input class='sign-login' type= 'email' name= 'email' id= 'email' placeholder= 'Email' required></input>
+       <input class='sign-login' type='email' name='email' id='email' placeholder='Email' required></input>
       </div>
       <div>
-        <input class='sign-login' type='password' name='password' id='password' placeholder= 'Senha' required></input>
+        <input class='sign-login' type='password' name='password' id='password' placeholder='Senha' required></input>
       </div>
       <div class='message-error' id='message-error'></div>
       <div class='btn-box'>
@@ -25,9 +25,7 @@ export const appStart = () => {
       <div class='icon-google'>
         <input type=image src='./images/logo-google.png' id='input-google'></input>
       </div>
-      <div class='create-account'>
-        Quer entrar para a rede? <a href='/#register'>Cadastre-se</a>
-      </div>
+      <div class='create-account'>Quer entrar para a rede?<a href='/#register'>Cadastre-se</a></div>
     </div>
     `;
 
@@ -73,7 +71,7 @@ export const appStart = () => {
         if (error.code === 'auth/account-exists-with-different-credential') {
           errorMessage = 'Você já se inscreveu com um provedor de autenticação diferente para esse email.';
         } else if (error.code === 'auth/popup-closed-by-user') {
-          errorMessage = ' A janela foi fechada antes de finalizar a operação. Tente novamente.';
+          errorMessage = 'A janela foi fechada antes de finalizar a operação. Tente novamente.';
         } else if (error.code === 'auth/cancelled-popup-request') {
           errorMessage = 'A operação foi cancelada';
         } else {

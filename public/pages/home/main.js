@@ -15,8 +15,8 @@ export const home = () => {
 
   container.innerHTML = `
     <header id='top-menu-home-wrapper' class='top-menu-wrapper'>
-      <div id='top-menu-home-icon' class='top-menu-icon' >
-        <a href='javascript:void(0);' id='menu-icon-home' class='icon' >
+      <div id='top-menu-home-icon' class='top-menu-icon'>
+        <a href='javascript:void(0);' id='menu-icon-home' class='icon'>
           <i class='fa fa-bars'></i>
         </a>
       </div>
@@ -58,12 +58,12 @@ export const home = () => {
           <div class='all-buttons'>
             <div class='privacy-wrapper' id='privacy-options'>
               <div class='public-option icon-style'>
-                <i class='fa fa-lock' ></i>
-                <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
+                <i class='fa fa-lock'></i>
+                <input type='radio' name='privacy' id='private-option' class='privacy-options' value='private'>
               </div>
               <div class='private-option  icon-style'>
                 <i class='fa fa-globe'></i>
-                <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
+                <input type='radio' name='privacy' id='public-option' class='privacy-options' checked='true' value='public'>
               </div>
             </div>
             <button id='send-btn' class='btn-style'>Publicar</button>
@@ -83,9 +83,9 @@ export const home = () => {
 
     let privacySymbol = '';
     if (post.public) {
-      privacySymbol = "<i class='fa fa-globe icon-style' ></i>";
+      privacySymbol = "<i class='fa fa-globe icon-style'></i>";
     } else {
-      privacySymbol = "<i class='fa fa-lock icon-style' ></i>";
+      privacySymbol = "<i class='fa fa-lock icon-style'></i>";
     }
 
     let deleteButton = '';
@@ -94,64 +94,51 @@ export const home = () => {
 
     const user = firebase.auth().currentUser;
     if (post.userUid === user.uid) {
-      deleteButton = `<button id='close-posted-box' class='close-box' data-id='${post.id}'> <i class="fa fa-times"></i> </button>`;
-      editButton = `
-       <button class='btn-edit-post icon-style'>
-         <i class='fa fa-pencil'></i>
-       </button>
-      `;
+      deleteButton = `<button id='close-posted-box' class='close-box' data-id='${post.id}'><i class='fa fa-times'></i></button>`;
+      editButton = `<button class='btn-edit-post icon-style'><i class='fa fa-pencil'></i></button>`;
       privacyOptionButton = `<form class='privacy-wrapper' id='privacy-options'>
-      <div class='public-option  icon-style'>
-        <i class='fa fa-lock' ></i>
-        <input type='radio' name='privacy' id='private-option' class='privacy-options' value="private">
-      </div>
+        <div class='public-option icon-style'>
+          <i class='fa fa-lock'></i>
+          <input type='radio' name='privacy' id='private-option' class='privacy-options' value='private'>
+        </div>
         <div class='private-option icon-style'>
           <i class='fa fa-globe'></i>
-          <input type='radio' name='privacy' id='public-option' class='privacy-options' checked="true" value="public">
+          <input type='radio' name='privacy' id='public-option' class='privacy-options' checked='true' value='public'>
         </div>
-    </form>`;
+      </form>`;
     }
 
     postElement.innerHTML = `
-        <div class='posted-box' >
-          <div class='posted-elements'>
-          <div class='delete-wrapper'>
-            ${deleteButton}
+      <div class='posted-box'>
+        <div class='posted-elements'>
+          <div class='delete-wrapper'>${deleteButton}</div>
+          <div class='published-by'>${privacySymbol}
+            <div class='by-line'>&nbsp${post.user}</div>
+            <div class='date-style'> ${date.toLocaleString('pt-BR')}</div> 
           </div>
-            <div class='published-by'>
-              ${privacySymbol}
-              <div class='by-line'>&nbsp${post.user}</div>
-              <div class='date-style'> ${date.toLocaleString('pt-BR')} </div> 
+          <div class='posted-content'>
+            <div class='posted-text' id='all-posts'>${post.text}</div>
+            <div class='posted-text posted-text-editor display-none'>
+              <input type='text' value='${post.text}'/>
             </div>
-            <div class='posted-content'>
-              <div class='posted-text' id='all-posts'>${post.text}</div>
-              <div class='posted-text posted-text-editor display-none'>
-                <input type='text' value='${post.text}' />
+            <div class='posted-text-edit-button'>${editButton}</div>
+          </div>
+          <div class='edit-privacity-post display-none'>${privacyOptionButton}</div>
+          <div class='interaction-space'>
+            <div class='btn-space'>
+              <div class='like-space'>
+                <div class='like-number'>${post.likes}</div>
+                <a id='like-btn' class='like-btn'><i class='fa fa-heart'></i></a>
               </div>
-              <div class='posted-text-edit-button'>
-                ${editButton}
-              </div>
+              <button id='comment-btn' class='btn-style btn-comment'>Comentar</button>
             </div>
-            <div class='edit-privacity-post display-none'>
-              ${privacyOptionButton}
-            </div>
-                <div class='interaction-space'>
-                  <div class='btn-space'>
-                    <div class='like-space'>
-                      <div class='like-number'>${post.likes}</div>
-                      <a id='like-btn' class='like-btn' >
-                        <i class="fa fa-heart"></i> </a>
-                    </div>
-                    <button id='comment-btn' class='btn-style btn-comment'> Comentar </button>
-                  </div>
-                </div>
-              </div>
-              <div class='space-comment'>${post.comments.map(comment => commentPosted(comment)).join('')}</div>
-            </div>
+          </div>
+        </div>
+        <div class='space-comment'>${post.comments.map(comment => commentPosted(comment)).join('')}</div>
+      </div>
   `;
     return postElement;
   };
-
 
   const postSendForm = container.querySelector('#post-send-form');
   const postText = postSendForm.querySelector('#post');
@@ -189,6 +176,10 @@ export const home = () => {
       const formPrivacy = postElement.querySelector('#privacy-options');
       updatePost(post.id, newText, formPrivacy.privacy.value).then(() => {
         createPost.readPosts(postTemplate);
+      }).catch(() => {
+        growl({
+          text: 'Ocorreu um erro. Tente novamente!', type: 'error', fadeAway: true, fadeAwayTimeout: 3000,
+        });
       });
     } else {
       postedElem.classList.toggle('display-none');
@@ -226,6 +217,10 @@ export const home = () => {
         event.preventDefault();
         updateLike(posts.id).then(() => {
           createPost.readPosts(postTemplate);
+        }).catch(() => {
+          growl({
+            text: 'Ocorreu um erro. Tente novamente!', type: 'error', fadeAway: true, fadeAwayTimeout: 3000,
+          });
         });
       });
       const btnComment = postElements.querySelector('.btn-comment');
@@ -245,7 +240,7 @@ export const home = () => {
     const templateCommentPosted = `
       <div class='commented-wrapper'>
         <div class='space-commented'>${text}</div>
-      </div>      
+      </div>
     `;
     return templateCommentPosted;
   };
@@ -254,19 +249,24 @@ export const home = () => {
     const templateComment = document.createElement('div');
     templateComment.innerHTML = `
       <div class='space-wrapper'>
-              <textarea id='write-space-comment' class='write-space-comment' type='text' required cols='25' placeholder='comente aqui'></textarea>
-              <div class='comment-btn-space'>
-                <button class='btn-save-comment'><i class='fa fa-paper-plane-o'></i></button>
-              </div>
-              <div class='comment-posted'></div>
-            </div>
+        <textarea id='write-space-comment' class='write-space-comment' type='text' required cols='25' placeholder='comente aqui'></textarea>
+        <div class='comment-btn-space'>
+          <button class='btn-save-comment'><i class='fa fa-paper-plane-o'></i></button>
+        </div>
+        <div class='comment-posted'></div>
+      </div>
     `;
+
     const btnSaveComment = templateComment.querySelector('.btn-save-comment');
 
     btnSaveComment.addEventListener('click', () => {
       const subComment = templateComment.querySelector('.write-space-comment').value;
       updateComments(id, subComment).then(() => {
         createPost.readPosts(postTemplate);
+      }).catch(() => {
+        growl({
+          text: 'Falha ao enviar comentário.', type: 'error', fadeAway: true, fadeAwayTimeout: 3000,
+        });
       });
     });
 
@@ -283,7 +283,8 @@ export const home = () => {
     returnPosts
       .then(() => {
         createPost.readPosts(postTemplate);
-      }).catch(error => error);
+      })
+      .catch(error => error);
 
     document.getElementById('post').value = '';
   });

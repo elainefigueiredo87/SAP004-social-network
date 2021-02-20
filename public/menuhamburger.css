@@ -1,75 +1,81 @@
 .top-menu-wrapper {
-    display: flex;
-    padding: 5px 20px 5px 10px;
-    background-color: #701741;
+  display: flex;
+  padding: 5px 20px 5px 10px;
+  background-color: #701741;
+  cursor: pointer;
 }
 
 .logo-texto {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .logo-texto-img {
-    max-width: 150px;
-    height: auto;
+  max-width: 150px;
+  height: auto;
 }
 
 .icon {
-    font-size: 35px;
-    flex: 0;
-    color: white;
+  font-size: 35px;
+  flex: 0;
+  color: white;
 }
 
 .icon-x {
-    color: white;
-    font-size: 35px;
+  color: white;
+  font-size: 35px;
 }
 
 .top-menu {
-    background-color: whitesmoke;
-    padding: 0px 20px 20px 20px;
-    text-decoration: none;
-    color: #701741;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    flex-wrap: wrap;
+  background-color: whitesmoke;
+  padding: 0px 20px 20px 20px;
+  text-decoration: none;
+  color: #701741;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  flex-wrap: wrap;
+  cursor: pointer;
+  transition: .2s ease-in;
+}
+.top-menu li:hover {
+  color: lightcoral;
 }
 
 .navigation-wrapper {
-    z-index: 1000;
-    position: absolute;
-    top: 10px;
-    left: 10px;
+  z-index: 1000;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .disable-display {
-    display: none;
+  display: none;
 }
 
 .hide-visibility {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .close-icon-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 0px 0px 0px 4px;
-    background-color: #DBA1BC;
+  display: flex;
+  align-items: center;
+  padding: 0px 0px 0px 4px;
+  background-color: #DBA1BC;
 }
 
 .top-menu li {
-    font-size: 25px;
-    list-style: none;
-    border-bottom: 1px solid black;
-    margin: 20px 0px 20px 0px;
-    padding: 0px 10px 0px 10px;
+  font-size: 25px;
+  list-style: none;
+  border-bottom: 1px solid black;
+  margin: 20px 0px 20px 0px;
+  padding: 0px 10px 0px 10px;
 }
 
 .top-menu li:first-child {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .top-menu li:last-child {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }

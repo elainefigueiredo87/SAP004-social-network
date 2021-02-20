@@ -1,4 +1,4 @@
-// importamos as funções que iremos testar
+/* importamos as funções que iremos testar
 import { greeting } from '../public/pages/home/data.js';
 
 describe('Greeting', () => {
@@ -6,4 +6,4 @@ describe('Greeting', () => {
     const message = 'Oi Maria! Que bom ver você aqui!';
     expect(greeting('Maria')).toEqual(message);
   });
-});
+})*/

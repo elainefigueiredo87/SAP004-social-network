@@ -7,12 +7,13 @@ export const createAccount = {
 };
 
 export const createUser = {
-  newUser(email, firstName, lastName) {
+  newUser(email, firstName, lastName, role) {
     return firebase.firestore().collection('users').add({
       firstName,
       lastName,
       email,
-      userUid: firebase.auth().currentUser.uid,
+      role,
+      uid: firebase.auth().currentUser.uid,
     });
   },
 };
@@ -36,8 +37,14 @@ export const signOut = () => {
 
 export const emailVerification = {
   sendEmailVerification() {
-    return firebase.auth().currentUser.sendEmailVerification().then(() => {
-      signOut();
-    });
+    return firebase.auth().currentUser.sendEmailVerification()
+      .then(() => {
+        signOut();
+      })
+      .catch((error) => {
+        growl({
+          text: error, type: 'error', fadeAway: true, fadeAwayTimeout: 3000,
+        });
+      });
   },
 };
