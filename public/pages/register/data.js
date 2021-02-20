@@ -36,8 +36,12 @@ export const signOut = () => {
 
 export const emailVerification = {
   sendEmailVerification() {
-    return firebase.auth().currentUser.sendEmailVerification().then(() => {
-      signOut();
-    });
-  },
+    return firebase.auth().currentUser.sendEmailVerification()
+      .then(() => {
+        signOut();
+      })
+      .catch((error) => {
+        growl({ text: error, type: 'error', fadeAway: true, fadeAwayTimeout: 3000 });
+      })
+  }
 };
